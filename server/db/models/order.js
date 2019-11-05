@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
+const LineItem = require('./LineItem')
 
 const Order = db.define('order', {
   date: {
