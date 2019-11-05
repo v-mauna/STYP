@@ -4,7 +4,9 @@ const db = require('../db')
 const Category = db.define('category', {
   category: {
     type: Sequelize.STRING,
-    isIn: [['new', 'sale', 'organic', 'classics', 'obscure']]
+    validate: {
+      isIn: [['new', 'sale', 'organic', 'classics', 'obscure']]
+    }
   }
 })
 
