@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
-
+const LineItem = require('./LineItem')
 
 const Order = db.define('order', {
   date: {
@@ -14,6 +14,21 @@ const Order = db.define('order', {
   },
   total: {
     type: Sequelize.NUMBER
+  },
+  recepientFirstName: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  recepientLastName: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  recepientemail: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      isEmail: true
+    }
   }
 })
 
