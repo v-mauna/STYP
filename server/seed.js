@@ -1,4 +1,47 @@
-const {Product, Category, LineItem, Order, User, Review} = require('./models')
+const {Product, Category, LineItem, Order, User} = require('./models')
+
+const items = [
+  {
+    name: 'Ricotta & Yogurt Parfait',
+    price: 8.0,
+    stock: 300,
+    description:
+      'Reminiscent of a lemon cheesecake, this healthy breakfast recipe is easy to throw together in the morning. Or stir together the filling in a jar the night before and top with the fruit, nuts and seeds when you get to work.',
+    photos: 'http://images.media-allrecipes.com/userphotos/960x960/4027929.jpg'
+  },
+  {
+    name: 'Rasberry Yogurt Cereal',
+    price: 7.0,
+    stock: 100,
+    description:
+      'For breakfast, snack or a healthy dessert, try using yogurt instead of milk for your cereal. If making this as a to-go snack, keep the cereal separate and top just before eating.',
+    photos: 'http://images.media-allrecipes.com/userphotos/960x960/4473423.jpg'
+  },
+  {
+    name: 'Rainbow Yogurt Bowl',
+    price: 9.0,
+    stock: 400,
+    description:
+      'Arrange vibrant, colorful fruit in the shape of a rainbow on top of yogurt for a fun and delicious healthy breakfast or snack kids will actually want to eat.',
+    photos: 'http://images.media-allrecipes.com/userphotos/960x960/4535705.jpg'
+  },
+  {
+    name: 'Owl Yogurt Bowl',
+    price: 9.0,
+    stock: 30,
+    description:
+      'Bananas, blueberries and nuts make a fun topping on this yogurt bowl that looks like an owl for a healthy breakfast or snack your kids will actually want to eat.',
+    photos: 'http://images.media-allrecipes.com/userphotos/960x960/4535703.jpg'
+  },
+  {
+    name: 'Kitty-Cat Oatmeal Bowl',
+    price: 9.0,
+    stock: 30,
+    description:
+      'Kids will love this creative, healthy recipe with filling rolled oats, honey for natural sweetness and a fresh fruit kitty-cat face for a fun breakfast they will actually want to eat!',
+    photos: 'http://images.media-allrecipes.com/userphotos/960x960/4526747.jpg'
+  }
+]
 
 const orders = [
   {
