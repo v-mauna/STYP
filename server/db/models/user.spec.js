@@ -9,6 +9,27 @@ describe('User model', () => {
     return db.sync({force: true})
   })
 
+  describe('create', () => {
+    beforeEach(() => {})
+
+    it('should add a user and respond with the new object', done => {
+      Order.create({
+        email: 'abcd@sth.com',
+        password: 'xyz' 
+      })
+        .then(order => {
+          expect(order.get('email')).to.equal('abcd@sth.com')
+          expect(address.get('password')).to.not.equal('xyz')
+          done()
+        })
+        .catch(err => {
+          done(err)
+        })
+    })
+
+  })
+  // end describe('create')
+
   describe('instanceMethods', () => {
     describe('correctPassword', () => {
       let cody
@@ -29,4 +50,6 @@ describe('User model', () => {
       })
     }) // end describe('correctPassword')
   }) // end describe('instanceMethods')
+
+
 }) // end describe('User model')
