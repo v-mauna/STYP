@@ -1,6 +1,5 @@
-const Sequelize = require('sequelize');
-const db = require('../db');
-const LineItem = require('./LineItem')
+const Sequelize = require('sequelize')
+const db = require('../db')
 
 const Order = db.define('order', {
   date: {
@@ -8,8 +7,8 @@ const Order = db.define('order', {
     allowNull: false
   },
   status: {
-    type: Sequelize.ENUM("CREATED", "PROCESSING", "CANCELLED", "COMPLETED"),
-    defaultValue: "CREATED",
+    type: Sequelize.ENUM('CREATED', 'PROCESSING', 'CANCELLED', 'COMPLETED'),
+    defaultValue: 'CREATED',
     allowNull: false
   },
   total: {
@@ -32,4 +31,4 @@ const Order = db.define('order', {
   }
 })
 
-module.exports = Order;
+module.exports = Order
