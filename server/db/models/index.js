@@ -6,19 +6,19 @@ const Order = require('./order')
 const LineItem = require('./lineItem')
 
 Address.belongsTo(User)
-User.hasMany(Address)
 
 Category.belongsToMany(Item, {through: 'tags'})
+
 Item.belongsToMany(Category, {through: 'tags'})
+Item.hasMany(LineItem)
 
 Order.belongsTo(User, {as: 'customer'})
-User.hasMany(Order)
-
-LineItem.belongsTo(Order)
 Order.hasMany(LineItem)
 
+LineItem.belongsTo(Order)
 LineItem.belongsTo(Item)
-Item.hasMany(LineItem)
+
+User.hasMany(Address)
 
 module.exports = {
   User,

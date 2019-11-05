@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const User = require('../db/models/user')
+
 module.exports = router
 
 router.post('/login', async (req, res, next) => {
@@ -43,4 +43,4 @@ router.get('/me', (req, res) => {
 })
 
 router.use('/google', require('./google'))
-router.use('/user', require(User))
+router.use('/user', require('../api/users'))
