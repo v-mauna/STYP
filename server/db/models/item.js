@@ -7,7 +7,7 @@ const Item = db.define('item', {
     allowNull: false
   },
   price: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.DECIMAL(10, 2),
     allowNull: false,
     validate: {
       min: 0
