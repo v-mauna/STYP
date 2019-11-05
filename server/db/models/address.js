@@ -24,7 +24,10 @@ const Address = db.define('address', {
   },
   type: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      isIn: [['shipping', 'billing']]
+    }
   }
 })
 
