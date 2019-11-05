@@ -12,7 +12,7 @@ const Order = db.define('order', {
     allowNull: false
   },
   total: {
-    type: Sequelize.NUMBER
+    type: Sequelize.INTEGER
   },
   recepientFirstName: {
     type: Sequelize.STRING,
