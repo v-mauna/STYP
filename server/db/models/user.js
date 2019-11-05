@@ -12,7 +12,7 @@ const User = db.define('user', {
     allowNull: false
   },
   telephoneNumber: {
-    type: Sequelize.INTEGER
+    type: Sequelize.STRING
   },
   email: {
     type: Sequelize.STRING,
