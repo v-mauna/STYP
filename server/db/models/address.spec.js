@@ -17,15 +17,15 @@ describe('Address model', () => {
         street2: 'Apt.3b',
         city: 'New York',
         state: 'NY',
-        zip: '10010',
+        zip: 10010,
         type: 'shipping'
       })
         .then(address => {
           expect(address.get('street1')).to.equal('55-Lexington Ave.')
-          expect(address.get('street2')).to.not.equal('Apt.3b')
+          expect(address.get('street2')).to.equal('Apt.3b')
           expect(address.get('city')).to.equal('New York')
-          expect(address.get('state')).to.not.equal('NY')
-          expect(address.get('zip')).to.equal('10010')
+          expect(address.get('state')).to.equal('NY')
+          expect(address.get('zip')).to.equal(10010)
           expect(address.get('type')).to.equal('shipping')
           done()
         })

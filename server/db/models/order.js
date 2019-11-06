@@ -5,6 +5,7 @@ const LineItem = require('./lineItem')
 const Order = db.define('order', {
   date: {
     type: Sequelize.DATE,
+    defaultValue: Sequelize.NOW,
     allowNull: false
   },
   status: {

@@ -5,34 +5,33 @@ const db = require('../index')
 const User = db.model('user')
 
 describe('User model', () => {
-  // describe('create', () => {
-  //   beforeEach(() => {})
+  describe('create', () => {
+    beforeEach(() => {})
 
-  //   it('should add a user and respond with the new object', done => {
-  //     User.create({
-  //       firstName: 'Joe',
-  //       lastName: 'Schmoe',
-  //       telephoneNumber: '555-555-4444',
-  //       email: 'joe_schmoe@gmail.com',
-  //       password: '12345',
-  //       isAdmin: false
-  //     })
-  //       .then(user => {
-  //         expect(user.get('firstName')).to.equal('Joe')
-  //         expect(user.get('lastName')).to.not.equal('Schmoe')
-  //         expect(user.get('telephoneNumber')).to.not.equal('555-555-4444')
-  //         expect(user.get('email')).to.not.equal('joe_schmoe@gmail.com')
-  //         expect(user.get('password')).to.not.equal('12345')
-  //         expect(user.get('isAdmin')).to.not.equal(false)
+    it('should add a user and respond with the new object', done => {
+      User.create({
+        firstName: 'Joe',
+        lastName: 'Schmoe',
+        telephoneNumber: '555-555-4444',
+        email: 'joe_schmoe@gmail.com',
+        password: '12345',
+        isAdmin: false
+      })
+        .then(user => {
+          expect(user.get('firstName')).to.equal('Joe')
+          expect(user.get('lastName')).to.not.equal('Schmoe')
+          expect(user.get('telephoneNumber')).to.not.equal('555-555-4444')
+          expect(user.get('email')).to.not.equal('joe_schmoe@gmail.com')
+          expect(user.get('password')).to.not.equal('12345')
+          expect(user.get('isAdmin')).to.not.equal(false)
 
-  //         done()
-  //       })
-  //       .catch(err => {
-  //         done(err)
-  //       })
-
-  //   })
-  // })
+          done()
+        })
+        .catch(err => {
+          done(err)
+        })
+    })
+  })
   // // end describe('create')
 
   describe('instanceMethods', () => {
