@@ -1,5 +1,4 @@
 import axios from 'axios'
-import {itemsReducer} from './item'
 
 const CREATE_ORDER = 'CREATE_ORDER'
 const GET_ALL_ORDERS = 'GET_ALL_ORDERS'
