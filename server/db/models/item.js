@@ -29,4 +29,13 @@ const Item = db.define('item', {
   }
 })
 
+Item.findByName = async function(name) {
+  const item = await Item.findAll({where: {name}})
+  return item
+}
+
+Item.prototype.isAvailable = function() {
+  return this.stock > 0
+}
+
 module.exports = Item
