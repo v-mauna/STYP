@@ -1,7 +1,29 @@
 const router = require('express').Router()
-const Items = require('../db/models/item')
+const Item = require('../db/models/item')
 const Category = require('../db/models/category')
 const {isAdmin, isSelfOrAdmin} = require('./securityGuards')
+
+//get all items (cereals)
+router.get('/', async (req, res, next) => {
+  try {
+    const cereals = await Item.findAll()
+    res.send(cereals)
+  } catch (error) {
+    next(error)
+  }
+})
+
+//get single cereal
+router.get('/:cerealId', async (req, res, next) => {
+  try {
+    console.log(req.params.cerealId)
+    const cereal = await Item.findById(req.params.cerealId, {})
+    res.json(cereal)
+  } catch (error) {
+    next(error)
+  }
+})
+
 
 router.get('/', async (req, res, next) => {
   try {
@@ -86,4 +108,5 @@ router.delete('/:id', async (req, res, next) => {
     next(err)
   }
 })
+
 module.exports = router

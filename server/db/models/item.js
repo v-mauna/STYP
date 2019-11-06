@@ -25,7 +25,9 @@ const Item = db.define('item', {
   },
   photos: {
     type: Sequelize.ARRAY(Sequelize.STRING),
-    defaultValue: ['cerealPlaceholder.jpg']
+    defaultValue: [
+      'https://images.unsplash.com/photo-1521483451569-e33803c0330c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
+    ]
   }
 })
 
