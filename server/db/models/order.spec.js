@@ -3,10 +3,14 @@ const {expect} = require('chai')
 const db = require('../index')
 const Order = db.model('order')
 
+// var sth = 43
+
+// expect('sth').to.equal(42)
+
 describe('Order model', () => {
-  beforeEach(() => {
-    return db.sync({force: true})
-  })
+  //   beforeEach(() => {
+  //     return db.sync({force: true})
+  //   })
 
   describe('create', () => {
     beforeEach(() => {})
