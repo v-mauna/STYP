@@ -39,11 +39,7 @@ const checkout = () => ({
   type: CHECKOUT
 })
 
-// add thunks here
-// thunks will update database and return relevant data
-// then update the store
-// then calcualte total
-// then update the store again
+//thunks will go here
 
 export const cartReducer = (state = initialState, action) => {
   switch (action.type) {
