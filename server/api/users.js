@@ -73,4 +73,53 @@ router.get('/:id/cart', async (req, res, next) => {
   }
 })
 
+router.post('/:id/cart', async (req, res, next) => {
+  try {
+    const userCart = await Order.findOne({
+      where: {
+        customerId: req.params.id,
+        status: 'CREATED'
+      }
+    })
+    await LineItem.create({
+      orderId: userCart.id,
+      itemId: req.body.id,
+      quantity: req.body.quantity
+    })
+    res.send('Item successfully added')
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.put('/:id/cart', async (req, res, next) => {
+  try {
+    const userCart = await Order.findOne({
+      where: {
+        customerId: req.params.id,
+        status: 'CREATED'
+      }
+    })
+    await LineItem.update(
+      {
+        quantity: req.body.quantity
+      },
+      {
+        where: {
+          orderId: userCart.id,
+          itemId: req.body.id
+        }
+      }
+    )
+    res.send('Quantity successfully updated')
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.delete('/:id/cart', async (req, res, next) => {
+  try {
+  } catch (err) {}
+})
+
 module.exports = router
