@@ -19,7 +19,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.get('/id', async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   try {
     const order = await Order.findByPk(req.params.id, {
       include: [
@@ -41,7 +41,7 @@ router.get('/:id/items', async (req, res, next) => {
       include: [
         {
           model: Item,
-          attributes: ['id', 'firstName', 'lastName', 'price', 'stock']
+          attributes: ['id', 'name', 'price', 'stock']
         }
       ]
     })
