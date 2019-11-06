@@ -49,7 +49,7 @@ const newCereals = [
     name: `Bart Simpson's No-Problemos`,
     price: 3.99,
     stock: 35,
-    description: `Why eat your shorts when you can eat this instead.`,
+    description: `Why eat your shorts when you can eat this instead?`,
     photos: [
       'https://vignette.wikia.nocookie.net/simpsons/images/d/de/No_Problemos.jpg/revision/latest?cb=20100419152516'
     ]
