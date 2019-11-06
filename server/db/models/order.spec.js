@@ -17,7 +17,6 @@ describe('Order model', () => {
 
     it('should add an order and respond with the new object', done => {
       Order.create({
-        date: '2019-09-03',
         status: 'CREATED',
         total: 1,
         recepientFirstName: 'Stacy',
@@ -25,7 +24,6 @@ describe('Order model', () => {
         recepientemail: 'stacy@abc.com'
       })
         .then(order => {
-          expect(order.get('date')).to.equal('2019-09-03')
           expect(order.get('status')).to.equal('CREATED')
           expect(order.get('total')).to.equal(1)
           expect(order.get('recepientFirstName')).to.equal('Stacy')
