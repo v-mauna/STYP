@@ -119,7 +119,39 @@ router.put('/:id/cart', async (req, res, next) => {
 
 router.delete('/:id/cart', async (req, res, next) => {
   try {
-  } catch (err) {}
+    const userCart = await Order.findOne({
+      where: {
+        customerId: req.params.id,
+        status: 'CREATED'
+      }
+    })
+    await LineItem.destroy({
+      where: {
+        orderId: userCart.id,
+        itemId: req.body.id
+      }
+    })
+    res.send('Item successfully deleted')
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.put('/:id/cart/total', async (req, res, next) => {
+  try {
+    const userCart = await Order.findOne({
+      where: {
+        customerId: req.params.id,
+        status: 'CREATED'
+      }
+    })
+    await userCart.update({
+      total: req.body.total
+    })
+    res.send('Total successfully updated')
+  } catch (err) {
+    next(err)
+  }
 })
 
 module.exports = router
