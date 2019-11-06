@@ -145,7 +145,8 @@ const orders = [
     total: 1,
     recepientFirstName: 'Stacy',
     recepientLastName: 'Satran',
-    recepientemail: 'stacy@abc.com'
+    recepientemail: 'stacy@abc.com',
+    customerId: 1
   },
   {
     date: '2019-09-05',
@@ -153,7 +154,8 @@ const orders = [
     total: 3,
     recepientFirstName: 'Megan',
     recepientLastName: 'Johnson',
-    recepientemail: 'megan@abc.com'
+    recepientemail: 'megan@abc.com',
+    customerId: 2
   },
   {
     date: '2019-09-04',
@@ -161,7 +163,8 @@ const orders = [
     total: 4,
     recepientFirstName: 'John',
     recepientLastName: 'Smith',
-    recepientemail: 'john@AbortController.com'
+    recepientemail: 'john@AbortController.com',
+    customerId: 1
   },
   {
     date: '2019-08-25',
@@ -169,7 +172,8 @@ const orders = [
     total: 5,
     recepientFirstName: 'Will',
     recepientLastName: 'Davis',
-    recepientemail: 'will@abc.com'
+    recepientemail: 'will@abc.com',
+    customerId: 1
   }
 ]
 
