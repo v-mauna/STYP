@@ -7,7 +7,7 @@ const Item = db.define('item', {
     allowNull: false
   },
   price: {
-    type: Sequelize.DECIMAL(10, 2),
+    type: Sequelize.FLOAT,
     allowNull: false,
     validate: {
       min: 0
@@ -30,5 +30,14 @@ const Item = db.define('item', {
     ]
   }
 })
+
+Item.findByName = async function(name) {
+  const item = await Item.findAll({where: {name}})
+  return item
+}
+
+Item.prototype.isAvailable = function() {
+  return this.stock > 0
+}
 
 module.exports = Item

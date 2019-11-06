@@ -7,18 +7,21 @@ const LineItem = require('./lineItem')
 
 Address.belongsTo(User)
 
-Category.belongsToMany(Item, {through: 'tags'})
+Category.belongsToMany(Item, {through: 'product_categories'})
 
-Item.belongsToMany(Category, {through: 'tags'})
-Item.hasMany(LineItem)
+Item.belongsToMany(Category, {through: 'product_categories'})
+Item.belongsToMany(Order, {through: LineItem})
 
 Order.belongsTo(User, {as: 'customer'})
-Order.hasMany(LineItem)
+Order.hasMany(Item)
+Order.belongsToMany(Item, {through: LineItem})
+Order.belongsTo(Address)
 
 LineItem.belongsTo(Order)
 LineItem.belongsTo(Item)
 
 User.hasMany(Address)
+User.hasMany(Order)
 
 module.exports = {
   User,
