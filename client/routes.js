@@ -7,7 +7,8 @@ import Home from './components/home'
 import ErrorPage from './components/error-page'
 import {me} from './store'
 import itemsList from '../client/components/itemsList'
-
+import SingleItem from '../client/components/singleItem'
+import Cart from '../client/components/cart'
 /**
  * COMPONENT
  */
@@ -26,7 +27,9 @@ class Routes extends Component {
         <Route exact path="/home" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
-        <Route exaxct path="/all-items" component={itemsList} />
+        <Route exact path="/allItems" component={itemsList} />
+        <Route path="/allItems/:id" component={SingleItem} />
+        <Route exact path="/cart" component={Cart} />
         <Route path="*" component={ErrorPage} />
         {isLoggedIn && (
           <Switch>

@@ -11,12 +11,9 @@ const CHANGE_QUANTITY = 'CHANGE_QUANTITY'
 const UPDATE_TOTAL = 'UPDATE_TOTAL'
 const CHECKOUT = 'CHECKOUT'
 
-const addItem = (name, photo, price, quantity) => ({
+export const addItem = addedItem => ({
   type: ADD_ITEM,
-  name,
-  photo,
-  price,
-  quantity
+  addedItem
 })
 
 const removeItem = id => ({
@@ -39,20 +36,21 @@ const checkout = () => ({
   type: CHECKOUT
 })
 
+// const addToCart = () => {
+//   return async dispatch => {
+
+//   }
+// }
 //thunks will go here
 
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_ITEM: {
-      const newItem = {
-        name: action.name,
-        photo: action.photo,
-        price: action.price,
-        quantity: action.quantity
-      }
+      const newItem = action.addedItem
+
       return {
         ...state,
-        cartItems: [...action.items, newItem]
+        cartItems: [...state.cartItems, newItem]
       }
     }
     case REMOVE_ITEM: {
