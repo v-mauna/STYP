@@ -10,17 +10,19 @@ const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} name={name}>
+    <div className="loginBox">
+      <form className="login-form form" onSubmit={handleSubmit} name={name}>
         <div>
+          <h3> hi there.</h3>
+          <p>welcome back. sign into your account here:</p>
           <label htmlFor="email">
-            <small>Email</small>
+            <p>e-mail</p>
           </label>
           <input name="email" type="text" />
-        </div>
-        <div>
+          {/* </div>
+        <div> */}
           <label htmlFor="password">
-            <small>Password</small>
+            <p>password</p>
           </label>
           <input name="password" type="password" />
         </div>
@@ -29,7 +31,36 @@ const AuthForm = props => {
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      <a href="/auth/google">{displayName} with Google</a>
+      <div className="loginBox">
+        <form className="signUpBox" onSubmit={handleSubmit} name={name}>
+          <div>
+            <h3> hey.</h3>
+            <p>want to know something cool? </p>
+            <p>
+              if you create an account, you'll have access to insider info and
+            </p>
+            <p>
+              quick access to your previous orders and a streamlined checkout
+              process.
+            </p>
+            <label htmlFor="email">
+              <p>e-mail</p>
+            </label>
+            <input name="email" type="text" />
+            {/* </div>
+        <div> */}
+            <label htmlFor="password">
+              <p>password</p>
+            </label>
+            <input name="password" type="password" />
+          </div>
+          <div>
+            <button type="submit">{displayName}</button>
+          </div>
+          {error && error.response && <div> {error.response.data} </div>}
+        </form>
+        <a href="/auth/google">{displayName} with Google</a>
+      </div>
     </div>
   )
 }
