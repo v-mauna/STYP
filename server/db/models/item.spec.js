@@ -30,7 +30,9 @@ describe('Item model', () => {
           expect(item.get('description')).to.equal(
             'Reminiscent of a lemon cheesecake, this healthy breakfast recipe is easy to throw together in the morning. Or stir together the filling in a jar the night before and top with the fruit, nuts and seeds when you get to work.'
           )
-          expect(item.get('photos')).to.deep.equal([])
+          expect(item.get('photos')).to.deep.equal([
+            'http://images.media-allrecipes.com/userphotos/960x960/4027929.jpg'
+          ])
           done()
         })
         .catch(err => {
@@ -40,3 +42,4 @@ describe('Item model', () => {
   })
   // end describe('create')
 })
+// end describe('Item model')
