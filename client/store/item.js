@@ -18,7 +18,7 @@ export const getAllItems = items => ({
 
 const getOneItem = item => ({
   type: GET_ONE_ITEM,
-  singleItem: item
+  item
 })
 
 const updateItem = (id, item) => ({
@@ -51,7 +51,7 @@ export const fetchAllItems = () => {
   }
 }
 
-export const fetchOnelItem = id => {
+export const fetchOneItem = id => {
   return async dispatch => {
     try {
       const {data} = await axios.get(`/api/items/${id}`)
