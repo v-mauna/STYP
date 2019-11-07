@@ -96,7 +96,7 @@ export const fetchDeleteItem = id => {
 
 //Reducer
 
-export default (itemsReducer = (state = initialState, action) => {
+export const itemsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_ITEMS: {
       return action.items
@@ -127,4 +127,4 @@ export default (itemsReducer = (state = initialState, action) => {
     default:
       return state
   }
-})
+}
