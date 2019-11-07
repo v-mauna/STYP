@@ -3,6 +3,8 @@
 const {expect} = require('chai')
 const db = require('../index')
 const Item = db.model('item')
+const Order = db.model('order')
+const Category = db.model('category')
 
 describe('Item model', () => {
   beforeEach(() => {
@@ -40,6 +42,20 @@ describe('Item model', () => {
         })
     })
   })
-  // end describe('create')
+
+  describe('associations', function() {
+    describe('belongsToMany realationship between item and order', () => {
+      it('adds belongsToMany realationship between item and order through LineItem', () => {
+        // expect()
+      })
+    })
+
+    describe('belongsToMany relationship between item and category', () => {
+      it('adds belongsTo relationship between belongsToMany relationship between item and category through product_categories', () => {
+        // expect()
+      })
+    })
+  })
+  // end describe('associations')
 })
 // end describe('Item model')

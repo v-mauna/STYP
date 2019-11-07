@@ -74,40 +74,48 @@ describe('User model', () => {
 
   describe('associations', function() {
     /**
-     * Add a `hasMany` relationship between user and order,
+     * add a `hasMany` relationship between user and order,
      */
-    it('user has many orders', function() {
-      const creatingUser = User.create({
-        firstName: 'Jill',
-        lastName: 'Till',
-        telephoneNumber: '877-543-2311',
-        email: 'jill_till@hotmail.com',
-        password: '8735432311',
-        isAdmin: true
-      })
+    describe('hasMany relationship between user and order', () => {
+      it('adds a hasMany relationship between user and order', function() {
+        const creatingUser = User.create({
+          firstName: 'Jill',
+          lastName: 'Till',
+          telephoneNumber: '877-543-2311',
+          email: 'jill_till@hotmail.com',
+          password: '8735432311',
+          isAdmin: true
+        })
 
-      const creatingOrder = Order.create({
-        status: 'CREATED',
-        total: 1,
-        recepientFirstName: 'Stacy',
-        recepientLastName: 'Satran',
-        recepientemail: 'stacy@abc.com'
+        const creatingOrder = Order.create({
+          status: 'CREATED',
+          total: 1,
+          recepientFirstName: 'Stacy',
+          recepientLastName: 'Satran',
+          recepientemail: 'stacy@abc.com'
+        })
+        let newuser
+        return Promise.all([creatingUser, creatingOrder])
+          .then(([createdUser, createdOrder]) => {
+            newuser = createdUser
+            // this method `setCustomer` method automatically exists if you set up the association correctly
+            return createdUser.addOrder(createdOrder) // tests User.hasMany(Order)
+          })
+          .then(() => {
+            return newuser.getOrders()
+          })
+          .then(orders => {
+            expect(orders).to.be.an('array')
+            expect(orders.length).to.equal(1)
+            expect(orders[0].recepientLastName).to.equal('Satran')
+          })
       })
-      let newuser
-      return Promise.all([creatingUser, creatingOrder])
-        .then(([createdUser, createdOrder]) => {
-          newuser = createdUser
-          // this method `setCustomer` method automatically exists if you set up the association correctly
-          return createdUser.addOrder(createdOrder) // tests User.hasMany(Order)
-        })
-        .then(() => {
-          return newuser.getOrders()
-        })
-        .then(orders => {
-          expect(orders).to.be.an('array')
-          expect(orders.length).to.equal(1)
-          expect(orders[0].recepientLastName).to.equal('Satran')
-        })
+    })
+
+    describe('hasMany relationship between user and address', () => {
+      it('adds a hasMany relationship between user and address', () => {
+        // expect()
+      })
     })
   })
 }) // end describe('User model')
