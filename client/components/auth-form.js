@@ -38,8 +38,6 @@ const AuthForm = props => {
             <p>want to know something cool? </p>
             <p>
               if you create an account, you'll have access to insider info and
-            </p>
-            <p>
               quick access to your previous orders and a streamlined checkout
               process.
             </p>
