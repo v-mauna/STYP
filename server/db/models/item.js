@@ -7,7 +7,7 @@ const Item = db.define('item', {
     allowNull: false
   },
   price: {
-    type: Sequelize.FLOAT,
+    type: Sequelize.DECIMAL(10, 2),
     allowNull: false,
     validate: {
       min: 0
@@ -23,11 +23,13 @@ const Item = db.define('item', {
   description: {
     type: Sequelize.TEXT
   },
-  photos: {
-    type: Sequelize.ARRAY(Sequelize.STRING),
-    defaultValue: [
+  imageUrl: {
+    type: Sequelize.STRING,
+    defaultValue:
       'https://images.unsplash.com/photo-1521483451569-e33803c0330c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
-    ]
+  },
+  category: {
+    type: Sequelize.ARRAY(Sequelize.STRING)
   }
 })
 

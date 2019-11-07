@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-const LineItem = require('./lineItem')
 
 const Order = db.define('order', {
   date: {
@@ -12,9 +11,6 @@ const Order = db.define('order', {
     type: Sequelize.ENUM('CREATED', 'PROCESSING', 'CANCELLED', 'COMPLETED'),
     defaultValue: 'CREATED',
     allowNull: false
-  },
-  total: {
-    type: Sequelize.INTEGER
   },
   recepientFirstName: {
     type: Sequelize.STRING,
