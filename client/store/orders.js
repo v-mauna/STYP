@@ -64,7 +64,7 @@ export const createNewOrder = (id, newOrder) => {
 const ordersReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_ORDERS: {
-      return {...state, orders: action.orders}
+      return action.orders
     }
     case GET_ONE_ORDER: {
       return {...state, order: action.order}

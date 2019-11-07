@@ -41,7 +41,7 @@ const checkout = () => ({
 
 //thunks will go here
 
-export const cartReducer = (state = initialState, action) => {
+export default (cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_ITEM: {
       const newItem = {
@@ -83,4 +83,4 @@ export const cartReducer = (state = initialState, action) => {
     default:
       return state
   }
-}
+})
