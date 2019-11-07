@@ -5,6 +5,15 @@
   box-sizing: border-box;
   font-family: arial, sans-serif;
 }
+
+a {
+  font-size: 15px;
+  color: rgb(20, 66, 119);
+}
+
+#navWelcome {
+  font-size: 20px;
+}
 .loginBox {
   position: absolute;
   top: 50%;

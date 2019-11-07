@@ -6,7 +6,7 @@ import {logout} from '../store'
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
     <div className="navbar-collapse">
-      <h1>Shop Till You Pop</h1>
+      <p id="navWelcome">welcome</p>
       {isLoggedIn ? (
         <div>
           <Link to="/home">Home</Link>
@@ -36,7 +36,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
     >
       <div className="container">
         <div className="navbar-header">
-          <Link to="/all" className="icon-bar">
+          <Link to="/all-items" className="icon-bar">
             All Items
           </Link>
           <Link to="/new" className="icon-bar">
@@ -54,9 +54,6 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           <Link to="/the-unknowns" className="icon-bar">
             The Unknowns
           </Link>
-          <Link to="/sale" className="icon-bar">
-            Sale
-          </Link>
         </div>
       </div>
     </nav>
@@ -69,7 +66,8 @@ const mapStateToProps = state => {
   return {
     isLoggedIn: !!state.user.id,
     cart: state.cart,
-    user: state.user
+    user: state.user,
+    items: state.items
   }
 }
 
