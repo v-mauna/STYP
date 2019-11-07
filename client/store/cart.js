@@ -11,19 +11,19 @@ const CHANGE_QUANTITY = 'CHANGE_QUANTITY'
 const UPDATE_TOTAL = 'UPDATE_TOTAL'
 const CHECKOUT = 'CHECKOUT'
 
-export const addItem = addedItem => ({
+export const addItem = item => ({
   type: ADD_ITEM,
-  addedItem
+  item
 })
 
-const removeItem = id => ({
+const removeItem = item => ({
   type: REMOVE_ITEM,
-  id
+  item
 })
 
-const changeQuantity = (id, quantity) => ({
+const changeQuantity = (item, quantity) => ({
   type: CHANGE_QUANTITY,
-  id,
+  item,
   quantity
 })
 
@@ -36,48 +36,67 @@ const checkout = () => ({
   type: CHECKOUT
 })
 
-// const addToCart = () => {
-//   return async dispatch => {
-
-//   }
-// }
 //thunks will go here
 
 const cartReducer = (state = initialState, action) => {
+  let tempState, searchId
+
   switch (action.type) {
     case ADD_ITEM: {
-      const newItem = action.addedItem
+      const addedItem = action.item
+      searchId = state.cartItems.findIndex(el => el.item.id === addedItem.id)
+      if (searchId !== -1) {
+        state.cartItems[searchId].quantity++
+        tempState = {
+          ...state,
+          cartItems: [...state.cartItems]
+        }
+      } else {
+        tempState = {
+          ...state,
+          cartItems: [...state.cartItems, {item: addedItem, quantity: 1}]
+        }
+      }
+      localStorage.setItem('cart', JSON.stringify(tempState))
+      return tempState
+    }
 
-      return {
-        ...state,
-        cartItems: [...state.cartItems, newItem]
-      }
-    }
     case REMOVE_ITEM: {
-      return {
+      const itemToRemove = action.item
+      tempState = {
         ...state,
-        cartItems: state.cartItems.filter(item => item.id !== action.id)
+        cartItems: state.cartItems.filter(el => el.item.id !== itemToRemove.id)
       }
+      localStorage.setItem('cart', JSON.stringify(tempState))
+      return tempState
     }
+
     case CHANGE_QUANTITY: {
-      return {
-        ...state,
-        cartItems: state.cartItems.map(item => {
-          if (item.id === action.id) item.quantity = action.quantity
-        })
+      const itemToChange = action.item
+      const newQuantity = action.quantity
+      searchId = state.cartItems.findIndex(el => el.item.id === itemToChange.id)
+      if (newQuantity) {
+        tempState = state.cartItems[searchId].quantity = action.quantity
+      } else {
+        removeItem(itemToChange)
       }
+      localStorage.setItem('cart', JSON.stringify(tempState))
+      return tempState
     }
+
     case UPDATE_TOTAL: {
       return {
         ...state,
         total: action.total
       }
     }
+
     case CHECKOUT: {
       return {
         state: initialState
       }
     }
+
     default:
       return state
   }
