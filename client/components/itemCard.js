@@ -1,10 +1,8 @@
 import React from 'react'
-import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {getAllItems} from '../store/item'
 
 const ItemCard = props => {
-  const cereal = props.items
+  const cereal = props.item
   return (
     <div className="col-md-4" key={cereal.id}>
       <div>
@@ -31,16 +29,4 @@ const ItemCard = props => {
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    items: state.items
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    getAllItems: () => dispatch(getAllItems())
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ItemCard)
+export default ItemCard
