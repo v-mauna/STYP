@@ -11,6 +11,15 @@ const reducer = combineReducers({
   user,
   cartReducer,
   itemsReducer,
+=======
+import itemsReducer from './item'
+import cartReducer from './cart'
+import ordersReducer from './orders'
+
+const reducer = combineReducers({
+  user,
+  itemsReducer,
+  cartReducer,
   ordersReducer
 })
 const middleware = composeWithDevTools(

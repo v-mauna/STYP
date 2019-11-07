@@ -1,18 +1,38 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {fetchAllItems} from '../store/item'
+import ItemCard from './itemCard'
 
-const ItemsList = props => {
-  return (
-    <div>
-      <Link to={`/items/${props.item.id}`}>
-        <h5>{props.item.name}</h5>
-      </Link>
-      <button type="button" onClick="">
-        Add to Cart
-      </button>
-      <img height="100px" width="100px" src={props.item.imageUrl} />
-    </div>
-  )
+class ItemsList extends React.Component {
+  componentDidMount() {
+    this.props.fetchAllItems()
+  }
+  render() {
+    const items = this.props.items
+    console.log(items)
+
+    return (
+      <div>
+        {/* {items.map(item => {
+            return (
+            <ItemCard key={item.id} item={item} />
+          )})} */}
+      </div>
+    )
+  }
 }
 
-export default ItemsList
+const mapStateToProps = state => {
+  console.log(state.items)
+  return {
+    items: state.items
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchAllItems: () => dispatch(fetchAllItems())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ItemsList)
