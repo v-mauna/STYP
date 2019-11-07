@@ -9,7 +9,7 @@ class ItemsList extends React.Component {
   }
   render() {
     const items = this.props.items
-    console.log(items)
+    //console.log(items)
 
     return (
       <div>
@@ -23,9 +23,9 @@ class ItemsList extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.items)
+  //console.log(state.itemsReducer.items)
   return {
-    items: state.items
+    items: state.itemsReducer.items
   }
 }
 
