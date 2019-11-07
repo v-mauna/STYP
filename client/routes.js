@@ -21,9 +21,9 @@ class Routes extends Component {
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
+        <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
-        <Route exact path="/" component={Home} />
         <Route path="/allitems" component={itemsList} />
         {isLoggedIn && (
           <Switch>

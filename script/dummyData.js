@@ -83,7 +83,7 @@ const items = [
     price: 4.99,
     stock: 50,
     description: `They'rrrree GREAT - Tony the Tiger`,
-    categories: ['all', 'classics', 'bestsellers'],
+    category: ['all', 'classics', 'bestsellers'],
     imageUrl:
       'https://clickamericana.com/wp-content/uploads/Vintage-Sugar-Frosted-Flakes-cereal-ad-from-1961.webp'
   },
@@ -93,7 +93,7 @@ const items = [
     stock: 40,
     description:
       'Re-discover that old-fashioned goodness without having to turn on your time machine.',
-    categories: ['all', 'classics', 'the uknowns'],
+    category: ['all', 'classics', 'the uknowns'],
     imageUrl: 'http://shepelavy.com/blog/wp-content/uploads/2011/05/Jets.jpg'
   },
   {
@@ -102,7 +102,7 @@ const items = [
     stock: 60,
     description:
       'Have your breakfast and a sweet treat without any of the guilt.',
-    categories: ['all', 'classics'],
+    category: ['all', 'classics'],
     imageUrl:
       'http://shepelavy.com/blog/wp-content/uploads/2011/05/RaisenBranOrg-480x653.jpg'
   },
@@ -112,7 +112,7 @@ const items = [
     stock: 20,
     description:
       'This is what happens when Jim Henson and the Swedish Chef come together...',
-    categories: ['all', 'the uknowns'],
+    category: ['all', 'the uknowns'],
     imageUrl:
       'https://img.buzzfeed.com/buzzfeed-static/static/enhanced/webdr01/2013/2/15/14/enhanced-buzz-orig-17795-1360958130-5.jpg?downsize=700:*&output-format=auto&output-quality=auto'
   },
@@ -121,7 +121,7 @@ const items = [
     price: 3.99,
     stock: 35,
     description: `So good, you'll travel the universe to find it.`,
-    categories: ['all', 'the uknowns', 'bestsellers'],
+    category: ['all', 'the uknowns', 'bestsellers'],
     imageUrl:
       'https://img.buzzfeed.com/buzzfeed-static/static/enhanced/webdr01/2013/2/15/14/enhanced-buzz-orig-17795-1360958130-5.jpg?downsize=700:*&output-format=auto&output-quality=auto'
   },
@@ -130,7 +130,7 @@ const items = [
     price: 3.99,
     stock: 35,
     description: `Why eat your shorts when you can eat this instead?`,
-    categories: ['all', 'bestsellers'],
+    category: ['all', 'bestsellers'],
     imageUrl:
       'https://vignette.wikia.nocookie.net/simpsons/images/d/de/No_Problemos.jpg/revision/latest?cb=20100419152516'
   },
@@ -139,7 +139,7 @@ const items = [
     price: 6.29,
     stock: 100,
     description: `Put a little more pep in your step with this wholesome,GF option.`,
-    categories: ['all', 'bestsellers', 'organic'],
+    category: ['all', 'bestsellers', 'organic'],
     imageUrl:
       'https://images-na.ssl-images-amazon.com/images/I/91iJ6DIg0UL._SL1500_.jpg'
   },
@@ -148,7 +148,7 @@ const items = [
     price: 3.1,
     stock: 100,
     description: `Feeling Blue? Not when you're done having a bowl of this.`,
-    categories: ['all', 'bestsellers', 'organic'],
+    category: ['all', 'bestsellers', 'organic'],
     imageUrl:
       'https://images-na.ssl-images-amazon.com/images/I/81HcaHt0VzL._SL1500_.jpg'
   },
@@ -157,7 +157,7 @@ const items = [
     price: 3.1,
     stock: 100,
     description: `Need a little help buzzing through the day? Look no further...`,
-    categories: ['all', 'bestsellers', 'organic'],
+    category: ['all', 'bestsellers', 'organic'],
     imageUrl:
       'https://images-na.ssl-images-amazon.com/images/I/91PaFBxsaQL._SL1500_.jpg'
   },
@@ -166,7 +166,7 @@ const items = [
     price: 3.1,
     stock: 100,
     description: `Your new go-to on those days you need something hot...`,
-    categories: ['all', 'the unknowns', 'organic'],
+    category: ['all', 'the unknowns', 'organic'],
     imageUrl:
       'https://img.thrivemarket.com/store/full/8/6/863209000192-1_1_1.jpg?w=2000'
   }

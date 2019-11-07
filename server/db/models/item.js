@@ -29,10 +29,7 @@ const Item = db.define('item', {
       'https://images.unsplash.com/photo-1521483451569-e33803c0330c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
   },
   category: {
-    type: Sequelize.ARRAY(Sequelize.STRING),
-    validate: {
-      isIn: [['new', 'sale', 'organic', 'classics', 'the unknowns']]
-    }
+    type: Sequelize.ARRAY(Sequelize.STRING)
   }
 })
 
