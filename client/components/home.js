@@ -13,9 +13,9 @@ class Home extends Component {
       <main>
         <div>
           <h2>Shop Till you pop</h2>
-          {this.props.items.map(item => (
+          {/* {this.props.items.map(item => (
             <ItemsList key={item.id} items={item} />
-          ))}
+          ))} */}
         </div>
       </main>
     )
