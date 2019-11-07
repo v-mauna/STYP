@@ -8,23 +8,25 @@ class Home extends React.Component {
     this.props.getItems()
   }
   render() {
-    return (
-      <main>
-        <div>
-          <h2>shop till you pop</h2>
-          {/* {this.props.items.map((item) => (
-            <ItemsList key={item.id} item={item} />
-          ))} */}
-        </div>
-        <div />
-      </main>
-    )
+    if (this.props.items.length) {
+      return (
+        <main>
+          <div>
+            <h2>shop till you pop</h2>
+            {this.props.items.map(item => <p key={item.id}>{item.name}</p>)}
+          </div>
+          <div />
+        </main>
+      )
+    } else {
+      return <div />
+    }
   }
 }
 
 const mapStateToProps = state => {
   return {
-    items: state.items
+    items: state.itemsReducer
   }
 }
 
