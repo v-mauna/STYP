@@ -1,7 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {getAllItems} from './'
 
-class AllCereals extends React.Component {
+class ItemsList extends React.Component {
   componentDidMount() {
     this.props.getCereals()
   }
