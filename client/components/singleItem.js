@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchOneItem} from '../store/item'
+import {addItem} from '../store/cart'
 
 class SingleItem extends Component {
   componentDidMount() {
@@ -21,7 +22,7 @@ class SingleItem extends Component {
             <h3>description:</h3>
             <p>{item.description}</p>
             <h4>price: {item.price}</h4>
-            <button type="button" onClick={this.addToCart}>
+            <button type="button" onClick={() => this.props.addItem(item)}>
               add to cart
             </button>
           </div>
@@ -41,7 +42,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchOneItem: id => dispatch(fetchOneItem(id))
+    fetchOneItem: id => dispatch(fetchOneItem(id)),
+    addItem: addedItem => dispatch(addItem(addedItem))
   }
 }
 
