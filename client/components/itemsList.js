@@ -8,8 +8,8 @@ class ItemsList extends React.Component {
     this.props.fetchAllItems()
   }
   render() {
-    //console.log(this.items)
     const items = this.props.items
+    console.log(items)
 
     return (
       <div>
