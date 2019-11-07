@@ -10,22 +10,24 @@ class ItemsList extends React.Component {
   render() {
     const items = this.props.items
     console.log(items)
-
-    return (
-      <div>
-        {/* {items.map(item => {
-            return (
-            <ItemCard key={item.id} item={item} />
-          )})} */}
-      </div>
-    )
+    if (items.length) {
+      return (
+        <div>
+          {items.map(item => {
+            return <ItemCard key={item.id} item={item} />
+          })}
+        </div>
+      )
+    } else {
+      return <div>Something's missing</div>
+    }
   }
 }
 
 const mapStateToProps = state => {
   console.log(state.items)
   return {
-    items: state.items
+    items: state.itemsReducer
   }
 }
 

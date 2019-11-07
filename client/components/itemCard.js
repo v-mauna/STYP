@@ -8,7 +8,7 @@ const ItemCard = props => {
       <div>
         <div
           className="card card-raised card-background"
-          style={{backgroundImage: `url(${cereal.photos[0]})`}}
+          style={{backgroundImage: `url(${cereal.imageUrl})`}}
         >
           <div className="card-content">
             <p className="card-description">
