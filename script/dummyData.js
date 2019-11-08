@@ -79,56 +79,99 @@ const addresses = [
 
 const items = [
   {
-    name: 'Ricotta & Yogurt Parfait',
-    price: 8.0,
-    stock: 300,
-    description:
-      'Reminiscent of a lemon cheesecake, this healthy breakfast recipe is easy to throw together in the morning. Or stir together the filling in a jar the night before and top with the fruit, nuts and seeds when you get to work.',
-    photos: [
-      'http://images.media-allrecipes.com/userphotos/960x960/4027929.jpg'
-    ]
+    name: `Frosted Flakes`,
+    price: 4.99,
+    stock: 50,
+    description: `They'rrrree GREAT - Tony the Tiger`,
+    category: ['all', 'classics', 'bestsellers'],
+    imageUrl:
+      'https://clickamericana.com/wp-content/uploads/Vintage-Sugar-Frosted-Flakes-cereal-ad-from-1961.webp'
   },
   {
-    name: 'Rasberry Yogurt Cereal',
-    price: 7.0,
+    name: 'General Jets',
+    price: 3.99,
+    stock: 40,
+    description:
+      'Re-discover that old-fashioned goodness without having to turn on your time machine.',
+    category: ['all', 'classics', 'the uknowns'],
+    imageUrl: 'http://shepelavy.com/blog/wp-content/uploads/2011/05/Jets.jpg'
+  },
+  {
+    name: 'Raisin Bran',
+    price: 3.99,
+    stock: 60,
+    description:
+      'Have your breakfast and a sweet treat without any of the guilt.',
+    category: ['all', 'classics'],
+    imageUrl:
+      'http://shepelavy.com/blog/wp-content/uploads/2011/05/RaisenBranOrg-480x653.jpg'
+  },
+  {
+    name: 'Croonchy Star',
+    price: 3.99,
+    stock: 20,
+    description:
+      'This is what happens when Jim Henson and the Swedish Chef come together...',
+    category: ['all', 'the uknowns'],
+    imageUrl:
+      'https://img.buzzfeed.com/buzzfeed-static/static/enhanced/webdr01/2013/2/15/14/enhanced-buzz-orig-17795-1360958130-5.jpg?downsize=700:*&output-format=auto&output-quality=auto'
+  },
+  {
+    name: 'ET Cereal',
+    price: 3.99,
+    stock: 35,
+    description: `So good, you'll travel the universe to find it.`,
+    category: ['all', 'the uknowns', 'bestsellers'],
+    imageUrl:
+      'https://img.buzzfeed.com/buzzfeed-static/static/enhanced/webdr01/2013/2/15/14/enhanced-buzz-orig-17795-1360958130-5.jpg?downsize=700:*&output-format=auto&output-quality=auto'
+  },
+  {
+    name: `Bart Simpson's No-Problemos`,
+    price: 3.99,
+    stock: 35,
+    description: `Why eat your shorts when you can eat this instead?`,
+    category: ['all', 'bestsellers'],
+    imageUrl:
+      'https://vignette.wikia.nocookie.net/simpsons/images/d/de/No_Problemos.jpg/revision/latest?cb=20100419152516'
+  },
+  {
+    name: `NP Mesa Sunrise`,
+    price: 6.29,
     stock: 100,
-    description:
-      'For breakfast, snack or a healthy dessert, try using yogurt instead of milk for your cereal. If making this as a to-go snack, keep the cereal separate and top just before eating.',
-    photos: [
-      'http://images.media-allrecipes.com/userphotos/960x960/4473423.jpg'
-    ]
+    description: `Put a little more pep in your step with this wholesome,GF option.`,
+    category: ['all', 'bestsellers', 'organic'],
+    imageUrl:
+      'https://images-na.ssl-images-amazon.com/images/I/91iJ6DIg0UL._SL1500_.jpg'
   },
   {
-    name: 'Rainbow Yogurt Bowl',
-    price: 9.0,
-    stock: 400,
-    description:
-      'Arrange vibrant, colorful fruit in the shape of a rainbow on top of yogurt for a fun and delicious healthy breakfast or snack kids will actually want to eat.',
-    photos: [
-      'http://images.media-allrecipes.com/userphotos/960x960/4535705.jpg'
-    ]
+    name: `Kashi Blueberry Clusters`,
+    price: 3.1,
+    stock: 100,
+    description: `Feeling Blue? Not when you're done having a bowl of this.`,
+    category: ['all', 'bestsellers', 'organic'],
+    imageUrl:
+      'https://images-na.ssl-images-amazon.com/images/I/81HcaHt0VzL._SL1500_.jpg'
   },
   {
-    name: 'Owl Yogurt Bowl',
-    price: 9.0,
-    stock: 30,
-    description:
-      'Bananas, blueberries and nuts make a fun topping on this yogurt bowl that looks like an owl for a healthy breakfast or snack your kids will actually want to eat.',
-    photos: [
-      'http://images.media-allrecipes.com/userphotos/960x960/4535703.jpg'
-    ]
+    name: `Cascadian Farm Organic Buzz Honey Crunch`,
+    price: 3.1,
+    stock: 100,
+    description: `Need a little help buzzing through the day? Look no further...`,
+    category: ['all', 'bestsellers', 'organic'],
+    imageUrl:
+      'https://images-na.ssl-images-amazon.com/images/I/91PaFBxsaQL._SL1500_.jpg'
   },
   {
-    name: 'Kitty-Cat Oatmeal Bowl',
-    price: 9.0,
-    stock: 30,
-    description:
-      'Kids will love this creative, healthy recipe with filling rolled oats, honey for natural sweetness and a fresh fruit kitty-cat face for a fun breakfast they will actually want to eat!',
-    photos: [
-      'http://images.media-allrecipes.com/userphotos/960x960/4526747.jpg'
-    ]
+    name: `Vigilant Eats Cacao Banana Crunch`,
+    price: 3.1,
+    stock: 100,
+    description: `Your new go-to on those days you need something hot...`,
+    category: ['all', 'the unknowns', 'organic'],
+    imageUrl:
+      'https://img.thrivemarket.com/store/full/8/6/863209000192-1_1_1.jpg?w=2000'
   }
 ]
+
 const orders = [
   {
     date: '2019-09-03',

@@ -11,14 +11,14 @@ const CREATE_ITEM = 'CREATE_ITEM'
 const UPDATE_ITEM = 'UPDATE_ITEM'
 const DELETE_ONE_ITEM = 'DELETE_ONE_ITEM'
 
-const getAllItems = items => ({
+export const getAllItems = items => ({
   type: GET_ALL_ITEMS,
   items
 })
 
 const getOneItem = item => ({
   type: GET_ONE_ITEM,
-  singleItem: item
+  item
 })
 
 const updateItem = (id, item) => ({
@@ -43,14 +43,15 @@ export const fetchAllItems = () => {
   return async dispatch => {
     try {
       const {data} = await axios.get('/api/items')
+      console.log('Data: ', data)
       dispatch(getAllItems(data))
     } catch (err) {
-      console.error(err)
+      console.error('Error', err)
     }
   }
 }
 
-export const fetchOnelItem = id => {
+export const fetchOneItem = id => {
   return async dispatch => {
     try {
       const {data} = await axios.get(`/api/items/${id}`)
@@ -95,13 +96,10 @@ export const fetchDeleteItem = id => {
 
 //Reducer
 
-export const itemsReducer = (state = initialState, action) => {
+const itemsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_ITEMS: {
-      return {
-        ...state,
-        items: action.items
-      }
+      return action.items
     }
     case GET_ONE_ITEM: {
       return {
@@ -130,3 +128,5 @@ export const itemsReducer = (state = initialState, action) => {
       return state
   }
 }
+
+export default itemsReducer
