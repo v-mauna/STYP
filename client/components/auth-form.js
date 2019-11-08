@@ -20,7 +20,9 @@ const AuthForm = props => {
             quick access to your previous orders and a streamlined checkout
             process.
           </p>
-          <button type="button">register</button>
+          <button type="button" formAction="/register">
+            register
+          </button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
