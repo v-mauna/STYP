@@ -1,31 +1,28 @@
 const router = require('express').Router()
 const Item = require('../db/models/item')
-const {isAdmin, isSelfOrAdmin} = require('./securityGuards')
-
-//get all items (cereals)
-router.get('/', async (req, res, next) => {
-  try {
-    const cereals = await Item.findAll()
-    res.send(cereals)
-  } catch (error) {
-    next(error)
-  }
-})
-
-//get single cereal
-router.get('/:cerealId', async (req, res, next) => {
-  try {
-    console.log(req.params.cerealId)
-    const cereal = await Item.findByPk(req.params.cerealId, {})
-    res.json(cereal)
-  } catch (error) {
-    next(error)
-  }
-})
+const Sequelize = require('sequelize')
+const Op = Sequelize.Op
+// const {isAdmin, isSelfOrAdmin} = require('./securityGuards')
 
 router.get('/', async (req, res, next) => {
   try {
     const items = await Item.findAll()
+    res.json(items)
+  } catch (err) {
+    next(err)
+  }
+})
+router.get('/:categoryName', async (req, res, next) => {
+  try {
+    console.log('category: ', req.params.categoryName)
+    const items = await Item.findAll({
+      where: {
+        category: {
+          [Op.contains]: [req.params.categoryName]
+        }
+      }
+    })
+    console.log('items:', items)
     res.json(items)
   } catch (err) {
     next(err)
@@ -45,24 +42,6 @@ router.get('/:id', async (req, res, next) => {
     next(err)
   }
 })
-// Find by category route?
-// router.get('/categories/:categoryId', async (req, res, next) => {
-//   try {
-//     const catId = req.params.categoryId
-//     const categoryTable = await Category.findAll({
-//       where: {categoryId: catId}
-//     })
-//     const itemIds = categoryTable.map(el => el.productId)
-//     const items = await Items.findAll({
-//       where: {
-//         id: itemIds
-//       }
-//     })
-//     res.json(items)
-//   } catch (err) {
-//     next(err)
-//   }
-// })
 
 router.post('/', async (req, res, next) => {
   try {
