@@ -28,8 +28,7 @@ const changeQuantity = (item, quantity) => ({
 })
 
 const updateTotal = total => ({
-  type: UPDATE_TOTAL,
-  total
+  type: UPDATE_TOTAL
 })
 
 const checkout = () => ({
@@ -71,6 +70,7 @@ const cartReducer = (state = initialState, action) => {
       return tempState
     }
 
+    //can you invoke action creators inside of reducer? I am repeating removeItem code
     case CHANGE_QUANTITY: {
       const itemToChange = action.item
       const newQuantity = action.quantity
@@ -78,17 +78,32 @@ const cartReducer = (state = initialState, action) => {
       if (newQuantity) {
         tempState = state.cartItems[searchId].quantity = action.quantity
       } else {
-        removeItem(itemToChange)
+        tempState = {
+          ...state,
+          cartItems: state.cartItems.filter(
+            el => el.item.id !== itemToRemove.id
+          )
+        }
       }
       localStorage.setItem('cart', JSON.stringify(tempState))
       return tempState
     }
 
     case UPDATE_TOTAL: {
-      return {
+      const total = state.cartItems.reduce((accum, el) => {
+        return (accum += el.item.price)
+      }, 0)
+      tempState = {
         ...state,
-        total: action.total
+        total
       }
+      localStorage.setItem('cart', JSON.stringify(tempState))
+      return tempState
+
+      // return {
+      //   ...state,
+      //   total: action.total
+      // }
     }
 
     case CHECKOUT: {
