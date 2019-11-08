@@ -4,6 +4,7 @@ import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
 import Home from './components/home'
+import Register from './components/register'
 import ErrorPage from './components/error-page'
 import {me} from './store'
 import itemsList from '../client/components/itemsList'
@@ -27,9 +28,11 @@ class Routes extends Component {
         <Route exact path="/home" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
-        <Route exact path="/allItems" component={itemsList} />
-        <Route path="/allItems/:id" component={SingleItem} />
+        <Route exact path="/cereals/" component={itemsList} />
+        <Route exact path="/cereals/:id" component={SingleItem} />
         <Route exact path="/cart" component={Cart} />
+        <Route exact path="/register" component={Register} />
+
         <Route path="*" component={ErrorPage} />
         {isLoggedIn && (
           <Switch>

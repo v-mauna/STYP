@@ -36,7 +36,7 @@ class SingleItem extends Component {
 
   render() {
     const item = this.props.item
-
+    console.log(item)
     if (item.name) {
       return (
         <main>
@@ -71,7 +71,7 @@ class SingleItem extends Component {
 
 const mapStateToProps = state => {
   return {
-    item: state.itemsReducer.singleItem
+    item: state.itemsReducer
   }
 }
 

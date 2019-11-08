@@ -16,10 +16,7 @@ const ItemCard = props => {
                 ? cereal.description
                 : cereal.description.slice(0, 50) + '...'}
             </p>
-            <Link
-              className="btn btn-danger btn-round"
-              to={'/cereals/' + cereal.id}
-            >
+            <Link to={'/cereals/' + cereal.id}>
               <h3 className="card-title">{cereal.name}</h3>
             </Link>
           </div>
