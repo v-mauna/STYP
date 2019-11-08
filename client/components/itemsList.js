@@ -9,7 +9,6 @@ class ItemsList extends React.Component {
   }
   render() {
     const items = this.props.items
-    console.log(items)
     if (items.length) {
       return (
         <div>
@@ -18,14 +17,12 @@ class ItemsList extends React.Component {
           })}
         </div>
       )
-    } else {
-      return <div>Something's missing</div>
     }
   }
 }
 
 const mapStateToProps = state => {
-  console.log(state.items)
+  //console.log(state.itemsReducer.items)
   return {
     items: state.itemsReducer
   }

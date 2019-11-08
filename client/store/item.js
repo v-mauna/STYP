@@ -62,6 +62,17 @@ export const fetchOneItem = id => {
   }
 }
 
+export const findByCategory = category => {
+  return async dispatch => {
+    try {
+      const {data} = await axios.get(`/api/items/${category}`)
+      dispatch(getAllItems(data))
+    } catch (err) {
+      console.error(err)
+    }
+  }
+}
+
 export const fetchCreateItem = newItem => {
   return async dispatch => {
     try {

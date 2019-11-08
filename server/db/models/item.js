@@ -29,12 +29,17 @@ const Item = db.define('item', {
       'https://images.unsplash.com/photo-1521483451569-e33803c0330c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
   },
   category: {
-    type: Sequelize.ARRAY(Sequelize.STRING)
+    type: Sequelize.ARRAY(Sequelize.STRING),
+    defaultValue: ['all']
   }
 })
 
-Item.findByName = async function(name) {
-  const item = await Item.findAll({where: {name}})
+Item.findByCategory = async function(category) {
+  const item = await Item.findAll({
+    where: {
+      category
+    }
+  })
   return item
 }
 

@@ -6,28 +6,27 @@ import {logout} from '../store'
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
     <div className="navbar-collapse">
-      <Link to="/welcome">
-        <h1>Shop Till You Pop</h1>
-      </Link>
-      <p id="navWelcome">welcome</p>
+
+
+      <p id="navWelcome">
+        <Link to="/home">cereal for the not so serious</Link>
+      </p>
+
       {isLoggedIn ? (
         <div>
-          <Link to="/home">Home</Link>
+          <Link to="/home">welcome</Link>
           <a href="#" onClick={handleClick}>
             {' '}
-            Logout
+            logout
           </a>
         </div>
       ) : (
         <div className="collapse-navbar-collapse">
           <Link to="/login" className="material-icons">
-            Login
-          </Link>
-          <Link to="/signup" className="material-icons">
-            Sign Up
+            login/register
           </Link>
           <Link to="/cart" className="material-icons">
-            Shopping Cart
+            your cart
           </Link>
         </div>
       )}
@@ -39,23 +38,24 @@ const Navbar = ({handleClick, isLoggedIn}) => (
     >
       <div className="container">
         <div className="navbar-header">
+
           <Link to="/cereals" className="icon-bar">
             All Items
-          </Link>
+
           <Link to="/new" className="icon-bar">
-            New
+            NEW
           </Link>
           <Link to="/bestsellers" className="icon-bar">
-            Bestsellers
+            BESTSELLERS
           </Link>
           <Link to="/classics" className="icon-bar">
-            Classics
+            CLASSICS
           </Link>
           <Link to="/organics" className="icon-bar">
-            Organics
+            ORGANICS
           </Link>
           <Link to="/the-unknowns" className="icon-bar">
-            The Unknowns
+            THE UNKNOWNS
           </Link>
         </div>
       </div>

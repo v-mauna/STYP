@@ -11,38 +11,6 @@ a {
   color: rgb(20, 66, 119);
 }
 
-#navWelcome {
-  font-size: 20px;
-}
-.loginBox {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(20%, -30%);
-  width: 350px;
-  height: 420px;
-  box-sizing: border-box;
-  background: black;
-  color: white;
-}
-
-.signUpBox {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-100%, -30%);
-  width: 350px;
-  height: 420px;
-  box-sizing: border-box;
-  background: black;
-  color: white;
-}
-
-.loginBox p {
-  margin: 0;
-  padding: 12px 6px;
-}
-
 body {
   background: linear-gradient(#e5eef0, #ddecf0);
   padding: 10;
@@ -117,6 +85,7 @@ nav {
   background: #fff;
   border-top: 20px solid #7a71f7;
   width: 100%;
+  margin: 1 1 1 1;
 }
 
 a {
@@ -220,7 +189,42 @@ input.qty {
   border-radius: 0.4rem;
 }
 
+
 /*UserWelcome*/
 #userhome-bestseller-container {
   display: flex;
+
+/* auth-form styling*/
+
+.loginBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(20%, -30%);
+  width: 350px;
+  height: 380px;
+  box-sizing: border-box;
+  background: black;
+  color: white;
+}
+
+.signUpBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-100%, -30%);
+  width: 350px;
+  height: 380px;
+  box-sizing: border-box;
+  background: black;
+  color: white;
+}
+
+.loginBox p {
+  margin: 0;
+  padding: 12px 6px;
+}
+
+.loginLinks {
+  color: white;
 }
