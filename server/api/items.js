@@ -16,7 +16,7 @@ router.get('/', async (req, res, next) => {
 router.get('/:cerealId', async (req, res, next) => {
   try {
     console.log(req.params.cerealId)
-    const cereal = await Item.findById(req.params.cerealId, {})
+    const cereal = await Item.findByPk(req.params.cerealId, {})
     res.json(cereal)
   } catch (error) {
     next(error)
