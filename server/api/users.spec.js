@@ -16,7 +16,12 @@ describe('User routes', () => {
 
     beforeEach(() => {
       return User.create({
-        email: codysEmail
+        firstName: 'Joe',
+        lastName: 'Till',
+        telephoneNumber: '877-543-2311',
+        email: 'cody@puppybook.com',
+        password: '8735432311',
+        isAdmin: false
       })
     })
 
