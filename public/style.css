@@ -189,6 +189,11 @@ input.qty {
   border-radius: 0.4rem;
 }
 
+
+/*UserWelcome*/
+#userhome-bestseller-container {
+  display: flex;
+
 /* auth-form styling*/
 
 .loginBox {

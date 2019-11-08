@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 const ItemCard = props => {
   const cereal = props.item
   return (
-    <div className="col-md-4" key={cereal.id}>
+    <div key={cereal.id}>
       <div>
         <div
           className="card card-raised card-background"
