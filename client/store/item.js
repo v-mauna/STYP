@@ -62,16 +62,16 @@ export const fetchOneItem = id => {
   }
 }
 
-export const findByCategory = category => {
-  return async dispatch => {
-    try {
-      const {data} = await axios.get(`/api/items/${category}`)
-      dispatch(getAllItems(data))
-    } catch (err) {
-      console.error(err)
-    }
-  }
-}
+// export const findByCategory = category => {
+//   return async dispatch => {
+//     try {
+//       const {data} = await axios.get(`/api/items/${category}`)
+//       dispatch(getAllItems(data))
+//     } catch (err) {
+//       console.error(err)
+//     }
+//   }
+// }
 
 export const fetchCreateItem = newItem => {
   return async dispatch => {
@@ -113,10 +113,7 @@ const itemsReducer = (state = initialState, action) => {
       return action.items
     }
     case GET_ONE_ITEM: {
-      return {
-        ...state,
-        singleItem: action.item
-      }
+      return {...state, singleItem: action.item}
     }
     case UPDATE_ITEM: {
       let itemsDup = [...state.items]

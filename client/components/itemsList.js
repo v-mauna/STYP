@@ -9,7 +9,7 @@ class ItemsList extends React.Component {
   }
   render() {
     const items = this.props.items
-    if (items.length) {
+    if (items.length > 0) {
       return (
         <div>
           {items.map(item => {
@@ -17,6 +17,8 @@ class ItemsList extends React.Component {
           })}
         </div>
       )
+    } else {
+      return <div />
     }
   }
 }
