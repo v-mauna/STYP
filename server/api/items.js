@@ -12,7 +12,8 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
-router.get('/:categoryName', async (req, res, next) => {
+
+router.get('/category/:categoryName', async (req, res, next) => {
   try {
     console.log('category: ', req.params.categoryName)
     const items = await Item.findAll({
