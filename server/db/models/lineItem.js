@@ -6,8 +6,8 @@ const LineItem = db.define('lineItem', {
     type: Sequelize.INTEGER,
     defaultValue: 0
   },
-  totalPrice: {
-    type: Sequelize.INTEGER
+  price: {
+    type: Sequelize.DECIMAL(10, 2)
   }
 })
 
