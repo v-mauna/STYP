@@ -3,7 +3,6 @@ const User = require('../db/models/user')
 const Order = require('../db/models/order')
 const LineItem = require('../db/models/lineItem')
 const Item = require('../db/models/item')
-const {isAdmin, isSelfOrAdmin} = require('./securityGuards')
 
 // Basic User Utilities
 router.get('/', async (req, res, next) => {
@@ -18,7 +17,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.post('/', async (req, res, next) => {
+router.post('/signup', async (req, res, next) => {
   try {
     const newUser = await User.create(req.body)
     res.json(newUser)

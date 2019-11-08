@@ -1,7 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {fetchAllItems} from '../store/item'
-import ItemsList from './itemsList'
 
 class Home extends React.Component {
   componentDidMount() {
@@ -11,8 +10,8 @@ class Home extends React.Component {
     if (this.props.items.length) {
       return (
         <main>
+          <h2>shop till you pop</h2>
           <div>
-            <h2>shop till you pop</h2>
             {this.props.items.map(item => <p key={item.id}>{item.name}</p>)}
           </div>
           <div />
