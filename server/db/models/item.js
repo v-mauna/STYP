@@ -33,8 +33,12 @@ const Item = db.define('item', {
   }
 })
 
-Item.findByName = async function(name) {
-  const item = await Item.findAll({where: {name}})
+Item.findByCategory = async function(category) {
+  const item = await Item.findAll({
+    where: {
+      category
+    }
+  })
   return item
 }
 
