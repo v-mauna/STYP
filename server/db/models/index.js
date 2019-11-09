@@ -9,7 +9,7 @@ Address.belongsTo(User)
 Item.belongsToMany(Order, {through: LineItem})
 
 Order.belongsTo(User, {as: 'customer'})
-Order.hasMany(Item)
+//Order.hasMany(Item)
 Order.belongsToMany(Item, {through: LineItem})
 Order.belongsTo(Address)
 

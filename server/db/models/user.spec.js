@@ -4,6 +4,7 @@ const {expect} = require('chai')
 const db = require('../index')
 const User = db.model('user')
 const Order = db.model('order')
+const Address = db.model('address')
 
 describe('User model', () => {
   describe('create', () => {
@@ -107,6 +108,7 @@ describe('User model', () => {
           .then(orders => {
             expect(orders).to.be.an('array')
             expect(orders.length).to.equal(1)
+
             expect(orders[0].recepientLastName).to.equal('Satran')
           })
       })
@@ -114,7 +116,37 @@ describe('User model', () => {
 
     describe('hasMany relationship between user and address', () => {
       it('adds a hasMany relationship between user and address', () => {
-        // expect()
+        const creatingUser = User.create({
+          firstName: 'Jill',
+          lastName: 'Till',
+          telephoneNumber: '877-543-2311',
+          email: 'jill_till@hotmail.com',
+          password: '8735432311',
+          isAdmin: true
+        })
+
+        const creatingAddress = Address.create({
+          street1: '444-South 15 Street',
+          city: 'Lindenhurtst',
+          state: 'NY',
+          zip: 11757,
+          type: 'shipping'
+        })
+        let newuser
+        return Promise.all([creatingUser, creatingAddress])
+          .then(([createdUser, createdAddress]) => {
+            newuser = createdUser
+            // this method `setCustomer` method automatically exists if you set up the association correctly
+            return createdUser.addAddress(createdAddress) // tests User.hasMany(Order)
+          })
+          .then(() => {
+            return newuser.getAddresses()
+          })
+          .then(addresses => {
+            expect(addresses).to.be.an('array')
+            expect(addresses.length).to.equal(1)
+            expect(addresses[0].city).to.equal('Lindenhurtst')
+          })
       })
     })
   })
