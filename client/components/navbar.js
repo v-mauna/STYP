@@ -6,10 +6,8 @@ import {logout} from '../store'
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
     <div className="navbar-collapse">
-
-
       <p id="navWelcome">
-        <Link to="/home">cereal for the not so serious</Link>
+        <Link to="/home">cereal for the Not so serious</Link>
       </p>
 
       {isLoggedIn ? (
@@ -41,7 +39,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           <Link to="/cereals" className="icon-bar">
             ALL ITEMS
           </Link>
-          <Link to="/new" className="icon-bar">
+          <Link to="/cereals/new" className="icon-bar">
             NEW
           </Link>
           <Link to="/bestsellers" className="icon-bar">
@@ -53,7 +51,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           <Link to="/organics" className="icon-bar">
             ORGANICS
           </Link>
-          <Link to="/the-unknowns" className="icon-bar">
+          <Link to="the-unknowns" className="icon-bar">
             THE UNKNOWNS
           </Link>
         </div>
