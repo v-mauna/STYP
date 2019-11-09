@@ -99,7 +99,7 @@ describe('User model', () => {
         return Promise.all([creatingUser, creatingOrder])
           .then(([createdUser, createdOrder]) => {
             newuser = createdUser
-            // this method `setCustomer` method automatically exists if you set up the association correctly
+            // this method `addOrder` method automatically exists if you set up the association correctly
             return createdUser.addOrder(createdOrder) // tests User.hasMany(Order)
           })
           .then(() => {

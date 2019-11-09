@@ -65,5 +65,86 @@ describe('Item model', () => {
     })
   })
   // end describe('associations')
+
+  describe('instanceMethods', () => {
+    describe('isAvailable', () => {
+      let item
+      let notavailableitem
+
+      beforeEach(async () => {
+        item = await Item.create({
+          name: `Frosted Flakes`,
+          price: 4.99,
+          stock: 50,
+          description: `They'rrrree GREAT - Tony the Tiger`,
+          category: ['all', 'classics', 'bestsellers'],
+          imageUrl:
+            'https://clickamericana.com/wp-content/uploads/Vintage-Sugar-Frosted-Flakes-cereal-ad-from-1961.webp'
+        })
+
+        notavailableitem = await Item.create({
+          name: 'General Jets',
+          price: 3.99,
+          stock: 0,
+          description:
+            'Re-discover that old-fashioned goodness without having to turn on your time machine.',
+          category: ['all', 'classics', 'the uknowns'],
+          imageUrl:
+            'http://shepelavy.com/blog/wp-content/uploads/2011/05/Jets.jpg'
+        })
+      })
+
+      it('returns true if the item is available', () => {
+        expect(item.isAvailable()).to.be.equal(true)
+        expect(notavailableitem.isAvailable()).to.be.equal(false)
+      })
+
+      it('returns false if the item is not-available', () => {
+        expect(notavailableitem.isAvailable()).to.be.equal(false)
+      })
+    }) // end describe('isAvailable')
+  }) // end describe('instanceMethods')
+
+  let firstproduct
+  let secondproduct
+  describe('classMethods', () => {
+    describe('findByCategory', () => {
+      beforeEach(async () => {
+        await db.sync({force: true})
+
+        firstproduct = await Item.create({
+          name: 'General Jets',
+          price: 3.99,
+          stock: 40,
+          description:
+            'Re-discover that old-fashioned goodness without having to turn on your time machine.',
+          category: ['all', 'classics', 'the uknowns'],
+          imageUrl:
+            'http://shepelavy.com/blog/wp-content/uploads/2011/05/Jets.jpg'
+        })
+
+        secondproduct = await Item.create({
+          name: 'Raisin Bran',
+          price: 3.99,
+          stock: 60,
+          description:
+            'Have your breakfast and a sweet treat without any of the guilt.',
+          category: ['all', 'classics'],
+          imageUrl:
+            'http://shepelavy.com/blog/wp-content/uploads/2011/05/RaisenBranOrg-480x653.jpg'
+        })
+      })
+
+      it('returns category of a product', async () => {
+        let filteredProducts = await Item.findByCategory('all')
+        expect(filteredProducts.length).to.be.equal(2)
+        expect(filteredProducts[0].name).to.equal('General Jets')
+        expect(filteredProducts[1].name).to.equal('Raisin Bran')
+      })
+    })
+
+    // end describe('findByCategory')
+    //end Model
+  })
+  // end describe('Item model')
 })
-// end describe('Item model')
