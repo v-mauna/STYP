@@ -71,11 +71,43 @@ describe('Order model', () => {
     })
   })
 
-  // describe('hasMany realationship between order and item', () => {
-  //   it('adds hasMany realationship between order and item', () => {
-  //     // expect()
-  //   })
-  // })
+  describe('hasMany realationship between order and item', () => {
+    it('adds hasMany realationship between order and item', () => {
+      // expect()
+      const creatingOrder = Order.create({
+        status: 'CREATED',
+        recepientFirstName: 'Stacy',
+        recepientLastName: 'Satran',
+        recepientemail: 'stacy@abc.com'
+      })
+
+      const creatingItem = Item.create({
+        name: `Cascadian Farm Organic Buzz Honey Crunch`,
+        price: 3.1,
+        stock: 100,
+        description: `Need a little help buzzing through the day? Look no further...`,
+        category: ['all', 'bestsellers', 'organic'],
+        imageUrl:
+          'https://images-na.ssl-images-amazon.com/images/I/91PaFBxsaQL._SL1500_.jpg'
+      })
+      let neworder
+      return Promise.all([creatingOrder, creatingItem])
+        .then(([createdOrder, createdItem]) => {
+          neworder = createdOrder
+          // this method `addItem` method automatically exists if you set up the association correctly
+          return createdOrder.addItem(createdItem) // tests Order.hasMany(Item)
+        })
+        .then(() => {
+          return neworder.getItems()
+        })
+        .then(items => {
+          expect(items).to.be.an('array')
+          expect(items.length).to.equal(1)
+
+          expect(items[0].price).to.equal('3.10')
+        })
+    })
+  })
 
   let neworder
   describe('belongsToMany realationship between order and item', () => {
