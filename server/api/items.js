@@ -2,7 +2,6 @@ const router = require('express').Router()
 const Item = require('../db/models/item')
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
-// const {isAdmin, isSelfOrAdmin} = require('./securityGuards')
 
 router.get('/', async (req, res, next) => {
   try {

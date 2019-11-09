@@ -92,7 +92,8 @@ describe('User model', () => {
           total: 1,
           recepientFirstName: 'Stacy',
           recepientLastName: 'Satran',
-          recepientemail: 'stacy@abc.com'
+          recepientemail: 'stacy@abc.com',
+          totalPrice: 32
         })
         let newuser
         return Promise.all([creatingUser, creatingOrder])

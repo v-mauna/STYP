@@ -31,6 +31,10 @@ const Item = db.define('item', {
   category: {
     type: Sequelize.ARRAY(Sequelize.STRING),
     defaultValue: ['all']
+  },
+  quantity: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
   }
 })
 

@@ -14,7 +14,8 @@ describe('Order model', () => {
         status: 'CREATED',
         recepientFirstName: 'Stacy',
         recepientLastName: 'Satran',
-        recepientemail: 'stacy@abc.com'
+        recepientemail: 'stacy@abc.com',
+        totalPrice: 32
       })
         .then(order => {
           expect(order.get('status')).to.equal('CREATED')
@@ -51,7 +52,8 @@ describe('Order model', () => {
           total: 1,
           recepientFirstName: 'Stacy',
           recepientLastName: 'Satran',
-          recepientemail: 'stacy@abc.com'
+          recepientemail: 'stacy@abc.com',
+          totalPrice: 32
         })
         let newuser
         return Promise.all([creatingUser, creatingOrder])
