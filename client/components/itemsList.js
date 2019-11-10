@@ -26,7 +26,7 @@ class ItemsList extends React.Component {
 const mapStateToProps = state => {
   //console.log(state.itemsReducer.items)
   return {
-    items: state.itemsReducer
+    items: state.itemsReducer.items
   }
 }
 

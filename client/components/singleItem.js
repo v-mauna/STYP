@@ -71,7 +71,7 @@ class SingleItem extends Component {
 
 const mapStateToProps = state => {
   return {
-    item: state.itemsReducer
+    item: state.itemsReducer.singleItem
   }
 }
 
