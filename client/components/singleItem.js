@@ -4,34 +4,8 @@ import {fetchOneItem} from '../store/item'
 import {addItem} from '../store/cart'
 
 class SingleItem extends Component {
-  constructor() {
-    super()
-    this.state = {
-      quantity: 0
-    }
-
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleChange = this.handleChange.bind(this)
-  }
-
   componentDidMount() {
     this.props.fetchOneItem(this.props.match.params.id)
-  }
-
-  handleChange(evt) {
-    let input = evt.target.value
-    console.log('current quantity:', input)
-
-    this.setState({
-      quantity: input
-    })
-  }
-
-  handleSubmit(evt) {
-    evt.preventDefault()
-    // this.state({
-    //   quantity:0
-    // })
   }
 
   render() {
@@ -46,17 +20,7 @@ class SingleItem extends Component {
             <h3>description:</h3>
             <p>{item.description}</p>
             <h4>price: {item.price}</h4>
-            <form onSubmit={this.handleSubmit}>
-              <input
-                name="quantity"
-                type="number"
-                onChange={this.handleChange}
-                value={this.state.value}
-                min="0"
-                max="400"
-              />
-              <button type="submit">Submit Quantity</button>
-            </form>
+
             <button type="submit" onClick={() => this.props.addItem(item)}>
               add to cart
             </button>
