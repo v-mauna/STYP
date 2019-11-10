@@ -7,8 +7,11 @@ import {withRouter} from 'react-router-dom'
 
 function countTotal(items) {
   return items.reduce((acc, curVal) => {
-    return parseFloat(acc + curVal.item.price * curVal.quantity).toFixed(2)
-  }, 0)
+    return parseFloat(
+      parseFloat(acc) +
+        parseFloat(curVal.item.price) * parseFloat(curVal.quantity)
+    ).toFixed(2)
+  }, 0.0)
 }
 
 class Cart extends React.Component {
