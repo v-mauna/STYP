@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize')
+const Op = Sequelize.Op
 const db = require('../db')
 
 const Item = db.define('item', {
@@ -38,10 +39,12 @@ const Item = db.define('item', {
   }
 })
 
-Item.findByCategory = async function(category) {
-  const item = await Item.findAll({
+Item.findByCategory = function(categoryInput) {
+  const item = Item.findAll({
     where: {
-      category
+      category: {
+        [Op.contains]: [categoryInput]
+      }
     }
   })
   return item

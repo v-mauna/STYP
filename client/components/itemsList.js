@@ -57,8 +57,6 @@ const mapDispatchToProps = dispatch => {
 
 export const AllCereals = connect(mapAllCereals, mapDispatchToProps)(ItemsList)
 export const Classics = connect(mapClassics, mapDispatchToProps)(ItemsList)
-export const Bestsellers = connect(mapBestsellers, mapDispatchToProps)(
-  ItemsList
-)
+export const Bestsellers = connect(mapBestsellers, mapDispatchToProps)(ItemsList)
 export const Unknowns = connect(mapUnknowns, mapDispatchToProps)(ItemsList)
 export const Organics = connect(mapOrganics, mapDispatchToProps)(ItemsList)
