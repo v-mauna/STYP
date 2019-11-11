@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
+import {Link} from 'react-router-dom'
 
 /**
  * COMPONENT
@@ -11,6 +12,10 @@ const AuthForm = props => {
 
   return (
     <div>
+      <img
+        className="auth-img"
+        src="https://images.unsplash.com/photo-1517456944721-229d38679dfa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+      />
       <form className="signUpBox" onSubmit={handleSubmit} name={name}>
         <div>
           <h3> hey.</h3>
@@ -20,10 +25,16 @@ const AuthForm = props => {
             quick access to your previous orders and a streamlined checkout
             process.
           </p>
-          <button type="button" formAction="/register">
-            register
-          </button>
+          <Link to="/register">
+            <button type="button" formAction="/register">
+              register
+            </button>
+          </Link>
           <p>
+            <img
+              id="g-img"
+              src="https://img.icons8.com/material/20/000000/google-logo--v1.png"
+            />
             <a className="loginLinks" href="/auth/google">
               sign up with Google
             </a>
@@ -31,7 +42,6 @@ const AuthForm = props => {
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-
       <div className="loginBox">
         <form className="login-form form" onSubmit={handleSubmit} name={name}>
           <div>
@@ -49,9 +59,13 @@ const AuthForm = props => {
             <input name="password" type="password" />
           </div>
           <div>
-            <button type="submit">{displayName}</button>
+            <button type="submit">login</button>
             <p>
               <a className="loginLinks" href="/auth/google">
+                <img
+                  id="g-img"
+                  src="https://img.icons8.com/material/20/000000/google-logo--v1.png"
+                />
                 sign in with Google
               </a>
             </p>
@@ -62,7 +76,6 @@ const AuthForm = props => {
     </div>
   )
 }
-
 /**
  * CONTAINER
  *   Note that we have two different sets of 'mapStateToProps' functions -
@@ -77,7 +90,6 @@ const mapLogin = state => {
     error: state.user.error
   }
 }
-
 const mapSignup = state => {
   return {
     name: 'signup',
@@ -85,8 +97,7 @@ const mapSignup = state => {
     error: state.user.error
   }
 }
-
-const mapDispatch = dispatch => {
+const mapDispatch = (dispatch, ownProps) => {
   return {
     handleSubmit(evt) {
       evt.preventDefault()
@@ -94,13 +105,12 @@ const mapDispatch = dispatch => {
       const email = evt.target.email.value
       const password = evt.target.password.value
       dispatch(auth(email, password, formName))
+      ownProps.history.push('/')
     }
   }
 }
-
 export const Login = connect(mapLogin, mapDispatch)(AuthForm)
 export const Signup = connect(mapSignup, mapDispatch)(AuthForm)
-
 /**
  * PROP TYPES
  */
