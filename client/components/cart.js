@@ -33,7 +33,7 @@ class Cart extends React.Component {
           <div className="wrap cf">
             <div className="heading cf">
               <h1>My Cart</h1>
-              <Link to="/home" className="continue">
+              <Link to="/cereals" className="continue">
                 Continue Shopping
               </Link>
             </div>
