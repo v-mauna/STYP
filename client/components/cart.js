@@ -1,9 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import CartItem from './cartItem'
 import {restoreCartItemsFromLocalStorage} from '../store/cart'
-import {withRouter} from 'react-router-dom'
 
 function countTotal(items) {
   return items.reduce((acc, curVal) => {
@@ -20,7 +19,7 @@ class Cart extends React.Component {
     this.state = {}
   }
 
-  componentDidMount(props) {
+  componentDidMount() {
     console.log('mounting')
     this.props.restoreCartItemsFromLocalStorage()
   }
@@ -42,8 +41,8 @@ class Cart extends React.Component {
             <div className="cart">
               <ul className="cartWrap">
                 {items
-                  ? items.map((item, indx) => {
-                      return <CartItem key={indx} cartitem={item} />
+                  ? items.map(item => {
+                      return <CartItem key={item.id} cartitem={item} />
                     })
                   : null}
               </ul>

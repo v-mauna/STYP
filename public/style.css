@@ -1,9 +1,12 @@
 /* -------------------------------------
     GLOBAL RESETS
 ------------------------------------- */
+
+@import url('https://fonts.googleapis.com/css?family=Liu+Jian+Mao+Cao|Merriweather|Pacifico|Poppins&display=swap');
+
 * {
   box-sizing: border-box;
-  font-family: arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 a {
@@ -11,8 +14,11 @@ a {
   color: rgb(20, 66, 119);
 }
 
+a:hover {
+  color: rgb(37, 199, 199);
+}
+
 body {
-  background: linear-gradient(#e5eef0, #ddecf0);
   padding: 10;
   margin: 0;
   width: 100vw;
@@ -25,15 +31,111 @@ img {
   max-width: 100%;
 }
 
+/*navbar */
+.navbar-collapse {
+  /* background: rgb(255, 215, 83); */
+  border: 5px solid white;
+  height: 60px;
+}
+.collapse-navbar-collapse {
+  height: 30px;
+  padding: 10px;
+}
 nav {
   align-items: center;
-  background-color: #91d9fa;
+  background: rgb(255, 215, 83);
   color: #c0c0c0;
+  font-style: bold;
   display: flex;
   height: 80px;
   padding: 10px;
+  border: 5px solid white;
 }
 
+#navWelcome {
+  margin-left: 10px;
+  font-family: 'Merriweather', serif;
+}
+
+span {
+  font-family: 'Pacifico', cursive;
+}
+/*itemsList*/
+
+.itemsList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  margin-top: 1em;
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-bottom: 3em;
+}
+/*items-Card*/
+
+.itemsCard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 1em;
+  margin-left: 1em;
+  margin-right: 1em;
+  color: rgb(20, 66, 119);
+}
+.itemsCard img {
+  width: 250px;
+  height: 250px;
+  justify-content: center;
+  flex-direction: row;
+  align-self: center;
+}
+.itemsCard h3,
+p {
+  align-self: center;
+  margin: 1em;
+  justify-content: center;
+  text-justify: inherit;
+}
+.itemsCard button {
+  margin: 1em;
+}
+/*single Item*/
+/* .singleItem-card {
+  display: flex;
+  flex-direction: column;
+  margin: 40px;
+
+} */
+.singleItem-card {
+  margin-top: 3em;
+  font-size: 15px;
+}
+
+.singleItem-img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  margin-left: 15%;
+  float: left;
+  margin-right: 10%;
+}
+
+.singleItem-info {
+  display: flex;
+  float: right;
+  padding: 3em;
+}
+
+#addCart {
+  width: 80px;
+  height: 100%;
+  margin-top: 1em;
+}
+
+#si-qty {
+  margin: 1em;
+}
 /* -------------------------------------
     BODY & CONTAINER
 ------------------------------------- */
@@ -65,6 +167,10 @@ nav {
 .navbar-collapse {
   display: flex;
   justify-content: space-between;
+  padding: 1em;
+}
+.navbar-collapse a {
+  padding: 1em;
 }
 
 .collapse-navbar-collapse {
@@ -81,9 +187,9 @@ nav {
 /* -------------------------------------
     HEADER, FOOTER, MAIN
 ------------------------------------- */
+
 .main {
   background: #fff;
-  border-top: 20px solid #7a71f7;
   width: 100%;
   margin: 1 1 1 1;
 }
@@ -107,13 +213,32 @@ form div {
 }
 
 /* styling cart view */
-
+.cartPage {
+  padding: 2em;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  width: 80%;
+  height: 600px;
+  margin-top: 3em;
+  margin-left: 7em;
+  border: 5px solid white;
+  background: url('https://images.unsplash.com/photo-1522071389925-82a0b89164ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
+}
 .wrap {
   width: 75%;
   max-width: 960px;
   margin: 0 auto;
+  margin-top: 2em;
   padding: 5% 0;
   margin-bottom: 5em;
+}
+
+.cart-img {
+  opacity: 0.8;
+  height: 800px;
+  width: 100%;
 }
 
 .cart {
@@ -189,10 +314,31 @@ input.qty {
   border-radius: 0.4rem;
 }
 
-
 /*UserWelcome*/
 #userhome-bestseller-container {
   display: flex;
+}
+.userHome-pg {
+  background: white;
+  border: 5px solid white;
+  height: 600px;
+  width: 100%;
+}
+.userHome-pg h3 {
+  margin-left: 3em;
+  text-transform: uppercase;
+}
+
+.userHome-bgImg {
+  background: url('https://beinghealthiest.com/wp-content/uploads/sites/8/2019/01/Breakfast-cereal.jpg');
+  height: 500px;
+  width: 100%;
+  padding: 2em;
+  margin-left: 3em;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  background-repeat: no-repeat;
 }
 
 /* auth-form styling*/
@@ -205,7 +351,8 @@ input.qty {
   width: 350px;
   height: 380px;
   box-sizing: border-box;
-  background: black;
+  background: rgb(6, 134, 124);
+  opacity: 0.8;
   color: white;
 }
 
@@ -217,15 +364,86 @@ input.qty {
   width: 350px;
   height: 380px;
   box-sizing: border-box;
-  background: black;
+  background: rgb(235, 68, 68);
+  opacity: 0.8;
   color: white;
 }
 
+.auth-img {
+  height: 600px;
+  width: 100%;
+  padding: 2em;
+  position: relative;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
+
 .loginBox p {
+  margin: 0;
+  padding: 6px 3px;
+}
+
+.loginLinks {
+  color: white;
+}
+
+#g-img {
+  margin-right: 5px;
+}
+
+.reg-page {
+  background: rgb(235, 68, 68);
+  border: 5px solid white;
+  height: 600px;
+  width: 100%;
+}
+
+.reg-img {
+  height: 600px;
+  width: 100%;
+  padding: 2em;
+  position: relative;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
+
+.reg-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 1em;
+  width: 320px;
+  height: 380px;
+  transform: translate(-30%, -30%);
+  box-sizing: border-box;
+  color: white;
+  text-align: left;
+}
+.reg-form p {
   margin: 0;
   padding: 12px 6px;
 }
 
 .loginLinks {
   color: white;
+}
+
+/*error-page*/
+.error-page {
+  display: flex;
+  font-size: 12px;
+}
+
+.error-page h2 {
+  margin-top: 8em;
+  margin-right: 4em;
+}
+
+.error-img {
+  width: 50%;
+  height: 100%;
+  margin-left: 4em;
+  padding: 4em;
 }
