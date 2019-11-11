@@ -6,9 +6,9 @@ import {logout} from '../store'
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
     <div className="navbar-collapse">
-      <h1 id="navWelcome">
-        <Link to="/">
-        Cereal for the <span>not so serious</span>
+      <p id="navWelcome">
+        <Link to="/home">
+          SHOP TILL YOU POP: Cereal for the <span>not so serious</span>
         </Link>
         </h1>
   
