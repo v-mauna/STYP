@@ -20,18 +20,22 @@ class Routes extends Component {
 
   render() {
     return (
-      <Switch>
+       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/" component={Home} />
+        <Route exact path="/home" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
-        <Route exact path="/items/" component={itemsList} />
+        <Route exact path="/cereals/" component={AllCereals} />
+        <Route exact path="/cereals/:id" component={SingleItem} />
+        <Route exact path="/bestsellers" component={Bestsellers} />
+        <Route exact path="/classics" component={Classics} />
+        <Route exact path="/organics" component={Organics} />
+        <Route exact path="/the-unknowns" component={Unknowns} />
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/register" component={Register} />
         <Route path="*" component={ErrorPage} />
-        {/* Displays our Login component as a fallback */}
-        <Route component={Login} />
-      </Switch>
+          </Switch>
     )
   }
 }
