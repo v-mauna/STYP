@@ -13,9 +13,10 @@ const UPDATE_TOTAL = 'UPDATE_TOTAL'
 const CHECKOUT = 'CHECKOUT'
 const RESTORE_CART_ITEMS = 'RESTORE_CART_ITEMS'
 
-export const addItem = item => ({
+export const addItem = (item, quantity) => ({
   type: ADD_ITEM,
-  item
+  item,
+  quantity
 })
 
 export const getRestoreCartItemsFromLocalStorage = myCartArray => ({
@@ -76,7 +77,7 @@ const cartReducer = (state = initialState, action) => {
       const addedItem = action.item
       searchId = state.cartItems.findIndex(el => el.item.id === addedItem.id)
       if (searchId !== -1) {
-        state.cartItems[searchId].quantity++
+        state.cartItems[searchId].quantity += action.quantity
         tempState = {
           ...state,
           cartItems: [...state.cartItems]
@@ -84,7 +85,10 @@ const cartReducer = (state = initialState, action) => {
       } else {
         tempState = {
           ...state,
-          cartItems: [...state.cartItems, {item: addedItem, quantity: 1}]
+          cartItems: [
+            ...state.cartItems,
+            {item: addedItem, quantity: action.quantity}
+          ]
         }
       }
 
@@ -98,7 +102,7 @@ const cartReducer = (state = initialState, action) => {
       }
       state.cartItems = JSON.parse(localStorage.getItem('cart'))
       const itemToRemove = action.item
-      let tempState = {
+      tempState = {
         ...state,
         cartItems: state.cartItems.filter(el => el.item.id !== itemToRemove.id)
       }
@@ -126,7 +130,8 @@ const cartReducer = (state = initialState, action) => {
 
     case UPDATE_TOTAL: {
       const total = state.cartItems.reduce((accum, el) => {
-        return (accum += el.item.price)
+        accum += el.item.price
+        return accum
       }, 0)
       tempState = {
         ...state,
@@ -134,11 +139,6 @@ const cartReducer = (state = initialState, action) => {
       }
       localStorage.setItem('cart', JSON.stringify(tempState))
       return tempState
-
-      // return {
-      //   ...state,
-      //   total: action.total
-      // }
     }
 
     case CHECKOUT: {

@@ -3,11 +3,11 @@ import {connect} from 'react-redux'
 import {fetchAllItems} from '../store/item'
 
 class Home extends React.Component {
-  componentDidMount() {
-    this.props.getItems()
+  async componentDidMount() {
+    await this.props.fetchItems(this.props.categoryName)
   }
   render() {
-    if (this.props.items.length) {
+    if (this.props.items.length > 0) {
       return (
         <main>
           <h2>shop till you pop</h2>
@@ -23,13 +23,13 @@ class Home extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    items: state.itemsReducer
-  }
-}
+const mapStateToProps = state => ({
+  items: state.itemsReducer,
+  categoryName: 'all'
+})
 
 const mapDispatchToProps = dispatch => ({
-  getItems: () => dispatch(fetchAllItems())
+  fetchItems: categoryName => dispatch(fetchAllItems(categoryName))
 })
+
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

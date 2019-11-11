@@ -26,6 +26,10 @@ const Order = db.define('order', {
     validate: {
       isEmail: true
     }
+  },
+  totalPrice: {
+    type: Sequelize.INTEGER,
+    allowNull: false
   }
 })
 
