@@ -82,7 +82,7 @@ const items = [
     name: `Frosted Flakes`,
     price: 4.99,
     stock: 50,
-    description: `They'rrrree GREAT - Tony the Tiger`,
+    description: `They'rrree GREAT - Tony the Tiger`,
     category: ['all', 'classics', 'bestsellers'],
     imageUrl:
       'https://clickamericana.com/wp-content/uploads/Vintage-Sugar-Frosted-Flakes-cereal-ad-from-1961.webp'
@@ -114,16 +114,16 @@ const items = [
       'This is what happens when Jim Henson and the Swedish Chef come together...',
     category: ['all', 'the uknowns'],
     imageUrl:
-      'https://img.buzzfeed.com/buzzfeed-static/static/enhanced/webdr01/2013/2/15/14/enhanced-buzz-orig-17795-1360958130-5.jpg?downsize=700:*&output-format=auto&output-quality=auto'
+      'https://scontent-lga3-1.cdninstagram.com/vp/2d669ed23cbc83b9a26fb60674ea8c00/5E0B0CDD/t51.2885-15/sh0.08/e35/s640x640/70089500_481051226025501_4185359376895205910_n.jpg?_nc_ht=scontent-lga3-1.cdninstagram.com&_nc_cat=109'
   },
   {
-    name: 'ET Cereal',
+    name: `ET`,
     price: 3.99,
     stock: 35,
     description: `So good, you'll travel the universe to find it.`,
     category: ['all', 'the uknowns', 'bestsellers'],
     imageUrl:
-      'https://img.buzzfeed.com/buzzfeed-static/static/enhanced/webdr01/2013/2/15/14/enhanced-buzz-orig-17795-1360958130-5.jpg?downsize=700:*&output-format=auto&output-quality=auto'
+      'https://images-na.ssl-images-amazon.com/images/I/91LusTezkoL._AC_SL1500_.jpg'
   },
   {
     name: `Bart Simpson's No-Problemos`,
@@ -135,7 +135,7 @@ const items = [
       'https://vignette.wikia.nocookie.net/simpsons/images/d/de/No_Problemos.jpg/revision/latest?cb=20100419152516'
   },
   {
-    name: `NP Mesa Sunrise`,
+    name: `Mesa Sunrise`,
     price: 6.29,
     stock: 100,
     description: `Put a little more pep in your step with this wholesome,GF option.`,
@@ -144,7 +144,7 @@ const items = [
       'https://images-na.ssl-images-amazon.com/images/I/91iJ6DIg0UL._SL1500_.jpg'
   },
   {
-    name: `Kashi Blueberry Clusters`,
+    name: `Dequeue The Blues`,
     price: 3.1,
     stock: 100,
     description: `Feeling Blue? Not when you're done having a bowl of this.`,
@@ -153,7 +153,7 @@ const items = [
       'https://images-na.ssl-images-amazon.com/images/I/81HcaHt0VzL._SL1500_.jpg'
   },
   {
-    name: `Cascadian Farm Organic Buzz Honey Crunch`,
+    name: `Bees Knees`,
     price: 3.1,
     stock: 100,
     description: `Need a little help buzzing through the day? Look no further...`,
@@ -169,6 +169,24 @@ const items = [
     category: ['all', 'the unknowns', 'organic'],
     imageUrl:
       'https://img.thrivemarket.com/store/full/8/6/863209000192-1_1_1.jpg?w=2000'
+  },
+  {
+    name: `Alpen Eats`,
+    price: 3.6,
+    stock: 120,
+    description: `Go to new heights without actually having to risk your life... `,
+    category: ['all', 'the unknowns', 'organic'],
+    imageUrl:
+      'https://hips.hearstapps.com/ghk.h-cdn.co/assets/18/03/1024x1535/alpen-cereal-no-sugar-added.jpg?resize=980:*'
+  },
+  {
+    name: `Cran'-n-pecans`,
+    price: 2.5,
+    stock: 120,
+    description: `Cranberry season is upon us so why wait till Thanksgiving for that first sample?`,
+    category: ['all', 'the unknowns', 'organic'],
+    imageUrl:
+      'https://hips.hearstapps.com/ghk.h-cdn.co/assets/17/01/1483645976-purely-elizabeth-granola-puffs.jpg?crop=1.0xw:1xh;center,top&resize=980:*'
   }
 ]
 
@@ -180,7 +198,7 @@ const orders = [
     recepientFirstName: 'Stacy',
     recepientLastName: 'Satran',
     recepientemail: 'stacy@abc.com',
-    customerId: 1
+    totalPrice: 32.0
   },
   {
     date: '2019-09-05',
@@ -189,7 +207,7 @@ const orders = [
     recepientFirstName: 'Megan',
     recepientLastName: 'Johnson',
     recepientemail: 'megan@abc.com',
-    customerId: 2
+    totalPrice: 25.0
   },
   {
     date: '2019-09-04',
@@ -198,7 +216,7 @@ const orders = [
     recepientFirstName: 'John',
     recepientLastName: 'Smith',
     recepientemail: 'john@AbortController.com',
-    customerId: 1
+    totalPrice: 45.0
   },
   {
     date: '2019-08-25',
@@ -207,7 +225,7 @@ const orders = [
     recepientFirstName: 'Will',
     recepientLastName: 'Davis',
     recepientemail: 'will@abc.com',
-    customerId: 1
+    totalPrice: 15.0
   }
 ]
 
