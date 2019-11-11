@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchOneItem} from '../store/item'
-import {addItem} from '../store/cart'
+import {addItem, updateTotal} from '../store/cart'
 
 class SingleItem extends Component {
   componentDidMount() {
@@ -21,7 +21,13 @@ class SingleItem extends Component {
             <p>{item.description}</p>
             <h4>price: {item.price}</h4>
 
-            <button type="submit" onClick={() => this.props.addItem(item)}>
+            <button
+              type="submit"
+              onClick={() => {
+                this.props.addItem(item, 1)
+                this.props.updateTotal()
+              }}
+            >
               add to cart
             </button>
           </div>
@@ -42,7 +48,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchOneItem: id => dispatch(fetchOneItem(id)),
-    addItem: addedItem => dispatch(addItem(addedItem))
+    addItem: (addedItem, quantity) => dispatch(addItem(addedItem, quantity)),
+    updateTotal: () => dispatch(updateTotal())
   }
 }
 
