@@ -6,11 +6,12 @@ import ItemCard from './itemCard'
 class ItemsList extends React.Component {
   async componentDidMount() {
     await this.props.fetchItems(this.props.categoryName)
+    console.log('itemstoMap', this.props.items)
   }
   render() {
-    const items = this.props.items
+    const items = this.props.itemsReducer.items
 
-    if (items.length > 0) {
+    if (items) {
       return (
         <div className="itemsList">
           {items.map(item => {
@@ -25,27 +26,27 @@ class ItemsList extends React.Component {
 }
 
 const mapAllCereals = state => ({
-  items: state.itemsReducer,
+  itemsReducer: state.itemsReducer,
   categoryName: 'all'
 })
 
 const mapClassics = state => ({
-  items: state.itemsReducer,
+  itemsReducer: state.itemsReducer,
   categoryName: 'classics'
 })
 
 const mapBestsellers = state => ({
-  items: state.itemsReducer,
+  itemsReducer: state.itemsReducer,
   categoryName: 'bestsellers'
 })
 
 const mapUnknowns = state => ({
-  items: state.itemsReducer,
+  itemsReducer: state.itemsReducer,
   categoryName: 'the unknowns'
 })
 
 const mapOrganics = state => ({
-  items: state.itemsReducer,
+  itemsReducer: state.itemsReducer,
   categoryName: 'organic'
 })
 
