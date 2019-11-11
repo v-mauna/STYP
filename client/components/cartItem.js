@@ -3,13 +3,9 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {withRouter} from 'react-router-dom'
 import {fetchOneItem} from '../store/item'
-import {
-  removeItem,
-  changeQuantity,
-  restoreCartItemsFromLocalStorage
-} from '../store/cart'
+import {removeItem, changeQuantity} from '../store/cart'
 
-class CartItem extends React.Component {
+export class CartItem extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -20,16 +16,9 @@ class CartItem extends React.Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
-  // componentDidMount(){
-  //     let id = this.props.cartitem.item.id
-  //     this.props.fetchOneItem(id)
-
-  //     this.props.restoreCartItemsFromLocalStorage()
-  // }
-
   handleChange(evt) {
     let input = evt.target.value
-    console.log('current quantity:', input)
+    //console.log('current quantity:', input)
     // console.log(this.state)
     // this.setState((state, props) => {
     //     return {counter: state.counter + props.step};
