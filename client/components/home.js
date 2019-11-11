@@ -1,8 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import ItemCard from './itemCard'
 import {fetchAllItems} from '../store/item'
+import ItemCard from './itemCard'
 
 class Home extends React.Component {
   async componentDidMount() {
@@ -48,6 +48,7 @@ class Home extends React.Component {
               <Link id="bestseller-link" to="/bestsellers">
                 <h2 className="title">Bestsellers</h2>
               </Link>
+              <div id="userhome-bestsellers" />
             </div>
           </div>
         </div>
