@@ -13,8 +13,8 @@ import {
   Bestsellers,
   Unknowns,
   Organics
-} from '../client/components/itemsList'
-import SingleItem from '../client/components/singleItem'
+} from './components/itemsList'
+import SingleItem from './components/singleItem'
 
 /**
  * COMPONENT
