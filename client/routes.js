@@ -8,7 +8,13 @@ import Home from './components/home'
 import Register from './components/register'
 import ErrorPage from './components/error-page'
 import {me} from './store'
-import itemsList from '../client/components/itemsList'
+import {
+  AllCereals,
+  Classics,
+  Bestsellers,
+  Unknowns,
+  Organics
+} from '../client/components/itemsList'
 import SingleItem from '../client/components/singleItem'
 
 /**
@@ -29,15 +35,19 @@ class Routes extends Component {
         <Route exact path="/home" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
-        <Route exact path="/cereals/" component={itemsList} />
+        <Route exact path="/cereals/" component={AllCereals} />
         <Route exact path="/cereals/:id" component={SingleItem} />
+        <Route exact path="/bestsellers" component={Bestsellers} />
+        <Route exact path="/classics" component={Classics} />
+        <Route exact path="/organics" component={Organics} />
+        <Route exact path="/the-unknowns" component={Unknowns} />
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/register" component={Register} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
 
-            <Route exact path="/welcome" component={UserHome} />
+            <Route exact path="/home" component={Home} />
           </Switch>
         )}
         <Route path="*" component={ErrorPage} />

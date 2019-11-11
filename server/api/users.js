@@ -28,7 +28,9 @@ router.post('/signup', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
   try {
-    const thisUser = await User.findByPk(req.params.id)
+    const thisUser = await User.findByPk(req.params.id, {
+      attributes: ['id', 'email', 'firstName', 'lastName']
+    })
     res.json(thisUser)
   } catch (err) {
     next(err)
@@ -50,6 +52,20 @@ router.delete('/:id', async (req, res, next) => {
     const user = await User.findByPk(req.params.id)
     await user.destroy()
     res.send('User successfully removed.')
+  } catch (err) {
+    next(err)
+  }
+})
+
+//USER ORDERS
+
+router.get(':/id/orders', async (req, res, next) => {
+  try {
+    const thisUser = await User.findByPk(req.params.id, {
+      attributes: ['id', 'email', 'firstName', 'lastName', 'email'],
+      include: {model: Order}
+    })
+    res.json(thisUser)
   } catch (err) {
     next(err)
   }
