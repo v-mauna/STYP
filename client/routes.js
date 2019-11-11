@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup} from './components'
-import UserHome from './components/user-home'
 import Home from './components/home'
 import Register from './components/register'
 import ErrorPage from './components/error-page'
@@ -26,20 +25,12 @@ class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/" component={Home} />
-        <Route exact path="/home" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
-        <Route exact path="/cereals/" component={itemsList} />
+        <Route exact path="/items/" component={itemsList} />
         <Route exact path="/cereals/:id" component={SingleItem} />
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/register" component={Register} />
-        {isLoggedIn && (
-          <Switch>
-            {/* Routes placed here are only available after logging in */}
-
-            <Route exact path="/welcome" component={UserHome} />
-          </Switch>
-        )}
         <Route path="*" component={ErrorPage} />
         {/* Displays our Login component as a fallback */}
         <Route component={Login} />

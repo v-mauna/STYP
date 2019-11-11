@@ -2,25 +2,23 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 const ItemCard = props => {
-  const cereal = props.item
+  const {item: cereal, showDescription} = props
   return (
-    <div key={cereal.id}>
+    <div id="item-card" key={cereal.id}>
       <div>
-        <div
-          className="card card-raised card-background"
-          style={{backgroundImage: `url(${cereal.imageUrl})`}}
-        >
-          <div className="card-content">
+        <Link to={'/cereals/' + cereal.id}>
+          <img className="item-image" src={cereal.imageUrl} />
+          <h3 className="card-title">{cereal.name}</h3>
+          {showDescription ? (
             <p className="card-description">
-              {cereal.description.length < 50
+              {cereal.description.length < 30
                 ? cereal.description
-                : cereal.description.slice(0, 50) + '...'}
+                : cereal.description.slice(0, 30) + '...'}
             </p>
-            <Link to={'/cereals/' + cereal.id}>
-              <h3 className="card-title">{cereal.name}</h3>
-            </Link>
-          </div>
-        </div>
+          ) : (
+            <div />
+          )}
+        </Link>
       </div>
     </div>
   )

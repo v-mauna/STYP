@@ -110,7 +110,7 @@ export const fetchDeleteItem = id => {
 const itemsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_ITEMS: {
-      return action.items
+      return {...state, items: action.items}
     }
     case GET_ONE_ITEM: {
       return {...state, singleItem: action.item}

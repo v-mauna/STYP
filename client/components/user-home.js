@@ -16,7 +16,6 @@ export const UserHome = props => {
     'https://beinghealthiest.com/wp-content/uploads/sites/8/2019/01/Breakfast-cereal.jpg'
   return (
     <div>
-
       <h3>{`Welcome!!!!, ${firstName}`}</h3>
       <div className="container">
         <div className="row">
@@ -39,16 +38,13 @@ export const UserHome = props => {
           </div>
         </div>
       </div>
-
     </div>
   )
 }
 
 /*CONTAINER*/
 const mapState = state => {
-  return {
-    firstName: state.user.firstName
-  }
+  return {}
 }
 
 export default connect(mapState)(UserHome)
