@@ -31,7 +31,14 @@ class Home extends React.Component {
               </Link>
               <div id="userhome-allProducts">
                 {truncatedItems.map(item => {
-                  return <ItemCard key={item.id} item={item} />
+                  return (
+                    <div key={item.id}>
+                      <Link to={`/cereals/${item.id}`}>
+                        <img key={item.id} src={item.imageUrl} />
+                        <p>{item.name}</p>
+                      </Link>
+                    </div>
+                  )
                 })}
               </div>
             </div>

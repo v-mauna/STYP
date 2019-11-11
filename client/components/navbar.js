@@ -8,7 +8,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
     <div className="navbar-collapse">
       <p id="navWelcome">
         <Link to="/home">
-          Cereal for the <span>not so serious</span>
+          SHOP TILL YOU POP: Cereal for the <span>not so serious</span>
         </Link>
       </p>
       {isLoggedIn ? (
