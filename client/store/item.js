@@ -16,34 +16,35 @@ export const getAllItems = items => ({
   items
 })
 
-const getOneItem = item => ({
+export const getOneItem = item => ({
   type: GET_ONE_ITEM,
   item
 })
 
-const updateItem = (id, item) => ({
+export const updateItem = (id, item) => ({
   type: UPDATE_ITEM,
   id,
   item
 })
 
-const createItem = newItem => ({
+export const createItem = newItem => ({
   type: CREATE_ITEM,
   newItem
 })
 
-const deleteOneItem = id => ({
+export const deleteOneItem = id => ({
   type: DELETE_ONE_ITEM,
   id
 })
 
 //Thunks
 
-export const fetchAllItems = () => {
+export const fetchAllItems = categoryName => {
   return async dispatch => {
     try {
-      const {data} = await axios.get('/api/items')
+      const {data} = await axios.get(`/api/items/category/${categoryName}`)
       console.log('Data: ', data)
+      console.log('Category:', categoryName)
       dispatch(getAllItems(data))
     } catch (err) {
       console.error('Error', err)
@@ -61,17 +62,6 @@ export const fetchOneItem = id => {
     }
   }
 }
-
-// export const findByCategory = category => {
-//   return async dispatch => {
-//     try {
-//       const {data} = await axios.get(`/api/items/${category}`)
-//       dispatch(getAllItems(data))
-//     } catch (err) {
-//       console.error(err)
-//     }
-//   }
-// }
 
 export const fetchCreateItem = newItem => {
   return async dispatch => {

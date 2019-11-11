@@ -14,8 +14,8 @@ class SingleItem extends Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
-  componentDidMount() {
-    this.props.fetchOneItem(this.props.match.params.id)
+  async componentDidMount() {
+    await this.props.fetchOneItem(this.props.match.params.id)
   }
 
   handleChange(evt) {
@@ -39,29 +39,34 @@ class SingleItem extends Component {
     console.log(item)
     if (item.name) {
       return (
-        <main>
-          <div>
-            <h3>{item.name}</h3>
-            <img height="100px" width="100px" src={item.imageUrl} />
-            <h3>description:</h3>
-            <p>{item.description}</p>
-            <h4>price: {item.price}</h4>
-            <form onSubmit={this.handleSubmit}>
-              <input
-                name="quantity"
-                type="number"
-                onChange={this.handleChange}
-                value={this.state.value}
-                min="0"
-                max="400"
-              />
-              <button type="submit">Submit Quantity</button>
-            </form>
-            <button type="submit" onClick={() => this.props.addItem(item)}>
+        <div className="singleItem-card">
+          <img className="singleItem-img" src={item.imageUrl} />
+          <div className="singleItem-info" />
+          <h2>{item.name}</h2>
+          <h3>description:</h3>
+          <p>{item.description}</p>
+          <h4>price: {item.price}</h4>
+          <form onSubmit={this.handleSubmit}>
+            <input
+              name="quantity"
+              type="number"
+              onChange={this.handleChange}
+              value={this.state.value}
+              min="0"
+              max="400"
+            />
+            <button id="si-qty" type="submit">
+              Submit Quantity
+            </button>
+            <button
+              id="addCart"
+              type="submit"
+              onClick={() => this.props.addItem(item)}
+            >
               add to cart
             </button>
-          </div>
-        </main>
+          </form>
+        </div>
       )
     } else {
       return <div />

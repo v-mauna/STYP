@@ -7,9 +7,10 @@ const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
     <div className="navbar-collapse">
       <p id="navWelcome">
-        <Link to="/home">cereal for the Not so serious</Link>
+        <Link to="/home">
+          Cereal for the <span>not so serious</span>
+        </Link>
       </p>
-
       {isLoggedIn ? (
         <div>
           <Link to="/home">welcome</Link>
@@ -17,6 +18,10 @@ const Navbar = ({handleClick, isLoggedIn}) => (
             {' '}
             logout
           </a>
+          <Link to="/cart" className="material-icons">
+            your cart
+            <img src="https://img.icons8.com/ios-filled/16/000000/shopping-cart.png" />
+          </Link>
         </div>
       ) : (
         <div className="collapse-navbar-collapse">
@@ -25,6 +30,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           </Link>
           <Link to="/cart" className="material-icons">
             your cart
+            <img src="https://img.icons8.com/ios-filled/16/000000/shopping-cart.png" />
           </Link>
         </div>
       )}
@@ -38,9 +44,6 @@ const Navbar = ({handleClick, isLoggedIn}) => (
         <div className="navbar-header">
           <Link to="/cereals" className="icon-bar">
             ALL ITEMS
-          </Link>
-          <Link to="/cereals/new" className="icon-bar">
-            NEW
           </Link>
           <Link to="/bestsellers" className="icon-bar">
             BESTSELLERS
@@ -57,7 +60,6 @@ const Navbar = ({handleClick, isLoggedIn}) => (
         </div>
       </div>
     </nav>
-    <hr />
   </div>
 )
 

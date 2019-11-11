@@ -12,17 +12,13 @@ export const UserHome = props => {
   // Can change to be getting from database
   const imgSrc =
     'https://www.irishtimes.com/polopoly_fs/1.3382069.1518442333!/image/image.jpg_gen/derivatives/box_620_330/image.jpg'
-  const imgBackground =
-    'https://beinghealthiest.com/wp-content/uploads/sites/8/2019/01/Breakfast-cereal.jpg'
-  return (
-    <div>
 
-      <h3>{`Welcome!!!!, ${firstName}`}</h3>
+  return (
+    <div className="userHome-pg">
+      <h3>{`Welcome, ${firstName}`}</h3>
       <div className="container">
         <div className="row">
-          <div
-            style={{backgroundImage: `url(${imgBackground})`, height: '500px'}}
-          >
+          <div className="userHome-bgImg">
             <div id="userhome-bestseller-container">
               <Link to="/bestsellers">
                 <h2 className="title">Bestsellers</h2>
@@ -32,14 +28,13 @@ export const UserHome = props => {
           <br />
 
           <div id="userhome-allProducts-container">
-            <Link to="/allitems">
+            <Link to="/cereals">
               <h4> See All Products</h4>
               <img src={imgSrc} />
             </Link>
           </div>
         </div>
       </div>
-
     </div>
   )
 }

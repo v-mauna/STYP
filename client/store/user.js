@@ -42,7 +42,7 @@ export const auth = (email, password, method) => async dispatch => {
 
   try {
     dispatch(getUser(res.data))
-    history.push('/home')
+    history.push('/userHome')
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr)
   }
@@ -63,6 +63,7 @@ export const createdUser = newUser => {
     try {
       const {data} = await axios.post('/api/users/signup', newUser)
       dispatch(createUser(data))
+      history.push('/home')
     } catch (err) {
       console.log('User was not created. See: ', err)
     }

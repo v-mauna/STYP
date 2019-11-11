@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {fetchAllItems} from '../store/item'
 import ItemCard from './itemCard'
+import {addItem} from '../store/cart'
 
 class ItemsList extends React.Component {
   async componentDidMount() {
@@ -51,7 +52,8 @@ const mapOrganics = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchItems: categoryName => dispatch(fetchAllItems(categoryName))
+    fetchItems: categoryName => dispatch(fetchAllItems(categoryName)),
+    addItem: addedItem => dispatch(addItem(addedItem))
   }
 }
 
