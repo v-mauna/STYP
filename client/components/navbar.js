@@ -29,7 +29,8 @@ const Navbar = ({handleClick, isLoggedIn, firstName}) => (
           </div>
         )}
         <Link to="/cart" className="navbar-items">
-          Shopping Cart
+          Your Cart
+          <img src="https://img.icons8.com/ios-filled/16/000000/shopping-cart.png" />
         </Link>
       </div>
     </div>
