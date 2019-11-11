@@ -51,7 +51,7 @@ router.delete('/:id', async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.id)
     await user.destroy()
-    res.send('User successfully removed.')
+    res.json('User successfully removed.')
   } catch (err) {
     next(err)
   }
@@ -101,7 +101,7 @@ router.post('/:id/cart', async (req, res, next) => {
       itemId: req.body.id,
       quantity: req.body.quantity
     })
-    res.send('Item successfully added')
+    res.json('Item successfully added')
   } catch (err) {
     next(err)
   }
@@ -126,7 +126,7 @@ router.put('/:id/cart', async (req, res, next) => {
         }
       }
     )
-    res.send('Quantity successfully updated')
+    res.json('Quantity successfully updated')
   } catch (err) {
     next(err)
   }
@@ -146,7 +146,7 @@ router.delete('/:id/cart', async (req, res, next) => {
         itemId: req.body.id
       }
     })
-    res.send('Item successfully deleted')
+    res.json('Item successfully deleted')
   } catch (err) {
     next(err)
   }
@@ -163,7 +163,7 @@ router.put('/:id/cart/total', async (req, res, next) => {
     await userCart.update({
       total: req.body.total
     })
-    res.send('Total successfully updated')
+    res.json('Total successfully updated')
   } catch (err) {
     next(err)
   }

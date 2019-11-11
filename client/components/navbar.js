@@ -1,71 +1,88 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
-import {withRouter, Route, Switch} from 'react-router-dom'
+import {Link} from 'react-router-dom'
+import {logout} from '../store'
 import PropTypes from 'prop-types'
-import {Login, Signup} from './components'
-import Home from './components/home'
-import Register from './components/register'
-import ErrorPage from './components/error-page'
-import {me} from './store'
-import itemsList from '../client/components/itemsList'
-import SingleItem from '../client/components/singleItem'
-import Cart from '../client/components/cart'
-/**
- * COMPONENT
- */
-class Routes extends Component {
-  componentDidMount() {
-    this.props.loadInitialData()
-  }
 
-  render() {
-    return (
-       <Switch>
-        {/* Routes placed here are available to all visitors */}
-        <Route exact path="/" component={Home} />
-        <Route exact path="/home" component={Home} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={Signup} />
-        <Route exact path="/cereals/" component={AllCereals} />
-        <Route exact path="/cereals/:id" component={SingleItem} />
-        <Route exact path="/bestsellers" component={Bestsellers} />
-        <Route exact path="/classics" component={Classics} />
-        <Route exact path="/organics" component={Organics} />
-        <Route exact path="/the-unknowns" component={Unknowns} />
-        <Route exact path="/cart" component={Cart} />
-        <Route exact path="/register" component={Register} />
-        <Route path="*" component={ErrorPage} />
-          </Switch>
-    )
+const Navbar = ({handleClick, isLoggedIn, firstName}) => (
+  <div>
+    <div className="navbar-collapse">
+      <h1 id="navWelcome">
+        <Link to="/">Cereal for the not so Serious</Link>
+      </h1>
+
+      <div id="nav-Log-Cart">
+        {isLoggedIn ? (
+          <div className="navbar-items">
+            <Link to="/" className="navbar-items">
+              <h4>{`Welcome!!!!, ${firstName}`}</h4>
+            </Link>
+            <a className="navbar-items" onClick={handleClick}>
+              Logout
+            </a>
+          </div>
+        ) : (
+          <div>
+            <Link to="/login" className="navbar-items">
+              Login/Register
+            </Link>
+          </div>
+        )}
+        <Link to="/cart" className="navbar-items">
+          Shopping Cart
+        </Link>
+      </div>
+    </div>
+
+    <nav id="sectionsNav">
+      <div className="container">
+        <div className="navbar-header">
+          <Link to="/cereals" className="icon-bar">
+            ALL ITEMS
+          </Link>
+          <Link to="/bestsellers" className="icon-bar">
+            BESTSELLERS
+          </Link>
+          <Link to="/classics" className="icon-bar">
+            CLASSICS
+          </Link>
+          <Link to="/organics" className="icon-bar">
+            ORGANICS
+          </Link>
+          <Link to="/the-unknowns" className="icon-bar">
+            THE UNKNOWNS
+          </Link>
+        </div>
+      </div>
+    </nav>
+    <hr />
+  </div>
+)
+
+/* CONTAINER */
+const mapStateToProps = state => {
+  return {
+    isLoggedIn: !!state.user.id,
+    cart: state.cart,
+    user: state.user,
+    items: state.items,
+    firstName: state.user.firstName
   }
 }
 
-/**
- * CONTAINER
- */
-const mapState = state => {
+const mapDispatchToProps = dispatch => {
   return {
-    // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
-    // Otherwise, state.user will be an empty object, and state.user.id will be falsey
-    isLoggedIn: !!state.user.id
-  }
-}
-
-const mapDispatch = dispatch => {
-  return {
-    loadInitialData() {
-      dispatch(me())
+    handleClick() {
+      dispatch(logout())
     }
   }
 }
 
-// The `withRouter` wrapper makes sure that updates are not blocked
-// when the url changes
-export default withRouter(connect(mapState, mapDispatch)(Routes))
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
 
 /**
  * PROP TYPES
  */
-Routes.propTypes = {
-  loadInitialData: PropTypes.func.isRequired
+Navbar.propTypes = {
+  firstName: PropTypes.string
 }

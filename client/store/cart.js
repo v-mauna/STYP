@@ -13,10 +13,9 @@ const UPDATE_TOTAL = 'UPDATE_TOTAL'
 const CHECKOUT = 'CHECKOUT'
 const RESTORE_CART_ITEMS = 'RESTORE_CART_ITEMS'
 
-export const addItem = (item, quantity) => ({
+export const addItem = item => ({
   type: ADD_ITEM,
-  item,
-  quantity
+  item
 })
 
 export const getRestoreCartItemsFromLocalStorage = myCartArray => ({
@@ -77,7 +76,7 @@ const cartReducer = (state = initialState, action) => {
       const addedItem = action.item
       searchId = state.cartItems.findIndex(el => el.item.id === addedItem.id)
       if (searchId !== -1) {
-        state.cartItems[searchId].quantity += action.quantity
+        state.cartItems[searchId].quantity++
         tempState = {
           ...state,
           cartItems: [...state.cartItems]
@@ -85,10 +84,7 @@ const cartReducer = (state = initialState, action) => {
       } else {
         tempState = {
           ...state,
-          cartItems: [
-            ...state.cartItems,
-            {item: addedItem, quantity: action.quantity}
-          ]
+          cartItems: [...state.cartItems, {item: addedItem, quantity: 1}]
         }
       }
 

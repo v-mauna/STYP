@@ -10,7 +10,6 @@ class SingleItem extends Component {
 
   render() {
     const item = this.props.item
-    console.log(item)
     if (item.name) {
       return (
         <main>
@@ -24,8 +23,7 @@ class SingleItem extends Component {
             <button
               type="submit"
               onClick={() => {
-                this.props.addItem(item, 1)
-                this.props.updateTotal()
+                this.props.addItem(item)
               }}
             >
               add to cart
@@ -48,8 +46,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchOneItem: id => dispatch(fetchOneItem(id)),
-    addItem: (addedItem, quantity) => dispatch(addItem(addedItem, quantity)),
-    updateTotal: () => dispatch(updateTotal())
+    addItem: (addedItem, quantity) => dispatch(addItem(addedItem, quantity))
+    // updateTotal: () => dispatch(updateTotal())
   }
 }
 
