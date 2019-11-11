@@ -5,10 +5,10 @@ import ItemCard from './itemCard'
 import {fetchAllItems} from '../store/item'
 
 class Home extends React.Component {
-    async componentDidMount() {
+  async componentDidMount() {
     await this.props.fetchItems(this.props.categoryName)
   }
-  
+
   render() {
     const {items} = this.props
     const truncatedItems = items.slice(0, 4)
@@ -26,7 +26,7 @@ class Home extends React.Component {
 
           <div className="row">
             <div id="userhome-allProducts-container">
-              <Link id="items-link" to="/items">
+              <Link id="items-link" to="/cereals">
                 <h2> See All Products</h2>
               </Link>
               <div id="userhome-allProducts">
@@ -50,12 +50,12 @@ class Home extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  items: state.itemsReducer,
+  items: state.itemsReducer.items,
   categoryName: 'all'
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchItems: (categoryName) => dispatch(fetchAllItems(categoryName))
+  fetchItems: categoryName => dispatch(fetchAllItems(categoryName))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

@@ -2,7 +2,6 @@ const router = require('express').Router()
 const Item = require('../db/models/item')
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
-// const {isAdmin, isSelfOrAdmin} = require('./securityGuards')
 
 router.get('/', async (req, res, next) => {
   try {
@@ -67,7 +66,7 @@ router.delete('/:id', async (req, res, next) => {
   try {
     const itemToDelete = await Item.findByPk(req.params.id)
     await itemToDelete.destroy()
-    res.send('Item successfully removed.')
+    res.json('Item successfully removed.')
   } catch (err) {
     next(err)
   }
