@@ -23,10 +23,12 @@ export class CartItem extends React.Component {
   handleChange(evt) {
     let input = evt.target.value
 
-    this.props.changeQuantity(this.state.id, input)
-    this.setState({
-      quantity: input
-    })
+    this.props.changeQuantity(this.props.cartitem.item.id, input)
+
+    this.setState(prevState => ({
+      quantity: input,
+      id: prevState.id
+    }))
   }
 
   handleSubmit(evt) {
@@ -55,7 +57,7 @@ export class CartItem extends React.Component {
                     name="quantity"
                     type="number"
                     onChange={this.handleChange}
-                    value={this.state.quantity}
+                    value={this.props.cartitem.quantity}
                     min="0"
                     max="400"
                   />
@@ -85,16 +87,18 @@ export class CartItem extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    item: state.cartReducer.cartItems[ownProps.key]
+    item:
+      state.cartReducer.cartItems.find[
+        item => item.id == ownProps.cartitem.item.id
+      ]
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    // fetchOneItem: id => dispatch(fetchOneItem(id)),
     removeItem: removed => dispatch(removeItem(removed)),
-    changeQuantity: (item, quantity) => dispatch(changeQuantity(item, quantity))
-    // restoreCartItemsFromLocalStorage: () => dispatch(restoreCartItemsFromLocalStorage())
+    changeQuantity: (itemId, quantity) =>
+      dispatch(changeQuantity(itemId, quantity))
   }
 }
 
