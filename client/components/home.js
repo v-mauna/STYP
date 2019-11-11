@@ -5,14 +5,13 @@ import ItemCard from './itemCard'
 import {fetchAllItems} from '../store/item'
 
 class Home extends React.Component {
-  componentDidMount() {
-    this.props.getItems()
-    console.log('GOT ITEMS')
+    async componentDidMount() {
+    await this.props.fetchItems(this.props.categoryName)
   }
+  
   render() {
     const {items} = this.props
     const truncatedItems = items.slice(0, 4)
-    // Can change to be getting from database
     const imgBackground =
       'https://purewows3.imgix.net/images/articles/2019_07/magic-spoon-fruity-cereal.jpg?auto=format,compress&cs=strip&fit=min&w=728&h=404'
 
@@ -50,13 +49,13 @@ class Home extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    items: state.itemsReducer.items
-  }
-}
+const mapStateToProps = state => ({
+  items: state.itemsReducer,
+  categoryName: 'all'
+})
 
 const mapDispatchToProps = dispatch => ({
-  getItems: () => dispatch(fetchAllItems())
+  fetchItems: (categoryName) => dispatch(fetchAllItems(categoryName))
 })
+
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
