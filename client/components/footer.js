@@ -1,60 +1,58 @@
-/* eslint-disable react/display-name */
 import React from 'react'
+import {Link} from 'react-router-dom'
 
-export default () => (
-  <footer className="footer footer-black">
-    <div className="container">
-      <a className="footer-brand" href="#pablo">
-        Shop Till You Pop
-      </a>
+const Footer = () => (
+  <footer id="colophon" className="site footer footer print-hide">
+    <div className="footer-wrap">
+      <hr className="footer-hr" />
+      <div>
+        <ul id="footer-menu" className="footer-menu">
+          <li className="menu-item items-footer">
+            {' '}
+            <Link className="contact-us" to="#">
+              CONTACT
+            </Link>
+          </li>
+          <li className="menu-item items-footer">
+            {' '}
+            <Link className="privacy-policy" to="#">
+              PRIVACY POLICY
+            </Link>
+          </li>
+          <li className="menu-item items-footer">
+            {' '}
+            <Link className="terms of use" to="#">
+              TERMS OF USE
+            </Link>
+          </li>
+          <li className="menu-item items-footer">
+            {' '}
+            <Link className="community rules" to="#">
+              COMMUNITY RULES
+            </Link>
+          </li>
+        </ul>
+      </div>
 
-      <ul className="pull-center">
-        <li>
-          <a href="#pablo">Blog</a>
-        </li>
-        <li>
-          <a href="#pablo">Presentation</a>
-        </li>
-        <li>
-          <a href="#pablo">Discover</a>
-        </li>
-        <li>
-          <a href="#pablo">Payment</a>
-        </li>
-        <li>
-          <a href="#pablo">Contact Us</a>
-        </li>
-      </ul>
-
-      <ul className="social-buttons pull-right">
-        <li>
-          <a
-            href="https://twitter.com"
-            target="blank"
-            className="btn btn-just-icon btn-simple"
-          >
-            <i className="fa fa-twitter" />
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.facebook.com"
-            target="blank"
-            className="btn btn-just-icon btn-simple"
-          >
-            <i className="fa fa-facebook-square" />
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.instagram.com"
-            target="blank"
-            className="btn btn-just-icon btn-simple"
-          >
-            <i className="fa fa-instagram" />
-          </a>
-        </li>
-      </ul>
+      <div>
+        <ul className="footer-menu footer-social">
+          <li>
+            <Link className="contact-us fa fa-facebook" to="#" />
+          </li>
+          <li>
+            <Link className="contact-us fa fa-twitter" to="#" />
+          </li>
+          <li>
+            <Link className="contact-us fa fa-instagram" to="#" />
+          </li>
+          <li>
+            <Link className="contact-us fa fa-pinterest" to="#" />
+          </li>
+        </ul>
+      </div>
     </div>
+    <div className="copyright">2019 Grace Shopper</div>
   </footer>
 )
+
+export default Footer

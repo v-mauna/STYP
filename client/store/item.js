@@ -1,56 +1,47 @@
 import axios from 'axios'
-
 const initialState = {
   items: [],
   singleItem: {}
 }
-
 const GET_ALL_ITEMS = 'GET_ALL_ITEMS'
 const GET_ONE_ITEM = 'GET_ONE_ITEM'
 const CREATE_ITEM = 'CREATE_ITEM'
 const UPDATE_ITEM = 'UPDATE_ITEM'
 const DELETE_ONE_ITEM = 'DELETE_ONE_ITEM'
-
 export const getAllItems = items => ({
   type: GET_ALL_ITEMS,
   items
 })
-
-const getOneItem = item => ({
+export const getOneItem = item => ({
   type: GET_ONE_ITEM,
   item
 })
-
-const updateItem = (id, item) => ({
+export const updateItem = (id, item) => ({
   type: UPDATE_ITEM,
   id,
   item
 })
-
-const createItem = newItem => ({
+export const createItem = newItem => ({
   type: CREATE_ITEM,
   newItem
 })
-
-const deleteOneItem = id => ({
+export const deleteOneItem = id => ({
   type: DELETE_ONE_ITEM,
   id
 })
-
 //Thunks
-
-export const fetchAllItems = () => {
+export const fetchAllItems = categoryName => {
   return async dispatch => {
     try {
-      const {data} = await axios.get('/api/items')
+      const {data} = await axios.get(`/api/items/category/${categoryName}`)
       console.log('Data: ', data)
+      console.log('Category:', categoryName)
       dispatch(getAllItems(data))
     } catch (err) {
       console.error('Error', err)
     }
   }
 }
-
 export const fetchOneItem = id => {
   return async dispatch => {
     try {
@@ -61,18 +52,6 @@ export const fetchOneItem = id => {
     }
   }
 }
-
-// export const findByCategory = category => {
-//   return async dispatch => {
-//     try {
-//       const {data} = await axios.get(`/api/items/${category}`)
-//       dispatch(getAllItems(data))
-//     } catch (err) {
-//       console.error(err)
-//     }
-//   }
-// }
-
 export const fetchCreateItem = newItem => {
   return async dispatch => {
     try {
@@ -84,7 +63,6 @@ export const fetchCreateItem = newItem => {
     }
   }
 }
-
 export const fetchUpdateItem = (id, newItem) => {
   return async dispatch => {
     try {
@@ -96,7 +74,6 @@ export const fetchUpdateItem = (id, newItem) => {
     }
   }
 }
-
 export const fetchDeleteItem = id => {
   return async dispatch => {
     await axios.delete(`/api/items/${id}/`)
@@ -104,9 +81,7 @@ export const fetchDeleteItem = id => {
     dispatch(getAllItems(data))
   }
 }
-
 //Reducer
-
 const itemsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_ITEMS: {
@@ -131,10 +106,8 @@ const itemsReducer = (state = initialState, action) => {
       itemsDup = itemsDup.filter(item => item.id !== deletedItem)
       return itemsDup
     }
-
     default:
       return state
   }
 }
-
 export default itemsReducer
