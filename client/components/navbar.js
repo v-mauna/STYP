@@ -15,7 +15,7 @@ const Navbar = ({handleClick, isLoggedIn, firstName}) => (
         {isLoggedIn ? (
           <div className="navbar-items">
             <Link to="/" className="navbar-items">
-              <h3>{`Welcome!!!!, ${firstName}`}</h3>
+              <h4>{`Welcome!!!!, ${firstName}`}</h4>
             </Link>
             <a className="navbar-items" onClick={handleClick}>
               Logout

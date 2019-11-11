@@ -7,36 +7,40 @@ import Adapter from 'enzyme-adapter-react-16'
 import Home from './home'
 import configureMockStore from 'redux-mock-store'
 import thunkMiddleware from 'redux-thunk'
+import ReactRouterEnzymeContext from 'react-router-enzyme-context'
 
 const adapter = new Adapter()
 enzyme.configure({adapter})
-// const middlewares = [thunkMiddleware]
-// const mockStore = configureMockStore(middlewares)
+const middlewares = [thunkMiddleware]
+const mockStore = configureMockStore(middlewares)
 
 describe('<Home/>', () => {
   let home
-  // const initialState = {items: []}
-  // let store
+  const initialState = {itemsReducer: {items: []}}
+  let store
 
+  // https://github.com/airbnb/enzyme/issues/1002 explain why .dive.dive()
   beforeEach(() => {
-    // store = mockStore(initialState)
-    // store.dispatch = () => {}
-    home = shallow(<Home />)
+    store = mockStore(initialState)
+    const options = new ReactRouterEnzymeContext()
+    store.dispatch = () => {}
+    home = shallow(<Home store={store} />, options.get())
+      .dive()
+      .dive()
   })
 
   it('exists', () => {
-    expect(home).to.exist
-  })
-
-  it('render best seller link', () => {
-    const bestseller = home.find('#bestseller-link')
-    expect(bestseller).to.exist
-    expect(bestseller.prop('to')).to.equal('/bestsellers')
+    expect(home.exists()).to.be.true
   })
 
   it('render items link', () => {
     const items = home.find('#items-link')
-    expect(items).to.exist
-    expect(items.prop('to')).to.equal('/items')
+    expect(items.exists()).to.equal(true)
+  })
+
+  it('render bestsellers link', () => {
+    const bestseller = home.find('#bestseller-link')
+    expect(bestseller.exists()).to.equal(true)
+    expect(bestseller.prop('to')).to.equal('/bestsellers')
   })
 })

@@ -6,7 +6,7 @@ const ItemCard = props => {
   return (
     <div id="item-card" key={cereal.id}>
       <div>
-        <Link to={'/cereals/' + cereal.id}>
+        <Link to={'/items/' + cereal.id}>
           <img className="item-image" src={cereal.imageUrl} />
           <h3 className="card-title">{cereal.name}</h3>
           {showDescription ? (
