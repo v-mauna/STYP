@@ -9,7 +9,7 @@ import {
   restoreCartItemsFromLocalStorage
 } from '../store/cart'
 
-class CartItem extends React.Component {
+export class CartItem extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -20,38 +20,23 @@ class CartItem extends React.Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
-  // componentDidMount(){
-  //     let id = this.props.cartitem.item.id
-  //     this.props.fetchOneItem(id)
-
-  //     this.props.restoreCartItemsFromLocalStorage()
-  // }
-
   handleChange(evt) {
     let input = evt.target.value
-    console.log('current quantity:', input)
-    // console.log(this.state)
-    // this.setState((state, props) => {
-    //     return {counter: state.counter + props.step};
-    //   });
 
-    this.props.changeQuantity(this.state.id, input)
-    this.setState({
-      quantity: input
-    })
+    this.props.changeQuantity(this.props.cartitem.item.id, input)
+
+    this.setState(prevState => ({
+      quantity: input,
+      id: prevState.id
+    }))
   }
 
   handleSubmit(evt) {
     evt.preventDefault()
-    // this.state({
-    //   quantity:0
-    // })
   }
 
   render() {
     const singleOrderItem = this.props.cartitem.item
-
-    console.log('singleitem', singleOrderItem)
 
     if (singleOrderItem.name) {
       return (
@@ -72,7 +57,7 @@ class CartItem extends React.Component {
                     name="quantity"
                     type="number"
                     onChange={this.handleChange}
-                    value={this.state.quantity}
+                    value={this.props.cartitem.quantity}
                     min="0"
                     max="400"
                   />
@@ -102,16 +87,18 @@ class CartItem extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    item: state.cartReducer.cartItems[ownProps.key]
+    item:
+      state.cartReducer.cartItems.find[
+        item => item.id == ownProps.cartitem.item.id
+      ]
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    // fetchOneItem: id => dispatch(fetchOneItem(id)),
     removeItem: removed => dispatch(removeItem(removed)),
-    changeQuantity: (item, quantity) => dispatch(changeQuantity(item, quantity))
-    // restoreCartItemsFromLocalStorage: () => dispatch(restoreCartItemsFromLocalStorage())
+    changeQuantity: (itemId, quantity) =>
+      dispatch(changeQuantity(itemId, quantity))
   }
 }
 

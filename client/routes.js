@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup} from './components'
+import {Login, Signup, Cart} from './components'
 import UserHome from './components/user-home'
 import Home from './components/home'
 import Register from './components/register'
@@ -10,7 +10,7 @@ import ErrorPage from './components/error-page'
 import {me} from './store'
 import itemsList from '../client/components/itemsList'
 import SingleItem from '../client/components/singleItem'
-import Cart from '../client/components/cart'
+
 /**
  * COMPONENT
  */
