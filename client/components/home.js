@@ -1,14 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import ItemCard from './itemCard'
 import {fetchAllItems} from '../store/item'
 
 class Home extends React.Component {
   async componentDidMount() {
     await this.props.fetchItems(this.props.categoryName)
   }
-
   render() {
     const {items} = this.props
     const truncatedItems = items.slice(0, 4)
@@ -44,9 +41,10 @@ class Home extends React.Component {
               </Link>
             </div>
           </div>
-        </div>
-      </div>
-    )
+          </div>
+          </div>
+      )
+ 
   }
 }
 

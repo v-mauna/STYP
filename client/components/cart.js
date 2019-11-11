@@ -13,13 +13,13 @@ function countTotal(items) {
   }, 0.0)
 }
 
-export class Cart extends React.Component {
+class Cart extends React.Component {
   constructor() {
     super()
     this.state = {}
   }
 
-  componentDidMount(props) {
+  componentDidMount() {
     console.log('mounting')
     this.props.restoreCartItemsFromLocalStorage()
   }
@@ -29,40 +29,42 @@ export class Cart extends React.Component {
 
     if (items) {
       return (
-        <div className="wrap cf">
-          <div className="heading cf">
-            <h1>My Cart</h1>
-            <Link to="/home" className="continue">
-              Continue Shopping
-            </Link>
-          </div>
-
-          <div className="cart">
-            <ul className="cartWrap">
-              {items
-                ? items.map((item, indx) => {
-                    return <CartItem key={indx} cartitem={item} />
-                  })
-                : null}
-            </ul>
-          </div>
-
-          {this.props.subtotal ? (
-            <div className="subtotal cf">
-              <ul>
-                <li className="totalRow">
-                  <span className="label">Subtotal: </span>
-                  <span className="value">{`${this.props.subtotal}$`}</span>
-                </li>
-              </ul>
-
-              <form>
-                <button type="submit">CHECKOUT</button>
-              </form>
+        <div className="cartPage">
+          <div className="wrap cf">
+            <div className="heading cf">
+              <h1>My Cart</h1>
+              <Link to="/home" className="continue">
+                Continue Shopping
+              </Link>
             </div>
-          ) : (
-            'Cart is empty'
-          )}
+
+            <div className="cart">
+              <ul className="cartWrap">
+                {items
+                  ? items.map(item => {
+                      return <CartItem key={item.id} cartitem={item} />
+                    })
+                  : null}
+              </ul>
+            </div>
+
+            {this.props.subtotal ? (
+              <div className="subtotal cf">
+                <ul>
+                  <li className="totalRow">
+                    <span className="label">Subtotal: </span>
+                    <span className="value">{`${this.props.subtotal}$`}</span>
+                  </li>
+                </ul>
+
+                <form>
+                  <button type="submit">CHECKOUT</button>
+                </form>
+              </div>
+            ) : (
+              'Cart is empty'
+            )}
+          </div>
         </div>
       )
     } else {
@@ -84,4 +86,5 @@ const mapDispatchToProps = dispatch => {
       dispatch(restoreCartItemsFromLocalStorage())
   }
 }
+
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Cart))

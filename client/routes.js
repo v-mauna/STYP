@@ -25,7 +25,7 @@ class Routes extends Component {
   }
 
   render() {
-    return (
+    return ( 
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/" component={Home} />

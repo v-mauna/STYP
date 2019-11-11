@@ -87,6 +87,7 @@ const cartReducer = (state = initialState, action) => {
           cartItems: [...state.cartItems, {item: addedItem, quantity: 1}]
         }
       }
+
       localStorage.setItem('cart', JSON.stringify(tempState.cartItems))
       return tempState
     }
