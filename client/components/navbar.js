@@ -2,45 +2,43 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
+import PropTypes from 'prop-types'
 
-const Navbar = ({handleClick, isLoggedIn}) => (
+const Navbar = ({handleClick, isLoggedIn, firstName}) => (
   <div>
     <div className="navbar-collapse">
-      <p id="navWelcome">
-        <Link to="/home">cereal for the Not so serious</Link>
-      </p>
+      <h1 id="navWelcome">
+        <Link to="/">Cereal for the not so Serious</Link>
+      </h1>
 
-      {isLoggedIn ? (
-        <div>
-          <Link to="/home">welcome</Link>
-          <a href="#" onClick={handleClick}>
-            {' '}
-            logout
-          </a>
-        </div>
-      ) : (
-        <div className="collapse-navbar-collapse">
-          <Link to="/login" className="material-icons">
-            login/register
-          </Link>
-          <Link to="/cart" className="material-icons">
-            your cart
-          </Link>
-        </div>
-      )}
+      <div id="nav-Log-Cart">
+        {isLoggedIn ? (
+          <div className="navbar-items">
+            <Link to="/" className="navbar-items">
+              <h4>{`Welcome!!!!, ${firstName}`}</h4>
+            </Link>
+            <a className="navbar-items" onClick={handleClick}>
+              Logout
+            </a>
+          </div>
+        ) : (
+          <div>
+            <Link to="/login" className="navbar-items">
+              Login/Register
+            </Link>
+          </div>
+        )}
+        <Link to="/cart" className="navbar-items">
+          Shopping Cart
+        </Link>
+      </div>
     </div>
 
-    <nav
-      className="navbar navbar-default navbar-transparent navbar-fixed-top navbar-color-on-scroll"
-      id="sectionsNav"
-    >
+    <nav id="sectionsNav">
       <div className="container">
         <div className="navbar-header">
           <Link to="/cereals" className="icon-bar">
             ALL ITEMS
-          </Link>
-          <Link to="/cereals/new" className="icon-bar">
-            NEW
           </Link>
           <Link to="/bestsellers" className="icon-bar">
             BESTSELLERS
@@ -51,7 +49,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           <Link to="/organics" className="icon-bar">
             ORGANICS
           </Link>
-          <Link to="the-unknowns" className="icon-bar">
+          <Link to="/the-unknowns" className="icon-bar">
             THE UNKNOWNS
           </Link>
         </div>
@@ -67,7 +65,8 @@ const mapStateToProps = state => {
     isLoggedIn: !!state.user.id,
     cart: state.cart,
     user: state.user,
-    items: state.items
+    items: state.items,
+    firstName: state.user.firstName
   }
 }
 
@@ -80,3 +79,10 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
+
+/**
+ * PROP TYPES
+ */
+Navbar.propTypes = {
+  firstName: PropTypes.string
+}
