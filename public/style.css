@@ -475,12 +475,6 @@ nav {
 /* -------------------------------------
     ITEM CARD
 ------------------------------------- */
-#userhome-allProducts {
-  display: flex;
-  margin: 20px;
-  justify-content: space-evenly;
-}
-
 .itemsCard {
   display: flex;
   flex-direction: row;
@@ -594,7 +588,14 @@ x .userHome-pg h3 {
   overflow: hidden;
   background-repeat: no-repeat;
 }
-
-#userhome-bestseller-container {
+#userhome-allProducts {
   display: flex;
+  margin: 20px;
+  justify-content: space-evenly;
+}
+
+userhome-bestseller {
+  display: flex;
+  margin: 20px;
+  justify-content: space-evenly;
 }

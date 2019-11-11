@@ -41,6 +41,7 @@ class Home extends React.Component {
               <Link id="bestseller-link" to="/bestsellers">
                 <h2 className="title">Bestsellers</h2>
               </Link>
+              <div id="userhome-bestsellers" />
             </div>
           </div>
         </div>
