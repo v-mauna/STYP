@@ -8,10 +8,10 @@ class Home extends React.Component {
   async componentDidMount() {
     await this.props.fetchItems(this.props.categoryName)
   }
+
   render() {
     const {items} = this.props
     const truncatedItems = items.slice(0, 4)
-
     const imgBackground =
       'https://purewows3.imgix.net/images/articles/2019_07/magic-spoon-fruity-cereal.jpg?auto=format,compress&cs=strip&fit=min&w=728&h=404'
 
