@@ -4,8 +4,17 @@ import {fetchOneItem} from '../store/item'
 import {addItem, updateTotal} from '../store/cart'
 
 class SingleItem extends Component {
+  constructor() {
+    super()
+    this.redirectToCart = this.redirectToCart.bind(this)
+  }
+
   componentDidMount() {
     this.props.fetchOneItem(this.props.match.params.id)
+  }
+
+  redirectToCart() {
+    this.props.history.push('/cart')
   }
 
   render() {
@@ -23,6 +32,7 @@ class SingleItem extends Component {
               type="submit"
               onClick={() => {
                 this.props.addItem(item)
+                this.redirectToCart()
               }}
             >
               add to cart
@@ -44,7 +54,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchOneItem: id => dispatch(fetchOneItem(id)),
-    addItem: (addedItem, quantity) => dispatch(addItem(addedItem, quantity))
+    addItem: addedItem => dispatch(addItem(addedItem))
     // updateTotal: () => dispatch(updateTotal())
   }
 }
