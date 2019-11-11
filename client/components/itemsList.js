@@ -9,7 +9,6 @@ class ItemsList extends React.Component {
   }
   render() {
     const items = this.props.items
-
     if (items.length > 0) {
       return (
         <div className="itemsList">
