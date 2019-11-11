@@ -17,7 +17,6 @@ describe('UserHome', () => {
   })
 
   xit('renders the firstName in an h3', () => {
-    console.log(userHome, '-------------------------------')
     expect(userHome.find('h3').text()).to.be.equal('Welcome, Cody')
   })
 })

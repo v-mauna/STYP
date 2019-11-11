@@ -25,7 +25,6 @@ describe('Cart test', () => {
   })
 
   it('renders the carts  elements', () => {
-    // console.log("---->", cartWrapper.debug(), "<----")
     expect(cartWrapper.find('.cartWrap').children()).to.have.lengthOf(2)
   })
 })
