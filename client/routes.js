@@ -8,7 +8,7 @@ import Register from './components/register'
 import ErrorPage from './components/error-page'
 import {me} from './store'
 import itemsList from '../client/components/itemsList'
-import SingleItem from '../client/components/singleItem'
+//import SingleItem from '../client/components/singleItem'
 import Cart from '../client/components/cart'
 /**
  * COMPONENT
@@ -26,7 +26,6 @@ class Routes extends Component {
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/items/" component={itemsList} />
-        <Route exact path="/cereals/:id" component={SingleItem} />
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/register" component={Register} />
         <Route path="*" component={ErrorPage} />
