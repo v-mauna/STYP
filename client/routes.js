@@ -8,7 +8,7 @@ import Register from './components/register'
 import ErrorPage from './components/error-page'
 import {me} from './store'
 import itemsList from '../client/components/itemsList'
-//import SingleItem from '../client/components/singleItem'
+import SingleItem from '../client/components/singleItem'
 import Cart from '../client/components/cart'
 /**
  * COMPONENT
