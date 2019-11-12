@@ -32,7 +32,12 @@ const initialState = {
   recipientLastName: '',
   recipientemail: '',
   totalPrice: 0,
-  items: []
+  items: [],
+  phoneNumber: '',
+  streetAddress: '',
+  city: '',
+  state: '',
+  zipcode: ''
 }
 
 class CheckoutForm extends React.Component {
@@ -60,7 +65,6 @@ class CheckoutForm extends React.Component {
   }
 
   componentDidMount() {
-    //this.props.restoreCartItemsFromLocalStorage()
     this.setState({
       ...CheckoutForm.state,
       totalPrice: Number(this.props.subtotal),
@@ -72,7 +76,8 @@ class CheckoutForm extends React.Component {
   render() {
     console.log('this is our state', this.state)
     return (
-      <div>
+      <div className="checkout-page">
+        <img src="https://images.unsplash.com/photo-1530300846683-a0d623fbeff7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" />
         <form
           className="checkout-form"
           onSubmit={() => this.handleSubmit(this.state)}
@@ -105,52 +110,56 @@ class CheckoutForm extends React.Component {
               required
             />
           </div>
-          {/* <div className="form-item">
-          <label name="phoneNumber">Phone Number:</label>
-          <input
-            name="phoneNumber"
-            value={state.phoneNumber}
-            onChange={handleChange}
-            required
-          />
-        </div> */}
-          {/* <div className="form-item">
-          <label name="streetAddress">Street Address:</label>
-          <input
-            name="streetAddress"
-            value={state.streetAddress}
-            onChange={handleChange}
-          />
-        </div> */}
-          {/* <div className="form-item">
-          <label name="city">City:</label>
-          <input
-            name="city"
-            value={state.city}
-            onChange={handleChange}
-            required
-          />
-          <label name="state">State:</label>
-          <input
-            name="state"
-            value={state.state}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-item">
-          <label name="zipcode">Zipcode:</label>
-          <input
-            name="zipcode"
-            value={state.zipcode}
-            onChange={handleChange}
-            required
-          />
-        </div> */}
+          <div className="form-item">
+            <label name="phoneNumber">Phone Number:</label>
+            <input
+              name="phoneNumber"
+              value={this.state.phoneNumber}
+              onChange={this.handleChange}
+              required
+            />
+          </div>
+          <div className="form-item">
+            <label name="streetAddress">Street Address:</label>
+            <input
+              name="streetAddress"
+              value={this.state.streetAddress}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="form-item">
+            <label name="city">City:</label>
+            <input
+              name="city"
+              value={this.state.city}
+              onChange={this.handleChange}
+              required
+            />
+          </div>
+          <div className="form-item">
+            <label name="state">State:</label>
+            <input
+              name="state"
+              value={this.state.state}
+              onChange={this.handleChange}
+              required
+            />
+          </div>
+          <div className="form-item">
+            <label name="zipcode">Zip Code:</label>
+            <input
+              name="zipcode"
+              value={this.state.zipcode}
+              onChange={this.handleChange}
+              required
+            />
+          </div>
+          <div className="checkout-total">
+            <h3 className="checkout-total">Order Total: {countTotal()}</h3>
+          </div>
 
           <button type="submit">Place Order</button>
         </form>
-        <h3>{countTotal()}</h3>
       </div>
     )
   }
