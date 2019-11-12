@@ -80,7 +80,8 @@ describe('Order model', () => {
         status: 'CREATED',
         recepientFirstName: 'Stacy',
         recepientLastName: 'Satran',
-        recepientemail: 'stacy@abc.com'
+        recepientemail: 'stacy@abc.com',
+        totalPrice: 32
       })
 
       const creatingItem = Item.create({
@@ -118,7 +119,8 @@ describe('Order model', () => {
         status: 'CREATED',
         recepientFirstName: 'Stacy',
         recepientLastName: 'Satran',
-        recepientemail: 'stacy@abc.com'
+        recepientemail: 'stacy@abc.com',
+        totalPrice: 32
       })
         .then(order => {
           neworder = order
@@ -157,7 +159,8 @@ describe('Order model', () => {
         status: 'CREATED',
         recepientFirstName: 'Stacy',
         recepientLastName: 'Satran',
-        recepientemail: 'stacy@abc.com'
+        recepientemail: 'stacy@abc.com',
+        totalPrice: 32
       })
 
       const creatingAddress = Address.create({

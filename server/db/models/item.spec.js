@@ -41,7 +41,8 @@ describe('Item model', () => {
           status: 'CREATED',
           recepientFirstName: 'Stacy',
           recepientLastName: 'Satran',
-          recepientemail: 'stacy@abc.com'
+          recepientemail: 'stacy@abc.com',
+          totalPrice: 32
         })
           .then(order => {
             return itemSaved.addOrder(order, {

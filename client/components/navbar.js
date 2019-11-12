@@ -2,22 +2,18 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
-import PropTypes from 'prop-types'
 
-
-const Navbar = ({handleClick, isLoggedIn, firstName}) => (
+const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
     <div className="navbar-collapse">
-      <h1 id="navWelcome">
-        <Link to="/">
-          SHOP TILL YOU POP: Cereal for the <span>not so serious</span>
+      <p id="navWelcome">
+        <Link to="/home">
+          SHOP TILL YOU POP - Cereal for the <span>not so serious</span>
         </Link>
-      </h1>
-
-      <div id="nav-Log-Cart">
-       {isLoggedIn ? (
+      </p>
+      {isLoggedIn ? (
         <div>
-          <Link to="/home">{`Welcome,${firstName}!`}</Link>
+          <Link to="/home">welcome</Link>
           <a href="#" onClick={handleClick}>
             {' '}
             logout
@@ -39,12 +35,16 @@ const Navbar = ({handleClick, isLoggedIn, firstName}) => (
         </div>
       )}
     </div>
+
     <nav
       className="navbar navbar-default navbar-transparent navbar-fixed-top navbar-color-on-scroll"
       id="sectionsNav"
     >
       <div className="container">
         <div className="navbar-header">
+          <Link to="/" className="icon-bar">
+            HOME
+          </Link>
           <Link to="/cereals" className="icon-bar">
             ALL ITEMS
           </Link>
@@ -64,18 +64,18 @@ const Navbar = ({handleClick, isLoggedIn, firstName}) => (
       </div>
     </nav>
   </div>
-  </div>
 )
+
 /* CONTAINER */
 const mapStateToProps = state => {
   return {
     isLoggedIn: !!state.user.id,
     cart: state.cart,
     user: state.user,
-    items: state.items,
-    firstName: state.user.firstName
+    items: state.items
   }
 }
+
 const mapDispatchToProps = dispatch => {
   return {
     handleClick() {
@@ -83,9 +83,5 @@ const mapDispatchToProps = dispatch => {
     }
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
 
-/** PROP TYPES **/
-Navbar.propTypes = {
-  firstName: PropTypes.string
-}
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)

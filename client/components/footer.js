@@ -2,9 +2,8 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 const Footer = () => (
-  <footer id="colophon" className="site footer footer print-hide">
+  <footer className="footer">
     <div className="footer-wrap">
-      <hr className="footer-hr" />
       <div>
         <ul id="footer-menu" className="footer-menu">
           <li className="menu-item items-footer">

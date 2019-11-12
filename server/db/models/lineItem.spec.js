@@ -20,7 +20,8 @@ describe('LineItem', () => {
           status: 'CREATED',
           recepientFirstName: 'Stacy',
           recepientLastName: 'Satran',
-          recepientemail: 'stacy@abc.com'
+          recepientemail: 'stacy@abc.com',
+          totalPrice: 32
         })
           .then(order => {
             neworder = order
@@ -63,7 +64,8 @@ describe('LineItem', () => {
           status: 'CREATED',
           recepientFirstName: 'Stacy',
           recepientLastName: 'Happy',
-          recepientemail: 'stacyhappy@abc.com'
+          recepientemail: 'stacyhappy@abc.com',
+          totalPrice: 32
         })
           .then(order => {
             neworder = order
