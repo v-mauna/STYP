@@ -73,14 +73,13 @@ router.post('/new', async (req, res, next) => {
     const newOrderObj = {
       status: 'PROCESSING',
       total: req.body.total,
-      recipientFirstName: req.body.recipientFirstName,
-      recipientLastName: req.body.recipientLastName,
-      recipientemail: req.body.recipientemail,
+      recepientFirstName: req.body.recipientFirstName,
+      recepientLastName: req.body.recipientLastName,
+      recepientemail: req.body.recipientemail,
       totalPrice: req.body.totalPrice
     }
     const newOrder = await Order.create(newOrderObj)
-    console.log('I went to database and came back?')
-    res.sendStatus(200)
+    res.status(200).json(newOrder)
   } catch (err) {
     next(err)
   }

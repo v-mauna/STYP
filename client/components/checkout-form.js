@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {checkingOut} from '../store/cart'
+import {restoreCartItemsFromLocalStorage} from '../store/cart'
 
 function countTotal(items) {
   return items.reduce((acc, curVal) => {
@@ -11,12 +12,19 @@ function countTotal(items) {
   }, 0.0)
 }
 
+function countQuantity(items) {
+  return items.reduce((acc, curVal) => {
+    return (acc += curVal.item.quantity)
+  }, 0)
+}
+
 const initialState = {
   total: 0,
   recipientFirstName: '',
   recipientLastName: '',
   recipientemail: '',
-  totalPrice: 0
+  totalPrice: 0,
+  items: []
 }
 
 class CheckoutForm extends React.Component {
@@ -41,6 +49,19 @@ class CheckoutForm extends React.Component {
   handleSubmit(order) {
     this.props.checkingOut(order)
     this.redirect()
+  }
+
+  componentDidMount() {
+    this.props.restoreCartItemsFromLocalStorage()
+    this.setState({
+      ...state,
+      totalPrice: this.props.subtotal,
+      quantity: this.props.quantity,
+      items: this.props.cartItems
+    })
+    // this.state.totalPrice = this.props.subtotal
+    // this.state.quantity = this.props.quantity
+    // this.state.items = this.props.cartItems
   }
 
   render() {
@@ -129,13 +150,16 @@ class CheckoutForm extends React.Component {
 const mapStateToProps = state => {
   return {
     cartItems: state.cartReducer.cartItems,
-    subtotal: countTotal(state.cartReducer.cartItems)
+    subtotal: countTotal(state.cartReducer.cartItems),
+    quantity: countQuantity(state.cartReducer.cartItems)
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    checkingOut: order => dispatch(checkingOut(order))
+    checkingOut: order => dispatch(checkingOut(order)),
+    restoreCartItemsFromLocalStorage: () =>
+      dispatch(restoreCartItemsFromLocalStorage())
   }
 }
 

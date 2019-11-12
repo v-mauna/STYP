@@ -62,7 +62,7 @@ export const restoreCartItemsFromLocalStorage = () => {
 //thunks will go here
 export const checkingOut = order => {
   return async dispatch => {
-    const {data} = await axios.post('/orders/new', order)
+    const {data} = await axios.post('./api/orders/new', order)
     dispatch(checkout())
   }
 }
