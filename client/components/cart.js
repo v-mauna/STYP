@@ -37,6 +37,16 @@ class Cart extends React.Component {
                 Continue Shopping
               </Link>
             </div>
+            <form>
+              <Link
+                to={{
+                  pathname: '/checkout',
+                  state: {items: this.props.cartItems}
+                }}
+              >
+                <button type="submit">CHECKOUT</button>
+              </Link>
+            </form>
 
             <div className="cart">
               <ul className="cartWrap">
@@ -56,10 +66,6 @@ class Cart extends React.Component {
                     <span className="value">{`${this.props.subtotal}$`}</span>
                   </li>
                 </ul>
-
-                <form>
-                  <button type="submit">CHECKOUT</button>
-                </form>
               </div>
             ) : (
               'Cart is empty'

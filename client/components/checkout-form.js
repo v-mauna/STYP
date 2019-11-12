@@ -1,7 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {checkingOut} from '../store/cart'
-import {restoreCartItemsFromLocalStorage} from '../store/cart'
+import {checkingOut, restoreCartItemsFromLocalStorage} from '../store/cart'
 
 function countTotal() {
   if (!localStorage.getItem('cart')) {
@@ -22,7 +21,7 @@ function countQuantity() {
   }
   let items = JSON.parse(localStorage.getItem('cart'))
   return items.reduce((acc, curVal) => {
-    acc += curVal.item.quantity
+    acc += curVal.quantity
     return acc
   }, 0)
 }
@@ -61,21 +60,17 @@ class CheckoutForm extends React.Component {
   }
 
   componentDidMount() {
-    this.props.restoreCartItemsFromLocalStorage()
+    //this.props.restoreCartItemsFromLocalStorage()
     this.setState({
       ...CheckoutForm.state,
       totalPrice: Number(this.props.subtotal),
-      quantity: this.props.quantity,
-      items: this.props.cartItems
+      total: this.props.quantity,
+      items: this.props.location.state.items
     })
-    // this.state.totalPrice = this.props.subtotal
-    // this.state.quantity = this.props.quantity
-    // this.state.items = this.props.cartItems
   }
 
   render() {
-    console.log('our props', this.props)
-    console.log('our state', this.state)
+    console.log('this is our state', this.state)
     return (
       <form
         className="checkout-form"
