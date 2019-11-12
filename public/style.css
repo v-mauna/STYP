@@ -72,12 +72,7 @@ p {
 .itemsCard button {
   margin: 1em;
 }
-/*single Item*/
-/* .singleItem-card {
-  display: flex;
-  flex-direction: column;
-  margin: 40px;
-} */
+
 .singleItem-card {
   margin-top: 3em;
   font-size: 15px;
