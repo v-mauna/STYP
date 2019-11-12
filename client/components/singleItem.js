@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchOneItem} from '../store/item'
-import {Link} from 'react-router-dom'
 import ItemCard from '../components/itemCard'
 
 class SingleItem extends Component {

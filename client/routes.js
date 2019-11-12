@@ -4,6 +4,7 @@ import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, Cart, CheckoutForm} from './components'
 import Home from './components/home'
+import UserProfile from './components/userProfile'
 import Register from './components/register'
 import ErrorPage from './components/error-page'
 import {me} from './store'
@@ -41,6 +42,7 @@ class Routes extends Component {
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/checkout" component={CheckoutForm} />
+        <Route path="/user/profile" component={UserProfile} />
         <Route path="*" component={ErrorPage} />
         <Route component={Login} />
       </Switch>

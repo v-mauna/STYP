@@ -71,7 +71,7 @@ export const createdUser = newUser => {
   }
 }
 
-export function update(id) {
+export function modifyUser(id) {
   return async dispatch => {
     try {
       const response = await axios.put(`/api/users/${id}`)
@@ -85,7 +85,7 @@ export function update(id) {
 /**
  * REDUCER
  */
-export default function(state = defaultUser, action) {
+const userReducer = (state = defaultUser, action) => {
   switch (action.type) {
     case GET_USER:
       return action.user
@@ -99,3 +99,5 @@ export default function(state = defaultUser, action) {
       return state
   }
 }
+
+export default userReducer
