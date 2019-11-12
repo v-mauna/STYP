@@ -10,6 +10,11 @@ class ItemsList extends React.Component {
   }
   render() {
     const items = this.props.itemsReducer.items
+    const numberOfItem = this.props.numberOfItem
+    let displayItems = items
+    if (numberOfItem && numberOfItem > 0) {
+      displayItems = items.slice(0, numberOfItem)
+    }
 
     if (items) {
       return (

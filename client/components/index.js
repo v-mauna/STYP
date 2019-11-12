@@ -5,7 +5,7 @@
  */
 export {default as Navbar} from './navbar'
 // export {default as Footer} from './footer'
-export {default as Home} from './home'
+export {default as Home} from './'
 export {Login, Signup} from './auth-form'
 export {default as Cart} from './cart'
 export {default as SingleItem} from './singleItem'

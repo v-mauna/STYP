@@ -1,17 +1,9 @@
 import React from 'react'
-import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {fetchAllItems} from '../store/item'
-import ItemCard from './itemCard'
+import {AllCereals, Bestsellers} from './itemsList'
 
-class Home extends React.Component {
-  async componentDidMount() {
-    await this.props.fetchItems(this.props.categoryName)
-  }
-
+export default class Home extends React.Component {
   render() {
-    const {items} = this.props
-    const truncatedItems = items.slice(0, 4)
     const imgBackground =
       'https://purewows3.imgix.net/images/articles/2019_07/magic-spoon-fruity-cereal.jpg?auto=format,compress&cs=strip&fit=min&w=728&h=404'
 
@@ -52,21 +44,13 @@ class Home extends React.Component {
                 <h2 className="title">Bestsellers</h2>
               </Link>
               <div id="userhome-bestsellers" />
+              <Bestsellers numberOfItem={4} />
             </div>
           </div>
         </div>
       </div>
+      </div>
+      </div>
     )
   }
 }
-
-const mapStateToProps = state => ({
-  items: state.itemsReducer.items,
-  categoryName: 'all'
-})
-
-const mapDispatchToProps = dispatch => ({
-  fetchItems: categoryName => dispatch(fetchAllItems(categoryName))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
