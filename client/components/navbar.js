@@ -2,16 +2,17 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
+import PropTypes from 'prop-types'
 
-const Navbar = ({handleClick, isLoggedIn}) => (
+const Navbar = ({handleClick, isLoggedIn, firstName}) => (
   <div>
     <div className="navbar-collapse">
       <h1 id="navWelcome">
         <Link to="/">
-        Cereal for the <span>not so serious</span>
+          Cereal for the <span>not so serious</span>
         </Link>
-        </h1>
-  
+      </h1>
+
       <div id="nav-Log-Cart">
         {isLoggedIn ? (
           <div className="navbar-items">
@@ -28,12 +29,13 @@ const Navbar = ({handleClick, isLoggedIn}) => (
               Login/Register
             </Link>
           </div>
+        )}
 
         <Link to="/cart" className="navbar-items">
           Your Cart
           <img src="https://img.icons8.com/ios-filled/16/000000/shopping-cart.png" />
-          </Link>
-        </div>
+        </Link>
+      </div>
     </div>
 
     <nav id="sectionsNav">
@@ -57,7 +59,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
         </div>
       </div>
     </nav>
-     <hr />
+    <hr />
   </div>
 )
 
@@ -67,7 +69,7 @@ const mapStateToProps = state => {
     isLoggedIn: !!state.user.id,
     cart: state.cart,
     user: state.user,
-    items: state.items
+    items: state.items,
     firstName: state.user.firstName
   }
 }
