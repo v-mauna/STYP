@@ -79,9 +79,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export const AllCereals = withRouter(
-  connect(mapAllCereals, mapDispatchToProps)(ItemsList)
-)
+export const AllCereals = connect(mapAllCereals, mapDispatchToProps)(ItemsList)
 export const Classics = connect(mapClassics, mapDispatchToProps)(ItemsList)
 export const Bestsellers = connect(mapBestsellers, mapDispatchToProps)(
   ItemsList

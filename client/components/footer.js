@@ -30,11 +30,7 @@ const Footer = () => (
               COMMUNITY RULES
             </Link>
           </li>
-        </ul>
-      </div>
 
-      <div>
-        <ul className="footer-menu footer-social">
           <li>
             <Link className="contact-us fa fa-facebook" to="#" />
           </li>

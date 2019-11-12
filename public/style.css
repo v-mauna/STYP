@@ -19,6 +19,7 @@ body {
   margin: 0;
   width: 100vw;
   font-family: sans-serif;
+  color: rgb(20, 66, 119);
 }
 
 img {
@@ -29,7 +30,6 @@ img {
 
 /*navbar */
 .navbar-collapse {
-  /* background: rgb(255, 215, 83); */
   border: 5px solid white;
   height: 60px;
 }
@@ -96,12 +96,7 @@ p {
 .itemsCard button {
   margin: 1em;
 }
-/*single Item*/
-/* .singleItem-card {
-  display: flex;
-  flex-direction: column;
-  margin: 40px;
-} */
+
 .singleItem-card {
   margin-top: 3em;
   font-size: 15px;
@@ -288,7 +283,7 @@ input.qty {
 
 /* btn submit */
 .submitbtn {
-  background-color: #62656f;
+  background-color: rgb(12, 149, 184);
   border: none;
   color: white;
   padding: 15px 32px;
@@ -451,7 +446,11 @@ input.qty {
   flex-direction: row;
 }
 
-.footer-wrap ul {
+.footer-wrap {
+  margin-left: 25%;
+}
+.footer-wrap ul,
+li {
   display: flex;
   flex-direction: row;
   padding: 1em;
