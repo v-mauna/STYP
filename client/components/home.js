@@ -11,7 +11,7 @@ export default class Home extends React.Component {
       <div>
         <div className="container">
           <div
-            id="background-image"
+            id="home-bg-image"
             style={{backgroundImage: `url(${imgBackground})`, height: '400px'}}
           />
           <br />
