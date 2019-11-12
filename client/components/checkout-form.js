@@ -3,7 +3,11 @@ import {connect} from 'react-redux'
 import {checkingOut} from '../store/cart'
 import {restoreCartItemsFromLocalStorage} from '../store/cart'
 
-function countTotal(items) {
+function countTotal() {
+  if (!localStorage.getItem('cart')) {
+    localStorage.setItem('cart', JSON.stringify([]))
+  }
+  let items = JSON.parse(localStorage.getItem('cart'))
   return items.reduce((acc, curVal) => {
     return parseFloat(
       parseFloat(acc) +
@@ -12,9 +16,14 @@ function countTotal(items) {
   }, 0.0)
 }
 
-function countQuantity(items) {
+function countQuantity() {
+  if (!localStorage.getItem('cart')) {
+    localStorage.setItem('cart', JSON.stringify([]))
+  }
+  let items = JSON.parse(localStorage.getItem('cart'))
   return items.reduce((acc, curVal) => {
-    return (acc += curVal.item.quantity)
+    acc += curVal.item.quantity
+    return acc
   }, 0)
 }
 
@@ -54,8 +63,8 @@ class CheckoutForm extends React.Component {
   componentDidMount() {
     this.props.restoreCartItemsFromLocalStorage()
     this.setState({
-      ...state,
-      totalPrice: this.props.subtotal,
+      ...CheckoutForm.state,
+      totalPrice: Number(this.props.subtotal),
       quantity: this.props.quantity,
       items: this.props.cartItems
     })
@@ -65,6 +74,8 @@ class CheckoutForm extends React.Component {
   }
 
   render() {
+    console.log('our props', this.props)
+    console.log('our state', this.state)
     return (
       <form
         className="checkout-form"
@@ -150,8 +161,8 @@ class CheckoutForm extends React.Component {
 const mapStateToProps = state => {
   return {
     cartItems: state.cartReducer.cartItems,
-    subtotal: countTotal(state.cartReducer.cartItems),
-    quantity: countQuantity(state.cartReducer.cartItems)
+    subtotal: countTotal(),
+    quantity: countQuantity()
   }
 }
 
