@@ -15,23 +15,26 @@ export default class Home extends React.Component {
             style={{backgroundImage: `url(${imgBackground})`, height: '400px'}}
           />
           <br />
-
-          <div className="row">
-            <div id="userhome-allProducts-container">
+          <div className="homeRow">
+            <div id="home-allProducts-container">
               <Link id="items-link" to="/cereals">
                 <h2> See All Products</h2>
               </Link>
-              <div id="userhome-allProducts">
+              <div id="home-allProducts">
                 <AllCereals numberOfItem={4} />
               </div>
             </div>
-            <br />
+          </div>
+          <br />
 
-            <div id="userhome-bestseller-container">
+          <div className="homeRow">
+            <div id="home-bestsellers-container">
               <Link id="bestseller-link" to="/bestsellers">
-                <h2 className="title">Bestsellers</h2>
+                <div>
+                  <h2 className="home-bestsellers">Bestsellers</h2>
+                </div>
               </Link>
-              <div id="userhome-bestsellers" />
+              <div id="home-bestsellers-link" />
               <Bestsellers numberOfItem={4} />
             </div>
           </div>

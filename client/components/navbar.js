@@ -13,7 +13,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
       </p>
       {isLoggedIn ? (
         <div>
-          <Link to="/home">welcome</Link>
+          <Link to="/home">welcome back</Link>
           <a href="#" onClick={handleClick}>
             {' '}
             logout
@@ -72,7 +72,8 @@ const mapStateToProps = state => {
     isLoggedIn: !!state.user.id,
     cart: state.cart,
     user: state.user,
-    items: state.items
+    items: state.items,
+    firstName: state.user.firstName
   }
 }
 

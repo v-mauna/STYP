@@ -56,6 +56,26 @@ nav {
 span {
   font-family: 'Pacifico', cursive;
 }
+/* homeRow */
+.homeRow {
+  display: flex;
+  align-content: center;
+  margin-left: 8%;
+}
+.homeRow h2 {
+  display: flex;
+  margin-left: 40%;
+  text-transform: uppercase;
+}
+.home-allProducts {
+  padding: 2em;
+}
+
+.home-bestsellers {
+  padding: 2em;
+  text-transform: uppercase;
+}
+
 /*itemsList*/
 
 .itemsList {
@@ -78,6 +98,7 @@ span {
   margin-left: 1em;
   margin-right: 1em;
   color: rgb(20, 66, 119);
+  text-transform: uppercase;
 }
 .itemsCard img {
   width: 250px;
