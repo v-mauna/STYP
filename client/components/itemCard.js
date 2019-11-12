@@ -1,22 +1,30 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {addItem, updateTotal} from '../store/cart'
+import {withRouter} from 'react-router-dom'
+import {connect} from 'react-redux'
 
 const ItemCard = props => {
-  const cereal = props.item
+  const item = props.item
+  const addItem = props.addItem
+
   return (
-    <div key={cereal.id}>
+    <div key={item.id}>
       <div>
         <div className="itemsCard">
-          <Link to={'/cereals/' + cereal.id}>
-            <img src={cereal.imageUrl} />
-            <h3 className="card-title">{cereal.name}</h3>
+          <Link to={'/cereals/' + item.id}>
+            <img src={item.imageUrl} />
+            <h3 className="card-title">{item.name}</h3>
           </Link>
           <p>
-            Price: ${cereal.price}
+            Price: ${item.price}
             <button
               id="addCart"
               type="submit"
-              onClick={() => props.addItem(cereal)}
+              onClick={() => {
+                props.addItem(item)
+                props.redirectToCart()
+              }}
             >
               add to cart
             </button>
@@ -30,4 +38,10 @@ const ItemCard = props => {
   )
 }
 
-export default ItemCard
+const mapDispatchToProps = dispatch => {
+  return {
+    addItem: addedItem => dispatch(addItem(addedItem))
+  }
+}
+
+export default withRouter(connect(null, mapDispatchToProps)(ItemCard))

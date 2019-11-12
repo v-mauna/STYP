@@ -45,7 +45,7 @@ const checkout = () => ({
 export const restoreCartItemsFromLocalStorage = () => {
   return async dispatch => {
     try {
-      // localStorage.clear() // todo remove!!!
+      //localStorage.clear() // todo remove!!!
       //
       //setting local storage
       if (!localStorage.getItem('cart')) {

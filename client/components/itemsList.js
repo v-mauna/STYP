@@ -2,20 +2,43 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {fetchAllItems} from '../store/item'
 import ItemCard from './itemCard'
+import {withRouter} from 'react-router'
 
 class ItemsList extends React.Component {
+  constructor() {
+    super()
+    this.redirectToCart = this.redirectToCart.bind(this)
+  }
   async componentDidMount() {
     await this.props.fetchItems(this.props.categoryName)
+
+    console.log('---props -redirect', this.props)
     console.log('itemstoMap', this.props.items)
   }
+
+  redirectToCart() {
+    this.props.history.push('/cart')
+  }
   render() {
+    const {match, location, history} = this.props
     const items = this.props.itemsReducer.items
+    const numberOfItem = this.props.numberOfItem
+    let displayItems = items
+    if (numberOfItem && numberOfItem > 0) {
+      displayItems = items.slice(0, numberOfItem)
+    }
 
     if (items) {
       return (
         <div className="itemsList">
-          {items.map(item => {
-            return <ItemCard key={item.id} item={item} />
+          {displayItems.map(item => {
+            return (
+              <ItemCard
+                key={item.id}
+                item={item}
+                redirectToCart={this.redirectToCart}
+              />
+            )
           })}
         </div>
       )
@@ -56,7 +79,9 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export const AllCereals = connect(mapAllCereals, mapDispatchToProps)(ItemsList)
+export const AllCereals = withRouter(
+  connect(mapAllCereals, mapDispatchToProps)(ItemsList)
+)
 export const Classics = connect(mapClassics, mapDispatchToProps)(ItemsList)
 export const Bestsellers = connect(mapBestsellers, mapDispatchToProps)(
   ItemsList
