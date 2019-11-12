@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {User, Address, Item, Order} = require('../db/models/')
+const {User, Address, Item, Order, LineItem} = require('../db/models/')
 
 router.get('/', async (req, res, next) => {
   try {
@@ -70,29 +70,25 @@ router.get('/order-history/:userId', async (req, res, next) => {
 
 router.post('/new', async (req, res, next) => {
   try {
-    console.log(req.body)
-
-    const cartitems = req.body.products
-
-    // [ { quantity : 9, item {}}, ...]
-    let orderCanBeFulfilled = true
-    const checkifexists = cartitems.forEach(function(cartitem) {
-      // const inventory_item = await Item.findOne({where:{id:cartitem.item.id}})
-
-      if (inventory_item.stock < cartitem.quantity) {
-        orderCanBeFulfilled = false
-      }
-    })
-
-    if (orderCanBeFulfilled) {
-      // const update_db_items  = cartitems.forEach(function(cartitem){
-      //   // const inventory_item = await Item.findOne({where:{id:cartitem.item.id}})
-      //   // await Item.update(req.body,{where:{id:cartitem.item.id},returning:true,plain:true})
-      //create order history
-      // })
+    const newOrderObj = {
+      status: 'PROCESSING',
+      total: req.body.total,
+      recepientFirstName: req.body.recipientFirstName,
+      recepientLastName: req.body.recipientLastName,
+      recepientemail: req.body.recipientemail,
+      totalPrice: req.body.totalPrice
     }
-    console.log('I went to database and came back? <-------------------')
-    res.status(200).send({orderCompleted: orderCanBeFulfilled})
+    const newOrder = await Order.create(newOrderObj)
+    const items = req.body.items
+    items.map(async el => {
+      await LineItem.create({
+        orderId: newOrder.id,
+        itemId: el.item.id,
+        quanity: el.quanity,
+        price: el.item.price
+      })
+    })
+    res.status(200).json(newOrder)
   } catch (err) {
     next(err)
   }
