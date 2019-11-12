@@ -5,6 +5,10 @@ import CartItem from './cartItem'
 import {restoreCartItemsFromLocalStorage} from '../store/cart'
 
 function countTotal(items) {
+  if (!localStorage.getItem('cart')) {
+    localStorage.setItem('cart', JSON.stringify([]))
+  }
+  items = JSON.parse(localStorage.getItem('cart'))
   return items.reduce((acc, curVal) => {
     return parseFloat(
       parseFloat(acc) +
@@ -41,8 +45,14 @@ class Cart extends React.Component {
             <div className="cart">
               <ul className="cartWrap">
                 {items
-                  ? items.map(item => {
-                      return <CartItem key={item.id} cartitem={item} />
+                  ? items.map((item, indx) => {
+                      return (
+                        <CartItem
+                          style={{display: 'inline-block'}}
+                          key={indx}
+                          cartitem={item}
+                        />
+                      )
                     })
                   : null}
               </ul>
@@ -76,7 +86,7 @@ class Cart extends React.Component {
 const mapStateToProps = state => {
   return {
     cartItems: state.cartReducer.cartItems,
-    subtotal: countTotal(state.cartReducer.cartItems)
+    subtotal: countTotal()
   }
 }
 

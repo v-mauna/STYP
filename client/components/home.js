@@ -22,7 +22,19 @@ export default class Home extends React.Component {
                 <h2> See All Products</h2>
               </Link>
               <div id="userhome-allProducts">
-                <AllCereals numberOfItem={4} />
+                {truncatedItems.map(item => {
+                  return (
+                    <ItemCard
+                      key={item.id}
+                      item={item}
+                      addItem={this.props.addItem}
+                      redirectToCart={this.props.history.push.bind(
+                        this,
+                        '/cart'
+                      )}
+                    />
+                  )
+                })}
               </div>
             </div>
             <br />
@@ -36,6 +48,8 @@ export default class Home extends React.Component {
             </div>
           </div>
         </div>
+      </div>
+      </div>
       </div>
     )
   }

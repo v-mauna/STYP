@@ -7,7 +7,7 @@ import Adapter from 'enzyme-adapter-react-16'
 import Home from './home'
 import configureMockStore from 'redux-mock-store'
 import thunkMiddleware from 'redux-thunk'
-import ReactRouterEnzymeContext from 'react-router-enzyme-context'
+// import ReactRouterEnzymeContext from 'react-router-enzyme-context'
 
 const adapter = new Adapter()
 enzyme.configure({adapter})

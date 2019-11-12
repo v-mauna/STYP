@@ -19,8 +19,14 @@ class ItemsList extends React.Component {
     if (items) {
       return (
         <div className="itemsList">
-          {displayItems.map(item => {
-            return <ItemCard key={item.id} item={item} />
+          {items.map(item => {
+            return (
+              <ItemCard
+                key={item.id}
+                item={item}
+                redirectToCart={this.props.history.push.bind(this, '/cart')}
+              />
+            )
           })}
         </div>
       )

@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import PropTypes from 'prop-types'
 
+
 const Navbar = ({handleClick, isLoggedIn, firstName}) => (
   <div>
     <div className="navbar-collapse">
@@ -59,7 +60,7 @@ const Navbar = ({handleClick, isLoggedIn, firstName}) => (
         </div>
       </div>
     </nav>
-    <hr />
+
   </div>
 )
 
@@ -74,12 +75,13 @@ const mapStateToProps = state => {
   }
 }
 const mapDispatchToProps = dispatch => {
- return {
-   handleClick() {
-     dispatch(logout())
-   }
- }
+  return {
+    handleClick() {
+      dispatch(logout())
+    }
+  }
 }
+
 
 export default connect(mapStateToProps,mapDispatchToProps)(Navbar)
 
@@ -87,3 +89,4 @@ export default connect(mapStateToProps,mapDispatchToProps)(Navbar)
 Navbar.propTypes = {
   firstName: PropTypes.string
 }
+

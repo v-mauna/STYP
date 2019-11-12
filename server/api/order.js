@@ -70,17 +70,29 @@ router.get('/order-history/:userId', async (req, res, next) => {
 
 router.post('/new', async (req, res, next) => {
   try {
-    const newOrderObj = {
-      status: 'PROCESSING',
-      total: req.body.total,
-      recipientFirstName: req.body.recipientFirstName,
-      recipientLastName: req.body.recipientLastName,
-      recipientemail: req.body.recipientemail,
-      totalPrice: req.body.totalPrice
+    console.log(req.body)
+
+    const cartitems = req.body.products
+
+    // [ { quantity : 9, item {}}, ...]
+    let orderCanBeFulfilled = true
+    const checkifexists = cartitems.forEach(function(cartitem) {
+      // const inventory_item = await Item.findOne({where:{id:cartitem.item.id}})
+
+      if (inventory_item.stock < cartitem.quantity) {
+        orderCanBeFulfilled = false
+      }
+    })
+
+    if (orderCanBeFulfilled) {
+      // const update_db_items  = cartitems.forEach(function(cartitem){
+      //   // const inventory_item = await Item.findOne({where:{id:cartitem.item.id}})
+      //   // await Item.update(req.body,{where:{id:cartitem.item.id},returning:true,plain:true})
+      //create order history
+      // })
     }
-    const newOrder = await Order.create(newOrderObj)
-    console.log('I went to database and came back?')
-    res.sendStatus(200)
+    console.log('I went to database and came back? <-------------------')
+    res.status(200).send({orderCompleted: orderCanBeFulfilled})
   } catch (err) {
     next(err)
   }
