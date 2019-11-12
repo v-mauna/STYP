@@ -19,7 +19,7 @@ class ItemsList extends React.Component {
     if (items) {
       return (
         <div className="itemsList">
-          {items.map(item => {
+          {displayItems.map(item => {
             return <ItemCard key={item.id} item={item} />
           })}
         </div>

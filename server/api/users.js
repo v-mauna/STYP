@@ -40,7 +40,20 @@ router.get('/:id', async (req, res, next) => {
 router.put('/:id', async (req, res, next) => {
   try {
     const origUser = await User.findByPk(req.params.id)
-    const updatedUser = await origUser.update(req.body)
+    const [/*numberofRows,*/ updatedUser] = await origUser.update(
+      {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email
+      },
+      {
+        where: {
+          id: req.params.studentId
+        },
+        returning: true,
+        plain: true
+      }
+    )
     res.status(200).json(updatedUser)
   } catch (err) {
     next(err)
