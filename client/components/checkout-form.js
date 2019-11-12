@@ -2,7 +2,11 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {checkingOut} from '../store/cart'
 
-function countTotal(items) {
+function countTotal() {
+  if (!localStorage.getItem('cart')) {
+    localStorage.setItem('cart', JSON.stringify([]))
+  }
+  let items = JSON.parse(localStorage.getItem('cart'))
   return items.reduce((acc, curVal) => {
     return parseFloat(
       parseFloat(acc) +
@@ -45,39 +49,40 @@ class CheckoutForm extends React.Component {
 
   render() {
     return (
-      <form
-        className="checkout-form"
-        onSubmit={() => this.handleSubmit(this.state)}
-      >
-        <div className="form-item">
-          <label name="firstName">First Name:</label>
-          <input
-            name="recipientFirstName"
-            value={this.state.recipientFirstName}
-            onChange={this.handleChange}
-            required
-          />
-        </div>
-        <div className="form-item">
-          <label name="lastName">Last Name:</label>
-          <input
-            name="recipientLastName"
-            value={this.state.recipientLastName}
-            onChange={this.handleChange}
-            required
-          />
-        </div>
-        <div className="form-item">
-          <label name="email">Email:</label>
-          <input
-            name="recipientemail"
-            type="email"
-            value={this.state.recipientemail}
-            onChange={this.handleChange}
-            required
-          />
-        </div>
-        {/* <div className="form-item">
+      <div>
+        <form
+          className="checkout-form"
+          onSubmit={() => this.handleSubmit(this.state)}
+        >
+          <div className="form-item">
+            <label name="firstName">First Name:</label>
+            <input
+              name="recipientFirstName"
+              value={this.state.recipientFirstName}
+              onChange={this.handleChange}
+              required
+            />
+          </div>
+          <div className="form-item">
+            <label name="lastName">Last Name:</label>
+            <input
+              name="recipientLastName"
+              value={this.state.recipientLastName}
+              onChange={this.handleChange}
+              required
+            />
+          </div>
+          <div className="form-item">
+            <label name="email">Email:</label>
+            <input
+              name="recipientemail"
+              type="email"
+              value={this.state.recipientemail}
+              onChange={this.handleChange}
+              required
+            />
+          </div>
+          {/* <div className="form-item">
           <label name="phoneNumber">Phone Number:</label>
           <input
             name="phoneNumber"
@@ -86,7 +91,7 @@ class CheckoutForm extends React.Component {
             required
           />
         </div> */}
-        {/* <div className="form-item">
+          {/* <div className="form-item">
           <label name="streetAddress">Street Address:</label>
           <input
             name="streetAddress"
@@ -94,7 +99,7 @@ class CheckoutForm extends React.Component {
             onChange={handleChange}
           />
         </div> */}
-        {/* <div className="form-item">
+          {/* <div className="form-item">
           <label name="city">City:</label>
           <input
             name="city"
@@ -120,16 +125,17 @@ class CheckoutForm extends React.Component {
           />
         </div> */}
 
-        <button type="submit">Place Order</button>
-      </form>
+          <button type="submit">Place Order</button>
+        </form>
+        <h3>{countTotal()}</h3>
+      </div>
     )
   }
 }
 
 const mapStateToProps = state => {
   return {
-    cartItems: state.cartReducer.cartItems,
-    subtotal: countTotal(state.cartReducer.cartItems)
+    cartItems: state.cartReducer.cartItems
   }
 }
 

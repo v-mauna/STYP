@@ -14,7 +14,11 @@ class SingleItem extends Component {
     if (item.name) {
       return (
         <div>
-          <ItemCard item={item} addItem={this.props.addItem} />
+          <ItemCard
+            item={item}
+            addItem={this.props.addItem}
+            redirectToCart={this.props.history.push.bind(this, '/cart')}
+          />
         </div>
       )
     } else {

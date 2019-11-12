@@ -31,7 +31,17 @@ class Home extends React.Component {
               </Link>
               <div id="userhome-allProducts">
                 {truncatedItems.map(item => {
-                  return <ItemCard key={item.id} item={item} />
+                  return (
+                    <ItemCard
+                      key={item.id}
+                      item={item}
+                      addItem={this.props.addItem}
+                      redirectToCart={this.props.history.push.bind(
+                        this,
+                        '/cart'
+                      )}
+                    />
+                  )
                 })}
               </div>
             </div>

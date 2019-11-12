@@ -1,11 +1,13 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {addItem, updateTotal} from '../store/cart'
+import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 
 const ItemCard = props => {
   const item = props.item
   const addItem = props.addItem
+
   return (
     <div key={item.id}>
       <div>
@@ -19,7 +21,10 @@ const ItemCard = props => {
             <button
               id="addCart"
               type="submit"
-              onClick={() => props.addItem(item)}
+              onClick={() => {
+                props.addItem(item)
+                props.redirectToCart()
+              }}
             >
               add to cart
             </button>
@@ -39,4 +44,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(ItemCard)
+export default withRouter(connect(null, mapDispatchToProps)(ItemCard))
