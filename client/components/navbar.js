@@ -39,7 +39,6 @@ const Navbar = ({handleClick, isLoggedIn, firstName}) => (
         </div>
       )}
     </div>
-
     <nav
       className="navbar navbar-default navbar-transparent navbar-fixed-top navbar-color-on-scroll"
       id="sectionsNav"
@@ -65,6 +64,7 @@ const Navbar = ({handleClick, isLoggedIn, firstName}) => (
       </div>
     </nav>
   </div>
+  </div>
 )
 /* CONTAINER */
 const mapStateToProps = state => {
@@ -83,15 +83,9 @@ const mapDispatchToProps = dispatch => {
     }
   }
 }
-
-
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
-
 export default connect(mapStateToProps,mapDispatchToProps)(Navbar)
-
 /** PROP TYPES **/
 Navbar.propTypes = {
   firstName: PropTypes.string
 }
-
-
