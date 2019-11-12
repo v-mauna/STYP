@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {User, Address, Item, Order} = require('../db/models/')
+const {User, Address, Item, Order, LineItem} = require('../db/models/')
 
 router.get('/', async (req, res, next) => {
   try {
@@ -79,6 +79,15 @@ router.post('/new', async (req, res, next) => {
       totalPrice: req.body.totalPrice
     }
     const newOrder = await Order.create(newOrderObj)
+    const items = req.body.items
+    items.map(async el => {
+      await LineItem.create({
+        orderId: newOrder.id,
+        itemId: el.item.id,
+        quanity: el.quanity,
+        price: el.item.price
+      })
+    })
     res.status(200).json(newOrder)
   } catch (err) {
     next(err)

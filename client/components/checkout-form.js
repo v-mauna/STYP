@@ -2,27 +2,16 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {checkingOut, restoreCartItemsFromLocalStorage} from '../store/cart'
 
-// function countTotal() {
-//   if (!localStorage.getItem('cart')) {
-//     localStorage.setItem('cart', JSON.stringify([]))
-//   }
-//   let items = JSON.parse(localStorage.getItem('cart'))
-//   return items.reduce((acc, curVal) => {
-//     return parseFloat(
-//       parseFloat(acc) +
-//         parseFloat(curVal.item.price) * parseFloat(curVal.quantity)
-//     ).toFixed(2)
-//   }, 0.0)
-// }
-
 function countTotal() {
   if (!localStorage.getItem('cart')) {
     localStorage.setItem('cart', JSON.stringify([]))
   }
   let items = JSON.parse(localStorage.getItem('cart'))
   return items.reduce((acc, curVal) => {
-    acc += curVal.item.price * curVal.quantity
-    return acc
+    return parseFloat(
+      parseFloat(acc) +
+        parseFloat(curVal.item.price) * parseFloat(curVal.quantity)
+    ).toFixed(2)
   }, 0.0)
 }
 
