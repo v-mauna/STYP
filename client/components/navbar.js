@@ -17,7 +17,7 @@ const Navbar = ({handleClick, isLoggedIn, firstName}) => (
       <div id="nav-Log-Cart">
        {isLoggedIn ? (
         <div>
-          <Link to="/home">{`Welcome,${firstName}!</Link>
+          <Link to="/home">{`Welcome,${firstName}!`}</Link>
           <a href="#" onClick={handleClick}>
             {' '}
             logout
