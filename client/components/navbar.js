@@ -2,7 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
-import PropTypes from 'prop-types'
 
 const Navbar = ({handleClick, isLoggedIn, firstName}) => (
   <div>
@@ -14,8 +13,9 @@ const Navbar = ({handleClick, isLoggedIn, firstName}) => (
       </p>
       {isLoggedIn ? (
         <div>
-          <Link to="/home">Welcome!!!!, {firstName}</Link>
+          <Link to="/home">welcome!!!!,{firstName}</Link>
           <a href="#" onClick={handleClick}>
+            {' '}
             logout
           </a>
           <Link to="/cart" className="material-icons">
@@ -86,7 +86,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
-
-Navbar.propTypes = {
-  firstName: PropTypes.string
-}
