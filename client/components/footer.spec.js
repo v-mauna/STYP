@@ -22,8 +22,7 @@ describe('Footer test', () => {
 
   it('renders the footer elements', () => {
     expect(footerWrapper.find('Link')).to.have.lengthOf(8)
-    expect(footerWrapper.find('div')).to.have.lengthOf(4)
-    expect(footerWrapper.find('hr')).to.have.lengthOf(1)
-    expect(footerWrapper.find('ul')).to.have.lengthOf(2)
+    expect(footerWrapper.find('div')).to.have.lengthOf(3)
+    expect(footerWrapper.find('ul')).to.have.lengthOf(1)
   })
 })
