@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, Cart} from './components'
+import {Login, Signup, Cart, CheckoutForm} from './components'
 import Home from './components/home'
 import Register from './components/register'
 import ErrorPage from './components/error-page'
@@ -40,6 +40,7 @@ class Routes extends Component {
         <Route exact path="/the-unknowns" component={Unknowns} />
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/register" component={Register} />
+        <Route exact path="/checkout" component={CheckoutForm} />
         <Route path="*" component={ErrorPage} />
         <Route component={Login} />
       </Switch>

@@ -1,7 +1,4 @@
 
-/* -------------------------------------
-    GLOBAL RESETS
-------------------------------------- */
 @import url('https://fonts.googleapis.com/css?family=Liu+Jian+Mao+Cao|Merriweather|Pacifico|Poppins&display=swap');
 
 * {
@@ -35,36 +32,6 @@ img {
   max-width: 100%;
 }
 
-
-/*navbar */
-.navbar-collapse {
-  /* background: rgb(255, 215, 83); */
-  border: 5px solid white;
-  height: 60px;
-}
-.collapse-navbar-collapse {
-  height: 30px;
-  padding: 10px;
-}
-nav {
-  align-items: center;
-  background: rgb(255, 215, 83);
-  color: #c0c0c0;
-  font-style: bold;
-  display: flex;
-  height: 80px;
-  padding: 10px;
-  border: 5px solid white;
-}
-
-#navWelcome {
-  margin-left: 10px;
-  font-family: 'Merriweather', serif;
-}
-
-span {
-  font-family: 'Pacifico', cursive;
-}
 /*itemsList*/
 
 .itemsList {
@@ -184,7 +151,6 @@ form div {
   display: inline-block;
 }
 
-
 /* -------------------------------------
     CART
 ------------------------------------- */
@@ -194,7 +160,6 @@ form div {
   width: 100%;
 }
 
-
 .cartPage {
   padding: 2em;
   position: relative;
@@ -202,7 +167,6 @@ form div {
   overflow: hidden;
   background-repeat: no-repeat;
   width: 80%;
-  height: 600px;
   margin-top: 3em;
   margin-left: 7em;
   border: 5px solid white;
@@ -235,7 +199,6 @@ form div {
 .items {
   display: block;
   width: 100%;
-  vertical-align: middle;
   padding: 1.5em;
   border: solid;
   padding: 20px;
@@ -259,7 +222,6 @@ input.qty {
   margin: 1em 0.5em 0 0;
 }
 .itemImg {
-  width: 8em;
   display: inline;
   padding-right: 1em;
 }
@@ -292,7 +254,6 @@ input.qty {
   overflow: hidden;
   background-repeat: no-repeat;
   width: 80%;
-  height: 600px;
   margin-top: 3em;
   margin-left: 7em;
   border: 5px solid white;

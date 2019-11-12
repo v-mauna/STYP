@@ -2,18 +2,22 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
+import PropTypes from 'prop-types'
 
-const Navbar = ({handleClick, isLoggedIn}) => (
+
+const Navbar = ({handleClick, isLoggedIn, firstName}) => (
   <div>
     <div className="navbar-collapse">
-      <p id="navWelcome">
-        <Link to="/home">
-          SHOP TILL YOU POP : Cereal for the <span>not so serious</span>
+      <h1 id="navWelcome">
+        <Link to="/">
+          SHOP TILL YOU POP: Cereal for the <span>not so serious</span>
         </Link>
-      </p>
-      {isLoggedIn ? (
+      </h1>
+
+      <div id="nav-Log-Cart">
+       {isLoggedIn ? (
         <div>
-          <Link to="/home">welcome</Link>
+          <Link to="/home">{`Welcome,${firstName}!</Link>
           <a href="#" onClick={handleClick}>
             {' '}
             logout
@@ -62,17 +66,16 @@ const Navbar = ({handleClick, isLoggedIn}) => (
     </nav>
   </div>
 )
-
 /* CONTAINER */
 const mapStateToProps = state => {
   return {
     isLoggedIn: !!state.user.id,
     cart: state.cart,
     user: state.user,
-    items: state.items
+    items: state.items,
+    firstName: state.user.firstName
   }
 }
-
 const mapDispatchToProps = dispatch => {
   return {
     handleClick() {
@@ -81,4 +84,14 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
+
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
+
+export default connect(mapStateToProps,mapDispatchToProps)(Navbar)
+
+/** PROP TYPES **/
+Navbar.propTypes = {
+  firstName: PropTypes.string
+}
+
+

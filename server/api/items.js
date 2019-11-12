@@ -14,7 +14,7 @@ router.get('/', async (req, res, next) => {
 
 router.get('/category/:categoryName', async (req, res, next) => {
   try {
-    console.log('category: ', req.params.categoryName)
+    //console.log('category: ', req.params.categoryName)
     const items = await Item.findAll({
       where: {
         category: {
@@ -22,7 +22,7 @@ router.get('/category/:categoryName', async (req, res, next) => {
         }
       }
     })
-    console.log('items:', items)
+    //console.log('items:', items)
     res.json(items)
   } catch (err) {
     next(err)
