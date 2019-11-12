@@ -68,4 +68,22 @@ router.get('/order-history/:userId', async (req, res, next) => {
   }
 })
 
+router.post('/new', async (req, res, next) => {
+  try {
+    const newOrderObj = {
+      status: 'PROCESSING',
+      total: req.body.total,
+      recipientFirstName: req.body.recipientFirstName,
+      recipientLastName: req.body.recipientLastName,
+      recipientemail: req.body.recipientemail,
+      totalPrice: req.body.totalPrice
+    }
+    const newOrder = await Order.create(newOrderObj)
+    console.log('I went to database and came back?')
+    res.sendStatus(200)
+  } catch (err) {
+    next(err)
+  }
+})
+
 module.exports = router

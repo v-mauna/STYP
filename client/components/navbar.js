@@ -73,20 +73,17 @@ const mapStateToProps = state => {
     firstName: state.user.firstName
   }
 }
-
 const mapDispatchToProps = dispatch => {
-  return {
-    handleClick() {
-      dispatch(logout())
-    }
-  }
+ return {
+   handleClick() {
+     dispatch(logout())
+   }
+ }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
+export default connect(mapStateToProps,mapDispatchToProps)(Navbar)
 
-/**
- * PROP TYPES
- */
+/** PROP TYPES **/
 Navbar.propTypes = {
   firstName: PropTypes.string
 }

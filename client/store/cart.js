@@ -45,7 +45,7 @@ const checkout = () => ({
 export const restoreCartItemsFromLocalStorage = () => {
   return async dispatch => {
     try {
-      // localStorage.clear() // todo remove!!!
+      //localStorage.clear() // todo remove!!!
       //
       //setting local storage
       if (!localStorage.getItem('cart')) {
@@ -60,6 +60,12 @@ export const restoreCartItemsFromLocalStorage = () => {
   }
 }
 //thunks will go here
+export const checkingOut = order => {
+  return async dispatch => {
+    const {data} = await axios.post('/orders/new', order)
+    dispatch(checkout())
+  }
+}
 
 // eslint-disable-next-line max-statements
 const cartReducer = (state = initialState, action) => {
