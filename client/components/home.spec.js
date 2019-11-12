@@ -30,7 +30,7 @@ describe('<Home/>', () => {
   })
 
   it('exists', () => {
-    expect(home.exists()).to.be.true
+    expect(home.exists()).to.equal(true)
   })
 
   it('render items link', () => {

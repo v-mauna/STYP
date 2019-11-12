@@ -13,13 +13,13 @@ class SingleItem extends Component {
     if (item.name) {
       return (
         <main>
-          <div>
-            <h3>{item.name}</h3>
-            <img height="100px" width="100px" src={item.imageUrl} />
+          <div className="singleItem-card">
+            <img className="singleItem-img" src={item.imageUrl} />
+            <div className="singleItem-info" />
+            <h2>{item.name}</h2>
             <h3>description:</h3>
             <p>{item.description}</p>
             <h4>price: {item.price}</h4>
-
             <button
               type="submit"
               onClick={() => {
