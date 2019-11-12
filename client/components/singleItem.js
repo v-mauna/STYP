@@ -5,8 +5,17 @@ import {Link} from 'react-router-dom'
 import ItemCard from '../components/itemCard'
 
 class SingleItem extends Component {
+  constructor() {
+    super()
+    this.redirectToCart = this.redirectToCart.bind(this)
+  }
+
   componentDidMount() {
     this.props.fetchOneItem(this.props.match.params.id)
+  }
+
+  redirectToCart() {
+    this.props.history.push('/cart')
   }
 
   render() {

@@ -20,7 +20,11 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           </a>
           <Link to="/cart" className="material-icons">
             your cart
-            <img src="https://img.icons8.com/ios-filled/16/000000/shopping-cart.png" />
+            <img
+              src="https://img.icons8.com/ios-filled/16/000000/shopping-cart.png(298 B)
+https://img.icons8.com/ios-filled/16/000000/shopping-cart.png
+"
+            />
           </Link>
         </div>
       ) : (
@@ -30,12 +34,15 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           </Link>
           <Link to="/cart" className="material-icons">
             your cart
-            <img src="https://img.icons8.com/ios-filled/16/000000/shopping-cart.png" />
+            <img
+              src="https://img.icons8.com/ios-filled/16/000000/shopping-cart.png(298 B)
+https://img.icons8.com/ios-filled/16/000000/shopping-cart.png
+"
+            />
           </Link>
         </div>
       )}
     </div>
-
     <nav
       className="navbar navbar-default navbar-transparent navbar-fixed-top navbar-color-on-scroll"
       id="sectionsNav"
@@ -62,7 +69,6 @@ const Navbar = ({handleClick, isLoggedIn}) => (
     </nav>
   </div>
 )
-
 /* CONTAINER */
 const mapStateToProps = state => {
   return {
@@ -72,7 +78,6 @@ const mapStateToProps = state => {
     items: state.items
   }
 }
-
 const mapDispatchToProps = dispatch => {
   return {
     handleClick() {
