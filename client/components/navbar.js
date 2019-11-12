@@ -84,7 +84,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
-export default connect(mapStateToProps,mapDispatchToProps)(Navbar)
+
 /** PROP TYPES **/
 Navbar.propTypes = {
   firstName: PropTypes.string
