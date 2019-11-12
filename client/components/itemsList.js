@@ -4,9 +4,17 @@ import {fetchAllItems} from '../store/item'
 import ItemCard from './itemCard'
 
 class ItemsList extends React.Component {
+  constructor() {
+    super()
+    this.redirectToCart = this.redirectToCart.bind(this)
+  }
   async componentDidMount() {
     await this.props.fetchItems(this.props.categoryName)
     console.log('itemstoMap', this.props.items)
+  }
+
+  redirectToCart() {
+    this.props.history.push('/cart')
   }
   render() {
     const items = this.props.itemsReducer.items
@@ -19,8 +27,14 @@ class ItemsList extends React.Component {
     if (items) {
       return (
         <div className="itemsList">
-          {items.map(item => {
-            return <ItemCard key={item.id} item={item} />
+          {displayItems.map(item => {
+            return (
+              <ItemCard
+                key={item.id}
+                item={item}
+                redirectToCart={this.redirectToCart}
+              />
+            )
           })}
         </div>
       )
