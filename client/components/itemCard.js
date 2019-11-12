@@ -23,7 +23,6 @@ const ItemCard = props => {
               type="submit"
               onClick={() => {
                 props.addItem(item)
-                props.redirectToCart()
               }}
             >
               add to cart
