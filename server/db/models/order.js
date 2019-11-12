@@ -28,7 +28,7 @@ const Order = db.define('order', {
     }
   },
   totalPrice: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.STRING,
     allowNull: false
   }
 })

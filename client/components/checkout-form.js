@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {checkingOut} from '../store/cart'
+import {checkingOut, restoreCartItemsFromLocalStorage} from '../store/cart'
 
 function countTotal() {
   if (!localStorage.getItem('cart')) {
@@ -15,12 +15,24 @@ function countTotal() {
   }, 0.0)
 }
 
+function countQuantity() {
+  if (!localStorage.getItem('cart')) {
+    localStorage.setItem('cart', JSON.stringify([]))
+  }
+  let items = JSON.parse(localStorage.getItem('cart'))
+  return items.reduce((acc, curVal) => {
+    acc += curVal.quantity
+    return acc
+  }, 0)
+}
+
 const initialState = {
   total: 0,
   recipientFirstName: '',
   recipientLastName: '',
   recipientemail: '',
-  totalPrice: 0
+  totalPrice: 0,
+  items: []
 }
 
 class CheckoutForm extends React.Component {
@@ -47,7 +59,18 @@ class CheckoutForm extends React.Component {
     this.redirect()
   }
 
+  componentDidMount() {
+    //this.props.restoreCartItemsFromLocalStorage()
+    this.setState({
+      ...CheckoutForm.state,
+      totalPrice: Number(this.props.subtotal),
+      total: this.props.quantity,
+      items: this.props.location.state.items
+    })
+  }
+
   render() {
+    console.log('this is our state', this.state)
     return (
       <div>
         <form
@@ -135,13 +158,17 @@ class CheckoutForm extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    cartItems: state.cartReducer.cartItems
+    cartItems: state.cartReducer.cartItems,
+    subtotal: countTotal(),
+    quantity: countQuantity()
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    checkingOut: order => dispatch(checkingOut(order))
+    checkingOut: order => dispatch(checkingOut(order)),
+    restoreCartItemsFromLocalStorage: () =>
+      dispatch(restoreCartItemsFromLocalStorage())
   }
 }
 
