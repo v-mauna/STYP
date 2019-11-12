@@ -79,14 +79,16 @@ router.post('/new', async (req, res, next) => {
       totalPrice: req.body.totalPrice
     }
     const newOrder = await Order.create(newOrderObj)
-    const items = req.body.items
-    items.map(async el => {
-      await LineItem.create({
+    let items = req.body.items
+    console.log('here', items)
+    items = items.map(async el => {
+      const lineItem = await LineItem.create({
         orderId: newOrder.id,
         itemId: el.item.id,
-        quanity: el.quanity,
+        quantity: el.quantity,
         price: el.item.price
       })
+      console.log(lineItem)
     })
     res.status(200).json(newOrder)
   } catch (err) {
