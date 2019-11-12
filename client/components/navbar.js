@@ -7,11 +7,11 @@ import PropTypes from 'prop-types'
 const Navbar = ({handleClick, isLoggedIn, firstName}) => (
   <div>
     <div className="navbar-collapse">
-      <h1 id="navWelcome">
+      <span id="navWelcome">
         <Link to="/">
           SHOP TILL YOU POP: Cereal for the <span>not so serious</span>
         </Link>
-      </h1>
+      </span>
 
       <div id="nav-Log-Cart">
         {isLoggedIn ? (
@@ -74,14 +74,14 @@ const mapStateToProps = state => {
   }
 }
 const mapDispatchToProps = dispatch => {
- return {
-   handleClick() {
-     dispatch(logout())
-   }
- }
+  return {
+    handleClick() {
+      dispatch(logout())
+    }
+  }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Navbar)
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
 
 /** PROP TYPES **/
 Navbar.propTypes = {

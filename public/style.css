@@ -481,3 +481,49 @@ li {
   flex-direction: row;
   padding: 1em;
 }
+
+/* -------------------------------------
+    HOME
+------------------------------------- */
+
+.row {
+  padding: 20px;
+}
+
+#background-image {
+  width: 100%;
+}
+
+.userHome-pg {
+  background: white;
+  border: 5px solid white;
+  height: 600px;
+  width: 100%;
+}
+x .userHome-pg h3 {
+  margin-left: 3em;
+  text-transform: uppercase;
+}
+
+.userHome-bgImg {
+  background: url('https://beinghealthiest.com/wp-content/uploads/sites/8/2019/01/Breakfast-cereal.jpg');
+  height: 500px;
+  width: 100%;
+  padding: 2em;
+  margin-left: 3em;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  background-repeat: no-repeat;
+}
+#userhome-allProducts {
+  display: flex;
+  margin: 20px;
+  justify-content: space-evenly;
+}
+
+userhome-bestseller {
+  display: flex;
+  margin: 20px;
+  justify-content: space-evenly;
+}
