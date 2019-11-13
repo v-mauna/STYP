@@ -45,7 +45,7 @@ const checkout = () => ({
 export const restoreCartItemsFromLocalStorage = () => {
   return async dispatch => {
     try {
-      //localStorage.clear() // todo remove!!!
+      //localStorage.clear() //
       //
       //setting local storage
       if (!localStorage.getItem('cart')) {
@@ -144,6 +144,7 @@ const cartReducer = (state = initialState, action) => {
     }
 
     case CHECKOUT: {
+      localStorage.clear()
       return {
         state: initialState
       }
