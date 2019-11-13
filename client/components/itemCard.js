@@ -1,7 +1,6 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import {addItem, updateTotal} from '../store/cart'
-import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 
 const ItemCard = props => {

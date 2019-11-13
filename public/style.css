@@ -82,6 +82,58 @@ nav {
 span {
   font-family: 'Pacifico', cursive;
 }
+
+.navbar-header {
+  display: flex;
+  justify-content: space-evenly;
+  max-width: 580px;
+  padding: 10px;
+  width: 580px;
+}
+
+.navbar-collapse {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+}
+.navbar-collapse a {
+  padding: 1em;
+}
+
+.collapse-navbar-collapse {
+  display: flex;
+  justify-content: space-evenly;
+  align-self: flex-end;
+  margin: 10px;
+}
+
+.material-icons {
+  margin: 10px;
+}
+/* homeRow */
+.homeRow {
+  display: flex;
+  align-content: center;
+  margin-left: 8%;
+}
+.homeRow h2 {
+  display: flex;
+  margin-left: 40%;
+  text-transform: uppercase;
+}
+.home-allProducts {
+  padding: 2em;
+}
+
+.home-bestsellers {
+  padding: 2em;
+  text-transform: uppercase;
+}
+
+#home-bg-image {
+  margin-top: 2em;
+}
+
 /*itemsList*/
 
 .itemsList {
@@ -104,6 +156,7 @@ span {
   margin-left: 1em;
   margin-right: 1em;
   color: rgb(20, 66, 119);
+  text-transform: uppercase;
 }
 .itemsCard img {
   width: 250px;
@@ -329,34 +382,7 @@ input.qty {
   border-radius: 0.4rem;
 }
 
-/*UserWelcome*/
-#userhome-bestseller-container {
-  display: flex;
-}
-.userHome-pg {
-  background: white;
-  border: 5px solid white;
-  height: 600px;
-  width: 100%;
-}
-.userHome-pg h3 {
-  margin-left: 3em;
-  text-transform: uppercase;
-}
-
-.userHome-bgImg {
-  background: url('https://beinghealthiest.com/wp-content/uploads/sites/8/2019/01/Breakfast-cereal.jpg');
-  height: 500px;
-  width: 100%;
-  padding: 2em;
-  margin-left: 3em;
-  position: relative;
-  text-align: center;
-  overflow: hidden;
-  background-repeat: no-repeat;
-}
-
-/* auth-form styling*/
+/* auth-form styling */
 
 .loginBox {
   position: absolute;
@@ -475,11 +501,36 @@ input.qty {
 .footer-wrap {
   margin-left: 25%;
 }
+
 .footer-wrap ul,
 li {
   display: flex;
   flex-direction: row;
   padding: 1em;
+}
+
+/* checkout page */
+.checkout-form {
+  height: auto;
+  width: 800px;
+  padding: 1em;
+  margin-left: 20em;
+  margin-bottom: 2em;
+  box-sizing: border-box;
+  color: white;
+  transform: translateY(-80%);
+}
+
+.checkout-total {
+  margin-left: 5em;
+}
+
+.checkout-page img {
+  margin-top: 3em;
+  width: 65%;
+  height: 65%;
+  margin-left: 17.5%;
+  margin-bottom: -20%;
 }
 
 /* -------------------------------------

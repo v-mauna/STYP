@@ -65,7 +65,6 @@ class CheckoutForm extends React.Component {
   }
 
   componentDidMount() {
-    //this.props.restoreCartItemsFromLocalStorage()
     this.setState({
       ...CheckoutForm.state,
       totalPrice: Number(this.props.subtotal),
@@ -77,7 +76,8 @@ class CheckoutForm extends React.Component {
   render() {
     console.log('this is our state', this.state)
     return (
-      <div>
+      <div className="checkout-page">
+        <img src="https://images.unsplash.com/photo-1530300846683-a0d623fbeff7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" />
         <form
           className="checkout-form"
           onSubmit={() => this.handleSubmit(this.state)}
@@ -135,6 +135,8 @@ class CheckoutForm extends React.Component {
               onChange={this.handleChange}
               required
             />
+          </div>
+          <div className="form-item">
             <label name="state">State:</label>
             <input
               name="state"
@@ -144,7 +146,7 @@ class CheckoutForm extends React.Component {
             />
           </div>
           <div className="form-item">
-            <label name="zipcode">Zipcode:</label>
+            <label name="zipcode">Zip Code:</label>
             <input
               name="zipcode"
               value={this.state.zipcode}
@@ -152,10 +154,12 @@ class CheckoutForm extends React.Component {
               required
             />
           </div>
+          <div className="checkout-total">
+            <h3 className="checkout-total">Order Total: {countTotal()}</h3>
+          </div>
 
           <button type="submit">Place Order</button>
         </form>
-        <h3>{countTotal()}</h3>
       </div>
     )
   }
