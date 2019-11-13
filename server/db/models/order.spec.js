@@ -142,8 +142,8 @@ describe('Order model', () => {
         })
         .then(items => {
           expect(items.length).to.be.equal(1)
-          expect(items[0].lineItem.get('quantity')).to.be.equal(55)
-          expect(items[0].lineItem.get('price')).to.be.equal('4.44')
+          expect(items[0].lineitem.get('quantity')).to.be.equal(55)
+          expect(items[0].lineitem.get('price')).to.be.equal('4.44')
 
           done()
         })
