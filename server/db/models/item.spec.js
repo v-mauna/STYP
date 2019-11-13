@@ -54,8 +54,8 @@ describe('Item model', () => {
           })
           .then(orders => {
             expect(orders.length).to.be.equal(1)
-            expect(orders[0].lineItem.get('quantity')).to.be.equal(3)
-            expect(orders[0].lineItem.get('price')).to.be.equal('2.20')
+            expect(orders[0].lineitem.get('quantity')).to.be.equal(3)
+            expect(orders[0].lineitem.get('price')).to.be.equal('2.20')
             done()
           })
           .catch(err => {

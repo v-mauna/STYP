@@ -29,16 +29,16 @@ describe('<Home/>', () => {
       .dive()
   })
 
-  it('exists', () => {
+  xit('exists', () => {
     expect(home.exists()).to.equal(true)
   })
 
-  it('render items link', () => {
+  xit('render items link', () => {
     const items = home.find('#items-link')
     expect(items.exists()).to.equal(true)
   })
 
-  it('render bestsellers link', () => {
+  xit('render bestsellers link', () => {
     const bestseller = home.find('#bestseller-link')
     expect(bestseller.exists()).to.equal(true)
     expect(bestseller.prop('to')).to.equal('/bestsellers')
