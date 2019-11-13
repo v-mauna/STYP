@@ -11,9 +11,6 @@ class ItemsList extends React.Component {
   }
   async componentDidMount() {
     await this.props.fetchItems(this.props.categoryName)
-
-    console.log('---props -redirect', this.props)
-    console.log('itemstoMap', this.props.items)
   }
 
   redirectToCart() {
