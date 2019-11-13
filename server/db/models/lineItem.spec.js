@@ -1,7 +1,7 @@
 /* global describe beforeEach it */
 const {expect} = require('chai')
 const db = require('../index')
-const LineItem = db.model('lineItem')
+const LineItem = db.model('lineitem')
 const Order = db.model('order')
 const Item = db.model('item')
 
