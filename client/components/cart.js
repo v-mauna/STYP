@@ -17,7 +17,7 @@ function countTotal(items) {
   }, 0.0)
 }
 
-class Cart extends React.Component {
+export class Cart extends React.Component {
   constructor() {
     super()
     this.state = {}

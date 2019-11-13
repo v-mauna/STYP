@@ -24,7 +24,7 @@ describe('Cart test', () => {
     )
   })
 
-  xit('renders the carts  elements', () => {
+  it('renders the carts  elements', () => {
     expect(cartWrapper.find('.cartWrap').children()).to.have.lengthOf(2)
   })
 })
