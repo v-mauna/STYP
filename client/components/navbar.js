@@ -16,8 +16,9 @@ const Navbar = ({handleClick, isLoggedIn, firstName}) => (
       <div id="nav-Log-Cart">
         {isLoggedIn ? (
           <div className="navbar-items">
-            <Link to="/" className="navbar-items">
-              <h4>{`Welcome!!!!, ${firstName}`}</h4>
+            <Link to="/cart" className="navbar-items">
+              Your Cart
+              <img src="https://img.icons8.com/ios-filled/16/000000/shopping-cart.png" />
             </Link>
             <a className="navbar-items" onClick={handleClick}>
               Logout
@@ -28,13 +29,12 @@ const Navbar = ({handleClick, isLoggedIn, firstName}) => (
             <Link to="/login" className="navbar-items">
               Login/Register
             </Link>
+            <Link to="/cart" className="navbar-items">
+              Your Cart
+              <img src="https://img.icons8.com/ios-filled/16/000000/shopping-cart.png" />
+            </Link>
           </div>
         )}
-
-        <Link to="/cart" className="navbar-items">
-          Your Cart
-          <img src="https://img.icons8.com/ios-filled/16/000000/shopping-cart.png" />
-        </Link>
       </div>
     </div>
 
