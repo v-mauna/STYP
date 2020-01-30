@@ -1,7 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import {withRouter} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import {fetchOneItem} from '../store/item'
 import {
   removeItem,
@@ -40,18 +39,16 @@ export class CartItem extends React.Component {
 
     if (singleOrderItem.name) {
       return (
-        <li className="items">
+        <li className="cartItems">
           <form>
-            <div className="infoWrap">
+            <div className="cartItemsInfoWrap">
               <div className="cartSection">
-                <div>
-                  <img
-                    src={singleOrderItem.imageUrl}
-                    alt="cerals"
-                    className="itemImg"
-                  />
-                </div>
-                <div>
+                <img
+                  src={singleOrderItem.imageUrl}
+                  alt="cereal"
+                  className="cartItemImg"
+                />
+                <div id="cartItemText">
                   <p>Quantity:</p>
                   <input
                     name="quantity"
@@ -61,19 +58,21 @@ export class CartItem extends React.Component {
                     min="0"
                     max="400"
                   />
+                  <div className="cartSection removeWrap">
+                    <button
+                      className="remove"
+                      type="submit"
+                      onClick={() =>
+                        this.props.removeItem(
+                          singleOrderItem,
+                          this.state.quantity
+                        )
+                      }
+                    >
+                      REMOVE
+                    </button>
+                  </div>
                 </div>
-                <p className="stockStatus"> In Stock</p>
-              </div>
-
-              <div className="cartSection removeWrap">
-                <button
-                  className="remove"
-                  onClick={() =>
-                    this.props.removeItem(singleOrderItem, this.state.quantity)
-                  }
-                >
-                  REMOVE
-                </button>
               </div>
             </div>
           </form>
@@ -89,7 +88,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     item:
       state.cartReducer.cartItems.find[
-        item => item.id == ownProps.cartitem.item.id
+        item => item.id === ownProps.cartitem.item.id
       ]
   }
 }

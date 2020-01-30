@@ -1,53 +1,24 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 
-const Footer = () => (
-  <footer className="footer">
-    <div className="footer-wrap">
-      <div>
-        <ul id="footer-menu" className="footer-menu">
-          <li className="menu-item items-footer">
-            {' '}
-            <Link className="contact-us" to="#">
-              CONTACT
-            </Link>
-          </li>
-          <li className="menu-item items-footer">
-            {' '}
-            <Link className="privacy-policy" to="#">
-              PRIVACY POLICY
-            </Link>
-          </li>
-          <li className="menu-item items-footer">
-            {' '}
-            <Link className="terms of use" to="#">
-              TERMS OF USE
-            </Link>
-          </li>
-          <li className="menu-item items-footer">
-            {' '}
-            <Link className="community rules" to="#">
-              COMMUNITY RULES
-            </Link>
-          </li>
-
-          <li>
-            <Link className="contact-us fa fa-facebook" to="#" />
-          </li>
-          <li>
-            <Link className="contact-us fa fa-twitter" to="#" />
-          </li>
-          <li>
-            <Link className="contact-us fa fa-instagram" to="#" />
-          </li>
-          <li>
-            <Link className="contact-us fa fa-pinterest" to="#" />
-          </li>
-        </ul>
+const Footer = () => {
+  return (
+    <div>
+      <div className="footer-bar">
+        <div id="footer-about">
+          <p id="dc">Designed & Created by:</p>
+          <p>Cornpops team</p>
+          <p>1909 Grace Hopper Cohort</p>
+          <p>New York, NY</p>
+          <p>
+            <a href="mailto: weGraduated@inDecember.com" className="email-link">
+              cornpopsTeam@styp.com
+            </a>
+          </p>
+          <img src="https://www.gracehopper.com/images/gh-logo-sm-w-h_1.svg" />
+        </div>
       </div>
     </div>
-    <div className="copyright">2019 Grace Shopper</div>
-  </footer>
-)
+  )
+}
 
 export default Footer

@@ -33,54 +33,48 @@ export class Cart extends React.Component {
 
     if (items) {
       return (
-        <div className="cartPage">
-          <div className="wrap cf">
-            <div className="heading cf">
-              <h1>My Cart</h1>
-              <Link to="/cereals" className="continue">
-                Continue Shopping
-              </Link>
-            </div>
-            <form>
-              <Link
-                to={{
-                  pathname: '/checkout',
-                  state: {items: this.props.cartItems}
-                }}
-              >
-                <button type="submit">CHECKOUT</button>
-              </Link>
-            </form>
+        <div className="cartPage" title="Cart">
+          <div>
+            <ul className="cartWrap">
+              {items
+                ? items.map(item => {
+                    return (
+                      <CartItem
+                        style={{display: 'inline-block'}}
+                        key={item.id}
+                        cartitem={item}
+                      />
+                    )
+                  })
+                : null}
+            </ul>
+          </div>
+          <Link to="/cereals" className="continue">
+            Continue Shopping
+          </Link>
+          <form>
+            <Link
+              to={{
+                pathname: '/checkout',
+                state: {items: this.props.cartItems}
+              }}
+            >
+              <button type="submit">CHECKOUT</button>
+            </Link>
+          </form>
 
-            <div className="cart">
-              <ul className="cartWrap">
-                {items
-                  ? items.map((item, indx) => {
-                      return (
-                        <CartItem
-                          style={{display: 'inline-block'}}
-                          key={indx}
-                          cartitem={item}
-                        />
-                      )
-                    })
-                  : null}
+          {this.props.subtotal ? (
+            <div className="subtotal cf">
+              <ul>
+                <li className="totalRow">
+                  <span id="Subtotal">Subtotal: </span>
+                  <span className="value">{`${this.props.subtotal}$`}</span>
+                </li>
               </ul>
             </div>
-
-            {this.props.subtotal ? (
-              <div className="subtotal cf">
-                <ul>
-                  <li className="totalRow">
-                    <span className="label">Subtotal: </span>
-                    <span className="value">{`${this.props.subtotal}$`}</span>
-                  </li>
-                </ul>
-              </div>
-            ) : (
-              'Cart is empty'
-            )}
-          </div>
+          ) : (
+            'Cart is empty'
+          )}
         </div>
       )
     } else {

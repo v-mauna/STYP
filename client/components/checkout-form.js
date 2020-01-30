@@ -77,7 +77,6 @@ class CheckoutForm extends React.Component {
     console.log('this is our state', this.state)
     return (
       <div className="checkout-page">
-        <img src="https://images.unsplash.com/photo-1530300846683-a0d623fbeff7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" />
         <form
           className="checkout-form"
           onSubmit={() => this.handleSubmit(this.state)}

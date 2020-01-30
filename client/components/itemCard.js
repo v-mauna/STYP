@@ -16,7 +16,7 @@ const ItemCard = props => {
             <h3 className="card-title">{item.name}</h3>
           </Link>
           <p>
-            Price: ${item.price}
+            ${item.price}
             <button
               id="addCart"
               type="submit"

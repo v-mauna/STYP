@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import PropTypes from 'prop-types'
 
-const Navbar = ({handleClick, isLoggedIn, firstName}) => (
+const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
     <div className="navbar-collapse">
       <span id="navWelcome">
@@ -40,7 +40,7 @@ const Navbar = ({handleClick, isLoggedIn, firstName}) => (
 
     <nav id="sectionsNav">
       <div className="container">
-        <div className="navbar-header">
+        <div id="navbar-header">
           <Link to="/cereals" className="icon-bar">
             ALL ITEMS
           </Link>

@@ -117,7 +117,7 @@ const items = [
       'https://scontent-lga3-1.cdninstagram.com/vp/2d669ed23cbc83b9a26fb60674ea8c00/5E0B0CDD/t51.2885-15/sh0.08/e35/s640x640/70089500_481051226025501_4185359376895205910_n.jpg?_nc_ht=scontent-lga3-1.cdninstagram.com&_nc_cat=109'
   },
   {
-    name: `ET`,
+    name: `Phone Home`,
     price: 3.99,
     stock: 35,
     description: `So good, you'll travel the universe to find it.`,
@@ -126,7 +126,7 @@ const items = [
       'https://images-na.ssl-images-amazon.com/images/I/91LusTezkoL._AC_SL1500_.jpg'
   },
   {
-    name: `Bart Simpson's No-Problemos`,
+    name: `No-Problemos`,
     price: 3.99,
     stock: 35,
     description: `Why eat your shorts when you can eat this instead?`,
@@ -162,7 +162,7 @@ const items = [
       'https://images-na.ssl-images-amazon.com/images/I/91PaFBxsaQL._SL1500_.jpg'
   },
   {
-    name: `Vigilant Eats Cacao Banana Crunch`,
+    name: `Vigilant Eats`,
     price: 3.1,
     stock: 100,
     description: `Your new go-to on those days you need something hot...`,
