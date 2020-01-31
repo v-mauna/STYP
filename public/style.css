@@ -373,8 +373,8 @@ h3 {
   top: 50%;
   left: 50%;
   transform: translate(20%, -25%);
-  width: 30vw;
-  height: 65vh;
+  width: 25vw;
+  height: 50vh;
   box-sizing: border-box;
   background: rgba(35, 120, 146, 0.712);
   border: 5px solid white;
@@ -387,8 +387,8 @@ h3 {
   top: 50%;
   left: 50%;
   transform: translate(-100%, -25%);
-  width: 30vw;
-  height: 65vh;
+  width: 25vw;
+  height: 50vh;
   box-sizing: border-box;
   background: rgb(235, 68, 68);
   border: 5px solid white;
